@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
-  "revision": "2026-11-24T23-08-41-444Z-b6821c29",
-  "generatedAt": "2026-11-24T23:08:41.445Z",
+  "revision": "2026-11-24T23-15-05-653Z-83316e9d",
+  "generatedAt": "2026-11-24T23:15:05.653Z",
   "models": [
     {
       "id": "terra-low",
@@ -914,9 +914,9 @@
         "output": null,
         "cachedInput": null,
         "currency": "USD",
-        "verifiedAt": "2026-11-24",
+        "verifiedAt": "2026-11-25",
         "sourceUrl": "https://aistudio.google.com/docs/pricing#gemini-nano-banana-2.1",
-        "note": "Standard Gemini API example. Input, text, thinking, and optional grounding may add charges."
+        "note": "Paid Gemini Developer API Standard rates in USD: approximately $0.0336 per 1K output, $0.0504 per 2K, and $0.113 per 4K. Text, image, and video input costs $1.50 per million tokens. Text and thinking output costs $7.50 per million tokens. Grounding may add charges."
       },
       "image": {
         "workflows": {
@@ -950,10 +950,10 @@
           "label": "Gemini API pricing",
           "url": "https://aistudio.google.com/docs/pricing#gemini-nano-banana-2.1",
           "kind": "provider",
-          "checkedAt": "2026-11-24"
+          "checkedAt": "2026-11-25"
         }
       ],
-      "reviewedAt": "2026-11-24"
+      "reviewedAt": "2026-11-25"
     },
     {
       "id": "firefly-image5",
@@ -1042,9 +1042,9 @@
         "output": null,
         "cachedInput": null,
         "currency": "USD",
-        "verifiedAt": "2026-11-24",
+        "verifiedAt": "2026-11-25",
         "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
-        "note": "Image, text, and reference inputs can contribute to the API bill."
+        "note": "OpenAI Image API rates in USD per million tokens: text input $5 ($1.25 cached), image input $8 ($2 cached), and image output $30. The total for an edit depends on reference inputs, size, and quality."
       },
       "image": {
         "workflows": {
@@ -1072,7 +1072,7 @@
           "label": "GPT Image 2.6 Sunburst model and rates",
           "url": "https://developers.openai.com/api/docs/models/gpt-image-2.6-sunburst",
           "kind": "provider",
-          "checkedAt": "2026-11-24"
+          "checkedAt": "2026-11-25"
         },
         {
           "label": "OpenAI image generation and editing guide",
@@ -1081,7 +1081,7 @@
           "checkedAt": "2026-11-24"
         }
       ],
-      "reviewedAt": "2026-11-24"
+      "reviewedAt": "2026-11-25"
     },
     {
       "id": "ideogram-46",
@@ -1108,9 +1108,9 @@
         "output": null,
         "cachedInput": null,
         "currency": "USD",
-        "verifiedAt": "2026-11-24",
+        "verifiedAt": "2026-11-25",
         "sourceUrl": "https://ideogram.ai/models/4.6/",
-        "note": "API rate for medium-quality text-only generation. Check the separate pricing for edits, web credits, and higher resolutions."
+        "note": "Ideogram 4.6 API, medium quality: $0.06 per 2K image for generation or editing. At 4K, generation is $0.12 and editing is $0.20 per image. Edit rates apply to Precise Edit and Generate with reference images. Web credits are separate."
       },
       "image": {
         "workflows": {
@@ -1138,7 +1138,7 @@
           "label": "Ideogram 4.6 capabilities and rates",
           "url": "https://ideogram.ai/models/4.6/",
           "kind": "provider",
-          "checkedAt": "2026-11-24"
+          "checkedAt": "2026-11-25"
         },
         {
           "label": "Ideogram 4.6 API settings",
@@ -1147,7 +1147,7 @@
           "checkedAt": "2026-11-24"
         }
       ],
-      "reviewedAt": "2026-11-24"
+      "reviewedAt": "2026-11-25"
     },
     {
       "id": "qwen-image-pro-30",
