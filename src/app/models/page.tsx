@@ -20,6 +20,9 @@ export default async function ModelsPage() {
       <header className="page-heading">
         <h1>Model catalog</h1>
         <p>Browse image tools, language models, and the settings and rates behind each recommendation.</p>
+        {bundle.models.some(model => model.reportedBenchmarks) ? (
+          <p><Link className="text-button" href="/compare#reported-benchmarks">Compare provider benchmarks <ArrowRight size={16} aria-hidden="true" /></Link></p>
+        ) : null}
         <Link className="text-button" href="/models/explore">Browse the wider Artificial Analysis directory <ArrowRight size={16} aria-hidden="true" /></Link>
       </header>
       {!bundle.models.length ? <p>No model settings have been published yet.</p> : null}

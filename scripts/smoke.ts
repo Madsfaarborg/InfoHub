@@ -57,12 +57,24 @@ async function smoke() {
     assert.equal(status.news, bundle.news.length);
 
     const modelUrl = `/models/${encodeURIComponent(bundle.models[0].id)}`;
-    for (const route of ["/", "/tasks", "/tasks/coding", "/models", modelUrl, "/models/explore", "/compare", "/news", "/about"]) {
+    const benchmarkModels = bundle.models.filter(model => model.reportedBenchmarks);
+    const benchmarkModelRoutes = benchmarkModels.map(model => `/models/${encodeURIComponent(model.id)}`);
+    const routes = new Set(["/", "/tasks", "/tasks/coding", "/models", modelUrl, ...benchmarkModelRoutes, "/models/explore", "/compare", "/news", "/about"]);
+    for (const route of routes) {
       const response = await request(route);
       assert.equal(response.status, 200, route);
       assert.match(response.headers.get("content-type") ?? "", /text\/html/, route);
       const html = await response.text();
       assert.match(html, /<h1[\s>]/, route);
+      if (route === "/compare" || benchmarkModelRoutes.includes(route)) {
+        for (const model of benchmarkModels) {
+          if (route !== "/compare" && route !== `/models/${encodeURIComponent(model.id)}`) continue;
+          assert(html.includes('id="reported-benchmarks"'), `Missing benchmark table on ${route}`);
+          for (const result of model.reportedBenchmarks!.results) {
+            assert(html.includes(escapeHtml(result.name)) && html.includes(`${result.percent}%`), `Missing ${model.name} score for ${result.name} on ${route}`);
+          }
+        }
+      }
       if (route === "/news") {
         assert(html.includes("AI news for work"));
         for (const item of bundle.news) {
