@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
-  "revision": "2026-11-24T23-22-38-902Z-caece959",
-  "generatedAt": "2026-11-24T23:22:38.902Z",
+  "revision": "2026-11-24T23-26-46-333Z-dc3ccf43",
+  "generatedAt": "2026-11-24T23:26:46.333Z",
   "models": [
     {
       "id": "terra-low",
@@ -973,14 +973,14 @@
           "bestFor": "Synthesizing large sets of sources when the evidence conflicts.",
           "example": "Compare migration requirements across vendor guides and build a decision log linked to the original documents.",
           "limitation": "Open the cited documents to verify claims, dates, and compatibility requirements.",
-          "stepUp": "Start with Opus 5.5, then use Fable to revisit unresolved tradeoffs."
+          "stepUp": "Start with Opus 5.5, then use Fable to revisit unresolved tradeoffs.",
+          "preferred": true
         },
         "coding": {
           "bestFor": "Planning complex migrations or resolving conflicting requirements across a codebase.",
           "example": "Map how several services share a data schema, then propose a staged migration with compatibility tests.",
           "limitation": "Run the project’s tests and review the changes. Longer reasoning and tool loops can raise total cost.",
-          "stepUp": "Start with Opus 5.5 for well-scoped work. Try Fable when the change crosses several systems or an initial plan leaves gaps.",
-          "preferred": true
+          "stepUp": "Start with Opus 5.5 for well-scoped work. Try Fable when the change crosses several systems or an initial plan leaves gaps."
         },
         "debugging": {
           "bestFor": "Investigating difficult failures with several plausible causes.",
