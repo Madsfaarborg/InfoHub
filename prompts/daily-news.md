@@ -4,7 +4,7 @@ Run with **GPT-6.1 Sol at medium thinking** and web search enabled. If unavailab
 
 Recommended schedule: 07:00 Europe/Copenhagen. Scheduling, the importer, and publishing are separate setup steps; this repository does not yet contain a running automation.
 
-Before deployment, connect its JSON output to the local inbox described in [Data model](../docs/DATA_MODEL.md). The output contract is [news-digest.schema.json](../schemas/news-digest.schema.json).
+The automation returns a JSON draft by default. If your runner can write to the InfoHub host, give it a dated output path under `data/inbox/news/`. Otherwise, save its JSON output there yourself. The inbox is a staging folder. After reviewing a draft, publish it using the [publishing runbook](../docs/PUBLISHING.md). The output contract is [news-digest.schema.json](../schemas/news-digest.schema.json).
 
 ## Reusable prompt
 
