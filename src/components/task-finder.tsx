@@ -96,7 +96,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
         </div>}
         {isImage ? <p className="results-footnote">Use approved reference assets and check product details, spelling, and brand colors before publishing.</p> : null}
       </> : <div className="category-picker">{(interpretation.alternatives.length ? categories.filter(item => interpretation.alternatives.includes(item.id)) : categories).map(item => <button key={item.id} onClick={() => choose(item.id)}><CategoryIcon category={item.id} /><span><strong>{item.name}</strong><span>{item.description}</span></span><ArrowRight size={17} /></button>)}</div>}
-      <p className="results-footnote"><Link className="text-button" href="/models">Browse all model settings <ArrowRight size={14} aria-hidden="true" /></Link></p>
+      <p className="results-footnote"><Link className="text-button" href="/models">Browse curated model settings <ArrowRight size={14} aria-hidden="true" /></Link></p>
     </section> : null}
   </>;
 }

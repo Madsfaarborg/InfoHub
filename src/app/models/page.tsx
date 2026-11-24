@@ -20,6 +20,7 @@ export default async function ModelsPage() {
       <header className="page-heading">
         <h1>Model catalog</h1>
         <p>Browse image tools, language models, and the settings and rates behind each recommendation.</p>
+        <Link className="text-button" href="/models/explore">Browse the wider Artificial Analysis directory <ArrowRight size={16} aria-hidden="true" /></Link>
       </header>
       {!bundle.models.length ? <p>No model settings have been published yet.</p> : null}
       <ModelDirectorySection title="Image models and tools" models={images} now={now} />

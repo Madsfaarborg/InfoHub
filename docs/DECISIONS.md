@@ -16,3 +16,4 @@
 - Mount only the published directory in Docker. Match the container process to the host publisher's UID and GID so it can read the owner-only bundle.
 - Keep business workflows in the same local task finder. Use a separate image settings and pricing record for creative workflows, with no provider calls from InfoHub.
 - Bundle public creative content for new installs. Existing installations can adopt it through a reviewed additive publication that preserves team guidance and creates a rollback point.
+- Keep broad Artificial Analysis discovery in its own searchable directory. Task results stay limited to three curated choices with exact settings. Authorized source data is refreshed into a separate host snapshot and never auto-promoted into recommendations.

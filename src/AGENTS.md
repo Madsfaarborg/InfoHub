@@ -12,6 +12,8 @@ Read ../docs/DECISIONS.md and ../docs/LEARNINGS.md before substantial work. Upda
 - Unknown or stale cost is not zero. Never ignore a local-only constraint.
 - Match image models to the requested workflow and keep image output rates, credits, and local infrastructure separate from language token costs. Record the size, quality, region, and source that apply.
 - Add bundled guidance to existing published catalogs through the reviewed additive upgrade. Preserve team content and validate both older and current bundle formats.
+- Keep model discovery separate from the maximum of three curated task picks. An imported identity or benchmark label does not verify provider access, thinking controls, or task fit.
+- Keep Artificial Analysis retrieval on the host command. Use only documented feeds and preserve visible attribution, source coverage notes, and the separation from published task guidance.
 
 ## Design
 

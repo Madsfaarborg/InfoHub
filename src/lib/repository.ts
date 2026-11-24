@@ -5,6 +5,7 @@ import path from "node:path";
 import { cache } from "react";
 import { catalogSchema } from "./catalog-schema";
 import { starterBundle } from "./starter";
+import { aaSnapshotFilename, aaSnapshotMaxBytes, aaSnapshotSchema } from "./aa-catalog";
 import type { PublishedBundle } from "./types";
 
 export interface CatalogResult {
@@ -13,8 +14,7 @@ export interface CatalogResult {
   warning: string | null;
 }
 
-async function readPublishedFile(file: string) {
-  const limit = 1024 * 1024;
+async function readPublishedFile(file: string, limit = 1024 * 1024) {
   const handle = await open(file, constants.O_RDONLY | constants.O_NONBLOCK);
   try {
     const stat = await handle.stat();
@@ -30,6 +30,19 @@ async function readPublishedFile(file: string) {
     return JSON.parse(buffer.toString("utf8", 0, length)) as unknown;
   } finally {
     await handle.close();
+  }
+}
+
+// The snapshot is separate from curated content and is read only by the directory.
+export async function readArtificialAnalysis() {
+  const directory = process.env.INFOHUB_DATA_DIR || path.join(process.cwd(), "data", "published");
+  try {
+    const file = await readPublishedFile(path.join(/* turbopackIgnore: true */ directory, aaSnapshotFilename), aaSnapshotMaxBytes);
+    return { snapshot: aaSnapshotSchema.parse(file), unavailable: false };
+  } catch (error) {
+    const missing = (error as NodeJS.ErrnoException).code === "ENOENT";
+    if (!missing) console.error("InfoHub could not read the Artificial Analysis directory snapshot.");
+    return { snapshot: null, unavailable: !missing };
   }
 }
 

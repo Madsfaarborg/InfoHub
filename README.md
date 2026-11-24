@@ -40,6 +40,8 @@ The app reads the reviewed bundle at `data/published/current.json`. It serves th
 
 For an existing published catalog, use `npm run content -- add-starter-guidance --reviewed` after reviewing the [creative and business guidance](docs/CREATIVE_GUIDANCE.md). This adds the new entries and preserves your existing records.
 
+The task finder shows up to three curated choices with exact settings. The model catalog also links to a wider directory that can load [authorized Artificial Analysis data](docs/ARTIFICIAL_ANALYSIS.md).
+
 Verify changes with `npm run typecheck`, `npm test`, and `npm run build`.
 
 ## Build documents

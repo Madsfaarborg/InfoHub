@@ -306,6 +306,18 @@ table td a { white-space: nowrap; font-size: 12px; }
 .directory-row:hover .directory-model strong { text-decoration: underline; text-underline-offset: 4px; }
 .directory-row strong { display: block; font-weight: 500; }
 .directory-row small { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+.directory-filters { display: flex; align-items: end; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+.directory-filters label { display: grid; gap: 6px; font-size: 13px; }
+.directory-filters input, .directory-filters select { min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
+.directory-filters input { width: min(280px, 100%); }
+.directory-count { margin: 12px 0 20px; }
+.directory-pages { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; font-size: 13px; }
+.directory-status { padding: 24px 0; border-top: 1px solid var(--line); }
+.directory-status h2 { font-size: 20px; }
+.directory-status p { margin-top: 8px; color: var(--secondary); }
+.directory-sources { margin-top: 56px; max-width: 640px; }
+.source-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.source-row:hover, .inline-link { text-decoration: underline; text-underline-offset: 4px; }
 @media (hover: hover) and (pointer: fine) {
   .task-chip:not(.selected):hover, .filter-tabs button:not(.active):hover { background: var(--soft); border-color: #bfc1ba; }
   .category-picker button:hover { border-color: #aeb1a8; }
