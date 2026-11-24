@@ -1,0 +1,784 @@
+{
+  "schemaVersion": "1.0",
+  "revision": "starter-2026-11-24",
+  "generatedAt": "2026-11-24T14:51:00Z",
+  "models": [
+    {
+      "id": "terra-low",
+      "name": "GPT-6.1 Terra",
+      "developer": "OpenAI",
+      "provider": "OpenAI Responses API",
+      "modelId": "gpt-6.1-terra",
+      "tier": "everyday",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "Low",
+        "parameters": {
+          "reasoning.effort": "low"
+        },
+        "note": "Provider-supported setting. Task fit and price band are editorial starting points, not measured quality or speed. Provider access does not establish company approval."
+      },
+      "description": "A starting point for concise writing, extraction and explanations of supplied material. Editorial task-fit guidance; no team performance measurements.",
+      "toolUrl": "https://platform.openai.com/",
+      "price": {
+        "input": 1,
+        "output": 5,
+        "cachedInput": 0.05,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+        "note": "Standard OpenAI API USD per million tokens, requests with at most 272K input tokens. Above 272K, input/cache rates double and output is 1.5x for the whole request. Cache reads only; writes, tool charges, retries, faster tiers and regional premiums excluded."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "A short script with clear inputs and expected output.",
+          "example": "Convert an inventory CSV into a small PowerShell summary.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        },
+        "writing": {
+          "bestFor": "Rewriting verified notes for a known audience.",
+          "example": "Turn approved incident notes into a short customer update.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        },
+        "research": {
+          "bestFor": "Extracting facts from a small, supplied source set.",
+          "example": "Extract requirements from three supplied vendor documents.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official model and pricing documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        },
+        {
+          "label": "Supported effort settings",
+          "url": "https://developers.openai.com/api/docs/models",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    },
+    {
+      "id": "terra-medium",
+      "name": "GPT-6.1 Terra",
+      "developer": "OpenAI",
+      "provider": "OpenAI Responses API",
+      "modelId": "gpt-6.1-terra",
+      "tier": "everyday",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "Medium",
+        "parameters": {
+          "reasoning.effort": "medium"
+        },
+        "note": "Provider-supported setting. Task fit and price band are editorial starting points, not measured quality or speed. Provider access does not establish company approval."
+      },
+      "description": "For focused operational documentation and interpreting screenshots or supplied diagrams. Editorial task-fit guidance; no team performance measurements.",
+      "toolUrl": "https://platform.openai.com/",
+      "price": {
+        "input": 1,
+        "output": 5,
+        "cachedInput": 0.05,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+        "note": "Standard OpenAI API USD per million tokens, requests with at most 272K input tokens. Above 272K, input/cache rates double and output is 1.5x for the whole request. Cache reads only; writes, tool charges, retries, faster tiers and regional premiums excluded."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "A short script with clear inputs and expected output.",
+          "example": "Convert an inventory CSV into a small PowerShell summary.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        },
+        "debugging": {
+          "bestFor": "A focused error explanation with enough evidence to check it.",
+          "example": "Explain a supplied traceback and propose one reproducible check.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        },
+        "networking": {
+          "bestFor": "Explaining supplied configuration, rather than designing a live change.",
+          "example": "Explain a documented VLAN configuration using the supplied diagram.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        },
+        "security": {
+          "bestFor": "Organizing supplied security evidence for human review.",
+          "example": "Summarize sanitized alert fields into an analyst handover.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        },
+        "research": {
+          "bestFor": "Extracting facts from a small, supplied source set.",
+          "example": "Extract requirements from three supplied vendor documents.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        },
+        "writing": {
+          "bestFor": "Rewriting verified notes for a known audience.",
+          "example": "Turn approved incident notes into a short customer update.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official model and pricing documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        },
+        {
+          "label": "Supported effort settings",
+          "url": "https://developers.openai.com/api/docs/models",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    },
+    {
+      "id": "sol-medium",
+      "name": "GPT-6.2 Sol",
+      "developer": "OpenAI",
+      "provider": "OpenAI Responses API",
+      "modelId": "gpt-6.2-sol",
+      "tier": "balanced",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "Medium",
+        "parameters": {
+          "reasoning.effort": "medium"
+        },
+        "note": "Provider-supported setting. Task fit and price band are editorial starting points, not measured quality or speed. Provider access does not establish company approval."
+      },
+      "description": "A practical first candidate for scoped automation, debugging and technical planning. Editorial task-fit guidance; no team performance measurements.",
+      "toolUrl": "https://platform.openai.com/",
+      "price": {
+        "input": 2,
+        "output": 10,
+        "cachedInput": 0.1,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
+        "note": "Standard OpenAI API USD per million tokens, requests with at most 272K input tokens. Above 272K, input/cache rates double and output is 1.5x for the whole request. Cache reads only; writes, tool charges, retries, faster tiers and regional premiums excluded."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Scoped implementation in an existing codebase.",
+          "example": "Add input validation and tests to an existing inventory script.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "debugging": {
+          "bestFor": "Debugging with a reproducer, logs, and competing explanations.",
+          "example": "Compare failure hypotheses against a reproducible deployment error.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "networking": {
+          "bestFor": "Comparing documented options and migration constraints.",
+          "example": "Compare two network migration plans against explicit constraints.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "security": {
+          "bestFor": "Reasoning over supplied defensive security evidence.",
+          "example": "Review detection logic against supplied sanitized events.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "research": {
+          "bestFor": "Source-based technical comparisons with explicit citations.",
+          "example": "Compare vendor documentation and record unresolved differences.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "writing": {
+          "bestFor": "Structured technical documents that need consistent detail.",
+          "example": "Draft a migration runbook from verified technical notes.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official model and pricing documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        },
+        {
+          "label": "Supported effort settings",
+          "url": "https://developers.openai.com/api/docs/models",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    },
+    {
+      "id": "sonnet-medium",
+      "name": "Claude Sonnet 5.5",
+      "developer": "Anthropic",
+      "provider": "Claude Messages API",
+      "modelId": "claude-sonnet-5-5",
+      "tier": "balanced",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "Medium · adaptive thinking",
+        "parameters": {
+          "output_config.effort": "medium",
+          "thinking.type": "adaptive"
+        },
+        "note": "Provider-supported setting. Task fit and price band are editorial starting points, not measured quality or speed. Provider access does not establish company approval."
+      },
+      "description": "An alternative for well-specified coding and source-based technical documents. Editorial task-fit guidance; no team performance measurements.",
+      "toolUrl": "https://platform.claude.com/",
+      "price": {
+        "input": 2,
+        "output": 10,
+        "cachedInput": 0.1,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+        "note": "Standard Claude API USD per million tokens. Cache reads only; 5-minute writes $2.50 and 1-hour writes $4 per million are additional. Tool charges and retries excluded."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Scoped implementation in an existing codebase.",
+          "example": "Add input validation and tests to an existing inventory script.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "debugging": {
+          "bestFor": "Debugging with a reproducer, logs, and competing explanations.",
+          "example": "Compare failure hypotheses against a reproducible deployment error.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "networking": {
+          "bestFor": "Comparing documented options and migration constraints.",
+          "example": "Compare two network migration plans against explicit constraints.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "security": {
+          "bestFor": "Reasoning over supplied defensive security evidence.",
+          "example": "Review detection logic against supplied sanitized events.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "research": {
+          "bestFor": "Source-based technical comparisons with explicit citations.",
+          "example": "Compare vendor documentation and record unresolved differences.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "writing": {
+          "bestFor": "Structured technical documents that need consistent detail.",
+          "example": "Draft a migration runbook from verified technical notes.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official model and pricing documentation",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        },
+        {
+          "label": "Supported effort settings",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    },
+    {
+      "id": "sonnet-high",
+      "name": "Claude Sonnet 5.5",
+      "developer": "Anthropic",
+      "provider": "Claude Messages API",
+      "modelId": "claude-sonnet-5-5",
+      "tier": "deep",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "High · adaptive thinking",
+        "parameters": {
+          "output_config.effort": "high",
+          "thinking.type": "adaptive"
+        },
+        "note": "Provider-supported setting. Task fit and price band are editorial starting points, not measured quality or speed. Provider access does not establish company approval."
+      },
+      "description": "Consider for longer analysis and debugging after a focused attempt leaves unanswered questions. Editorial task-fit guidance; no team performance measurements.",
+      "toolUrl": "https://platform.claude.com/",
+      "price": {
+        "input": 2,
+        "output": 10,
+        "cachedInput": 0.1,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+        "note": "Standard Claude API USD per million tokens. Cache reads only; 5-minute writes $2.50 and 1-hour writes $4 per million are additional. Tool charges and retries excluded."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Changes with many interacting requirements and verification steps.",
+          "example": "Plan a coordinated refactor across several automation components.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks."
+        },
+        "debugging": {
+          "bestFor": "Ambiguous failures that survive focused debugging.",
+          "example": "Investigate an intermittent failure across identity, DNS, and deployment logs.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks."
+        },
+        "networking": {
+          "bestFor": "Architecture choices spanning systems and operational constraints.",
+          "example": "Evaluate a multi-site migration plan with rollback dependencies.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks."
+        },
+        "security": {
+          "bestFor": "Difficult defensive analysis with conflicting evidence.",
+          "example": "Challenge an incident hypothesis against contradictory sanitized evidence.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks."
+        },
+        "research": {
+          "bestFor": "Complex synthesis where assumptions must be tested.",
+          "example": "Reconcile conflicting technical sources into a decision brief.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks."
+        },
+        "writing": {
+          "bestFor": "Long decision documents that must explain uncertainty.",
+          "example": "Prepare an architecture decision record with explicit trade-offs.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official model and pricing documentation",
+          "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        },
+        {
+          "label": "Supported effort settings",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    },
+    {
+      "id": "astra-medium",
+      "name": "GPT-6.2 Astra",
+      "developer": "OpenAI",
+      "provider": "OpenAI Responses API",
+      "modelId": "gpt-6.2-astra",
+      "tier": "deep",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "Medium",
+        "parameters": {
+          "reasoning.effort": "medium"
+        },
+        "note": "Provider-supported setting. Task fit and price band are editorial starting points, not measured quality or speed. Provider access does not establish company approval."
+      },
+      "description": "An escalation candidate for ambiguous failures and architecture with interacting constraints. Editorial task-fit guidance; no team performance measurements.",
+      "toolUrl": "https://platform.openai.com/",
+      "price": {
+        "input": 8,
+        "output": 40,
+        "cachedInput": 0.4,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
+        "note": "Standard OpenAI API USD per million tokens, requests with at most 272K input tokens. Above 272K, input/cache rates double and output is 1.5x for the whole request. Cache reads only; writes, tool charges, retries, faster tiers and regional premiums excluded."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Changes with many interacting requirements and verification steps.",
+          "example": "Plan a coordinated refactor across several automation components.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks."
+        },
+        "debugging": {
+          "bestFor": "Ambiguous failures that survive focused debugging.",
+          "example": "Investigate an intermittent failure across identity, DNS, and deployment logs.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks.",
+          "preferred": true
+        },
+        "networking": {
+          "bestFor": "Architecture choices spanning systems and operational constraints.",
+          "example": "Evaluate a multi-site migration plan with rollback dependencies.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks.",
+          "preferred": true
+        },
+        "security": {
+          "bestFor": "Difficult defensive analysis with conflicting evidence.",
+          "example": "Challenge an incident hypothesis against contradictory sanitized evidence.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks.",
+          "preferred": true
+        },
+        "research": {
+          "bestFor": "Complex synthesis where assumptions must be tested.",
+          "example": "Reconcile conflicting technical sources into a decision brief.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks."
+        },
+        "writing": {
+          "bestFor": "Long decision documents that must explain uncertainty.",
+          "example": "Prepare an architecture decision record with explicit trade-offs.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step down once the problem is scoped and a cheaper setting passes your checks."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official model and pricing documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        },
+        {
+          "label": "Supported effort settings",
+          "url": "https://developers.openai.com/api/docs/models",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    },
+    {
+      "id": "qwen-nonthinking",
+      "name": "Qwen3-30B-A3B",
+      "developer": "Qwen",
+      "provider": "Local Transformers",
+      "modelId": "Qwen/Qwen3-30B-A3B",
+      "tier": "everyday",
+      "deployment": "local",
+      "availability": "setup-required",
+      "setting": {
+        "label": "Non-thinking",
+        "parameters": {
+          "enable_thinking": false,
+          "temperature": 0.7,
+          "top_p": 0.8,
+          "top_k": 20,
+          "min_p": 0
+        },
+        "note": "Exact tokenizer chat-template controls for this model. Editorial deployment candidate: configure hardware, revision, precision, engine/version, context and concurrency before use."
+      },
+      "description": "A local deployment candidate for extraction, rewriting and tightly specified scripts. Editorial task-fit guidance; no team performance measurements.",
+      "toolUrl": null,
+      "price": {
+        "input": null,
+        "output": null,
+        "cachedInput": null,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://huggingface.co/Qwen/Qwen3-30B-A3B",
+        "note": "Local infrastructure and operating cost unknown. No per-token price is established; this is not free inference."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "A short script with clear inputs and expected output.",
+          "example": "Convert an inventory CSV into a small PowerShell summary.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        },
+        "research": {
+          "bestFor": "Extracting facts from a small, supplied source set.",
+          "example": "Extract requirements from three supplied vendor documents.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        },
+        "writing": {
+          "bestFor": "Rewriting verified notes for a known audience.",
+          "example": "Turn approved incident notes into a short customer update.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up when context is incomplete or the first checked attempt fails."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official model card",
+          "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    },
+    {
+      "id": "qwen-thinking",
+      "name": "Qwen3-30B-A3B",
+      "developer": "Qwen",
+      "provider": "Local Transformers",
+      "modelId": "Qwen/Qwen3-30B-A3B",
+      "tier": "balanced",
+      "deployment": "local",
+      "availability": "setup-required",
+      "setting": {
+        "label": "Thinking",
+        "parameters": {
+          "enable_thinking": true,
+          "temperature": 0.6,
+          "top_p": 0.95,
+          "top_k": 20,
+          "min_p": 0
+        },
+        "note": "Exact tokenizer chat-template controls for this model. Editorial deployment candidate: configure hardware, revision, precision, engine/version, context and concurrency before use."
+      },
+      "description": "A local deployment candidate for checked troubleshooting hypotheses and configuration explanations. Editorial task-fit guidance; no team performance measurements.",
+      "toolUrl": null,
+      "price": {
+        "input": null,
+        "output": null,
+        "cachedInput": null,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://huggingface.co/Qwen/Qwen3-30B-A3B",
+        "note": "Local infrastructure and operating cost unknown. No per-token price is established; this is not free inference."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Scoped implementation in an existing codebase.",
+          "example": "Add input validation and tests to an existing inventory script.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "debugging": {
+          "bestFor": "Debugging with a reproducer, logs, and competing explanations.",
+          "example": "Compare failure hypotheses against a reproducible deployment error.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "networking": {
+          "bestFor": "Comparing documented options and migration constraints.",
+          "example": "Compare two network migration plans against explicit constraints.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "security": {
+          "bestFor": "Reasoning over supplied defensive security evidence.",
+          "example": "Review detection logic against supplied sanitized events.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "research": {
+          "bestFor": "Source-based technical comparisons with explicit citations.",
+          "example": "Compare vendor documentation and record unresolved differences.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "writing": {
+          "bestFor": "Structured technical documents that need consistent detail.",
+          "example": "Draft a migration runbook from verified technical notes.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official model card",
+          "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    },
+    {
+      "id": "sol-high",
+      "name": "GPT-6.2 Sol",
+      "developer": "OpenAI",
+      "provider": "OpenAI Responses API",
+      "modelId": "gpt-6.2-sol",
+      "tier": "deep",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "High",
+        "parameters": {
+          "reasoning.effort": "high"
+        },
+        "note": "Officially supported effort. Higher effort can increase billed output and time; no proven task-value improvement is claimed. Task fit is editorial."
+      },
+      "description": "An editorial step-up candidate for complex coding, debugging and network planning; no measured value improvement is established.",
+      "toolUrl": "https://platform.openai.com/",
+      "price": {
+        "input": 2,
+        "output": 10,
+        "cachedInput": 0.1,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
+        "note": "Standard OpenAI API USD per million tokens, requests with at most 272K input tokens. Above 272K, input/cache rates double and output is 1.5x for the whole request. Cache reads only; writes, tool charges, retries, faster tiers and regional premiums excluded."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Scoped implementation in an existing codebase.",
+          "example": "Add input validation and tests to an existing inventory script.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Return to medium when a scoped attempt meets the acceptance checks; use higher effort only when the task benefits.",
+          "preferred": true
+        },
+        "debugging": {
+          "bestFor": "Debugging with a reproducer, logs, and competing explanations.",
+          "example": "Compare failure hypotheses against a reproducible deployment error.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Return to medium when a scoped attempt meets the acceptance checks; use higher effort only when the task benefits."
+        },
+        "networking": {
+          "bestFor": "Comparing documented options and migration constraints.",
+          "example": "Compare two network migration plans against explicit constraints.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Return to medium when a scoped attempt meets the acceptance checks; use higher effort only when the task benefits."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official model and pricing documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.2-sol",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        },
+        {
+          "label": "Supported effort settings",
+          "url": "https://developers.openai.com/api/docs/models",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    },
+    {
+      "id": "qwen-hosted-thinking",
+      "name": "Qwen3.7 Max · 2026-05-17",
+      "developer": "Qwen",
+      "provider": "Alibaba Cloud Model Studio · Singapore / International",
+      "modelId": "qwen3.7-max-2026-05-17",
+      "tier": "balanced",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "Thinking only",
+        "parameters": {},
+        "note": "The exact dated model is documented as thinking-only. No adjustable thinking effort or disable switch is claimed. Task fit is editorial; no team measurements."
+      },
+      "description": "An editorial hosted alternative for source-based analysis and scoped technical tasks. Provider availability does not establish company approval or access entitlement.",
+      "toolUrl": "https://modelstudio.console.alibabacloud.com/",
+      "price": {
+        "input": 2.5,
+        "output": 7.5,
+        "cachedInput": null,
+        "currency": "USD",
+        "verifiedAt": "2026-11-24",
+        "sourceUrl": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+        "note": "USD per million tokens, Singapore service region / International deployment, exact dated model qwen3.7-max-2026-05-17, 0 < input tokens <= 1M. Output includes thinking plus response. Original pay-as-you-go rates; discounts, cache pricing and tool charges not included. Cached-input rate not verified."
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Scoped implementation in an existing codebase.",
+          "example": "Add input validation and tests to an existing inventory script.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "debugging": {
+          "bestFor": "Debugging with a reproducer, logs, and competing explanations.",
+          "example": "Compare failure hypotheses against a reproducible deployment error.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "networking": {
+          "bestFor": "Comparing documented options and migration constraints.",
+          "example": "Compare two network migration plans against explicit constraints.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "security": {
+          "bestFor": "Reasoning over supplied defensive security evidence.",
+          "example": "Review detection logic against supplied sanitized events.",
+          "limitation": "Needs source material; verify commands and technical claims before use.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        },
+        "research": {
+          "bestFor": "Source-based technical comparisons with explicit citations.",
+          "example": "Compare vendor documentation and record unresolved differences.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts.",
+          "preferred": true
+        },
+        "writing": {
+          "bestFor": "Structured technical documents that need consistent detail.",
+          "example": "Draft a migration runbook from verified technical notes.",
+          "limitation": "Needs verified facts and sources; current knowledge is not guaranteed.",
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+        }
+      },
+      "sources": [
+        {
+          "label": "Official regional pricing and model mode",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+          "kind": "provider",
+          "checkedAt": "2026-11-24"
+        }
+      ],
+      "reviewedAt": "2026-11-24"
+    }
+  ],
+  "benchmarks": [],
+  "news": [
+    {
+      "eventKey": "openai-gpt-6-2-api-2026-11-17",
+      "title": "GPT-6.2 Astra and Sol are available through the API",
+      "summary": "OpenAI documents the new Astra and Sol API identifiers, reasoning controls and standard token prices.",
+      "whyItMatters": "The catalog can distinguish a balanced Sol route from the more expensive Astra route using published rates.",
+      "suggestedAction": "Evaluate both on a small set of sanitized tasks before changing team defaults.",
+      "tags": [
+        "models-and-pricing",
+        "coding-tools"
+      ],
+      "urgency": "routine",
+      "confidence": "confirmed",
+      "recommendationImpact": "review",
+      "primarySource": {
+        "url": "https://help.openai.com/en/articles/9624314-model-release-notes",
+        "publisher": "OpenAI",
+        "publishedDate": "2026-11-17",
+        "eventDate": "2026-11-17",
+        "retrievedAt": "2026-11-24T14:50:22Z"
+      },
+      "additionalSources": [],
+      "supersedesEventKey": null
+    }
+  ]
+}

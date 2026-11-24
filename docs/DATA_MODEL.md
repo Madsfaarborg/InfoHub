@@ -13,7 +13,7 @@ Use stable internal IDs and validate every import. Keep the following entities s
 | Price snapshot | Variant, currency, input/output/cached-input units and prices, applicable tiers, source, effective and retrieval dates |
 | Evidence | Variant, source type, source URL or internal observation reference, task, result, date, limitations |
 | Benchmark result | Evidence ID, benchmark name/version, metric/units/direction, exact settings, evaluation environment and date |
-| Task guidance | Category, subtask, complexity, candidate variants, fit explanation, practical example, limitations, escalation rule |
+| Task guidance | Category, subtask, complexity, candidate variants, fit explanation, practical example, limitations, escalation rule, optional preferred variant within its tier |
 | Maintainer observation | Author, observation date, task context, variant/settings, observed behavior, confidence, review date |
 | News candidate | Structured digest item as defined in the news schema, with evidence links and publication state |
 | Published bundle | Schema version, content revision, generated time, previous revision, validated records and editorial decisions |
@@ -64,6 +64,8 @@ A failed refresh never changes a record's “last verified” date. Stale prices
 7. Return the exact supported setting, why it fits, a practical example, the caveat, escalation trigger, and evidence dates.
 
 Keep v1 deterministic and explainable. Do not manufacture a universal “92% match” score or average unrelated benchmark scores into a single quality score.
+
+The starter catalog uses the optional `preferred` flag to identify an editorial first choice by category within a tier. Without that flag, the catalog order breaks ties. Neither implies measured quality or cost superiority.
 
 Organization approval is a separate optional policy field, not something the hub can infer from provider availability. Unknown approval must not be displayed as “approved.” Local-only is a deployment constraint and does not itself certify that a model or tool is safe for every kind of data.
 

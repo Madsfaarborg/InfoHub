@@ -20,7 +20,7 @@ The hub should save colleagues from repeating the research its maintainer alread
 - Generous whitespace is a requirement. More information should be available on demand without crowding the first view.
 - Apply Emil Kowalski's design guidance and Unslop.
 
-This stage delivers the plan, Git setup, and pinned design guidance. Application implementation follows this plan.
+The initial build status and launch instructions are in the [README](../README.md).
 
 ## Product structure
 
@@ -111,13 +111,15 @@ The assignments below are execution recommendations, not benchmark claims about 
 | 0. Plan and repository | Sol 6.2 · medium | Sol 6.1 · medium for source/skill research | Git initialized, remote set, plan and daily prompt saved, design skills pinned; synced files untouched |
 | 1. Screen design and working prototype | Sol 6.2 · high | Terra 6.1 · medium for visual review | Homepage, one category, and a result detail work with clearly labeled fixtures; whitespace, focus states, mobile layout, and visual direction checked |
 | 2. Next.js and local deployment foundation | Sol 6.2 · medium | Sol 6.1 · low for runbook and configuration documentation | Pinned dependencies, scripts, CI build/type checks, standalone Docker build, local launch and health check |
-| 3. Catalog and recommendation engine | Sol 6.2 · high | Sol 6.1 · medium for schema fixtures and test cases; Astra 6 · high for one bounded rules review | Exact model/settings identities, evidence and freshness rules, constraints and ranking; curated task cases pass |
+| 3. Catalog and recommendation engine | Sol 6.2 · high | Sol 6.1 · medium for schema fixtures and test cases | Exact model/settings identities, evidence and freshness rules, constraints and ranking; curated task cases pass |
 | 4. Task search and guidance screens | Sol 6.2 · high | Sol 6.1 · medium for practical copy; Terra 6.1 · medium for interaction testing | Free text, category shortcuts, editable interpretation, tiers, cost explanation, and copy/open actions work end to end |
 | 5. Price-to-performance comparisons | Sol 6.2 · high | Sol 6.1 · medium for normalization fixtures; Terra 6.1 · medium for chart readability | Comparable evidence only, correct units/cost arithmetic, missing-data handling, accessible table, and attribution |
 | 6. Daily news and content publishing | Sol 6.2 · medium | Sol 6.1 · medium for research output fixtures and editorial checks | Daily prompt contract, deduplication, staged review, safe rendering, atomic updates, and failure recovery verified |
-| 7. Local release and pilot | Sol 6.2 · high | Terra 6.1 · medium for browser QA; Astra 6 · high for a targeted edge-case/security review | Complete Docker flow, restore/rollback drill, keyboard/mobile checks, pilot task validation, and operating runbook |
+| 7. Local release and pilot | Sol 6.2 · high | Terra 6.1 · medium for browser QA; Sol 6.1 · medium for bounded release checks | Complete Docker flow, restore/rollback drill, keyboard/mobile checks, pilot task validation, and operating runbook |
 
 Phases 1 and 2 are closely coupled; keep one owner for the application shell and dependencies. After phase 3's data contract is stable, charts and news can be delegated independently with separate file ownership. Integrate and test the complete flow in phase 7.
+
+Use 6-Astra at high only if a genuinely complex issue arises, such as a persistent cross-system defect or an architectural decision with competing constraints.
 
 The first useful milestone is phases 1–4 with a small verified catalog. Full v1 includes charts, the daily news path, and the local release checks. Do not delay the recommendation experience for a large model directory.
 

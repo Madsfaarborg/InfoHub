@@ -1,0 +1,14 @@
+services:
+  infohub:
+    build: .
+    user: "${INFOHUB_UID:-1001}:${INFOHUB_GID:-1001}"
+    ports:
+      - "${INFOHUB_BIND:-127.0.0.1}:3000:3000"
+    volumes:
+      - type: bind
+        source: ./data/published
+        target: /app/data
+        read_only: true
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true

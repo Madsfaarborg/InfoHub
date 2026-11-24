@@ -10,7 +10,7 @@ These exact identifiers were exposed by this session's subagent tools on 24 Nove
 
 | Plan name | Runtime identifier | Default use in this build |
 | --- | --- | --- |
-| Astra 6 | gpt-6-astra | High: bounded architecture, difficult bug, or edge-case review |
+| 6-Astra | gpt-6-astra | High, only for a complex architecture decision, difficult cross-system bug, or unusually complex review |
 | Sol 6.2 | gpt-6.2-sol | Medium: ordinary implementation; high: recommendation logic, integration, difficult UI |
 | Sol 6.1 | gpt-6.1-sol | Low: mechanical documentation/configuration; medium: bounded research, fixtures, copy, import transforms |
 | Terra 6.1 | gpt-6.1-terra | Medium: visual inspection and browser interaction checks; high only for an unresolved visual problem |
@@ -69,7 +69,7 @@ After the schema is stable:
 - **Sol 6.1 medium:** scoped importer fixtures or practical task copy.
 - **Terra 6.1 medium:** read-only UI checks against a running preview.
 
-Run the Astra 6 high review once the relevant architecture or difficult failure is concrete. Give it the invariant or reproduction case; do not ask it to reconsider the entire product.
+Use 6-Astra only for complex tasks. Delegate a specific complex architecture decision or persistent failure with its constraints and reproduction case. Routine implementation, research, and reviews stay with Sol or Terra.
 
 For daily news, start with Sol 6.1 medium for source collection and structured summaries. Use Sol 6.2 medium only when source reconciliation repeatedly fails. Reserve Astra 6 high for a specific consequential ambiguity requiring careful review. Source access and factual verification remain necessary regardless of model.
 
