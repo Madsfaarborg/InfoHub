@@ -1,5 +1,7 @@
 import { constants } from 'node:fs';
-import { open, mkdir, rename, rm, link } from 'node:fs/promises';
+import { open, mkdir, mkdtemp, rename, rm, link } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { isDeepStrictEqual } from 'node:util';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import Ajv2020 from 'ajv/dist/2020';
@@ -167,6 +169,51 @@ export async function publishCatalog(file: string, reviewed: boolean, dir = data
   return withPublishLock(dir, async () => {
     const previous = await current(dir);
     return commit(dir, { ...incoming, revision: nextRevision(), generatedAt: new Date().toISOString(), news: previous.news }, previous);
+  });
+}
+
+export const publicReleaseFile = 'src/content/public-release.json';
+
+export async function readPublicRelease(file = publicReleaseFile): Promise<PublishedBundle> {
+  const raw = await readJson(file);
+  const bundle = raw === null ? validateBundle(starterBundle()) : validateBundle(raw);
+  if (!bundle.models.length) throw new Error('The public catalog must contain models');
+  const primaryUrls = bundle.news.map(item => canonicalUrl(item.primarySource.url));
+  if (new Set(primaryUrls).size !== primaryUrls.length) throw new Error('Duplicate primary source URL in public news');
+  for (const item of bundle.news) {
+    for (const source of item.additionalSources) canonicalUrl(source.url);
+  }
+  return bundle;
+}
+
+export async function preparePublicRelease(
+  kind: 'news' | 'catalog',
+  input: string,
+  reviewed: boolean,
+  file = publicReleaseFile,
+): Promise<{ changed: boolean; revision: string }> {
+  requireReview(reviewed);
+  return withPublishLock(path.dirname(file), async () => {
+    const previous = await readPublicRelease(file);
+    const scratch = await mkdtemp(path.join(tmpdir(), 'infohub-release-'));
+    try {
+      // A public release starts from Git content, independently of the local inbox.
+      const directory = path.join(scratch, 'published');
+      await mkdir(directory);
+      await atomicJson(path.join(directory, 'current.json'), previous);
+      const publish = kind === 'news' ? publishNews : publishCatalog;
+      const next = await publish(input, true, directory);
+      const changed = !isDeepStrictEqual(next.news, previous.news)
+        || !isDeepStrictEqual(next.models, previous.models)
+        || !isDeepStrictEqual(next.benchmarks, previous.benchmarks);
+      if (!changed) return { changed: false, revision: previous.revision };
+      const staged = path.join(directory, 'current.json');
+      await readPublicRelease(staged);
+      await atomicJson(file, next);
+      return { changed: true, revision: next.revision };
+    } finally {
+      await rm(scratch, { recursive: true, force: true });
+    }
   });
 }
 export async function rollback(revision: string, dir = dataDirectory()): Promise<PublishedBundle> {

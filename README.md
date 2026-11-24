@@ -36,7 +36,7 @@ INFOHUB_UID="$(id -u)" INFOHUB_GID="$(id -g)" docker compose up --build
 
 Docker also binds to loopback by default. For colleagues on an intended private network, set `INFOHUB_BIND` to the server's private IP and restrict access using the host's network controls. There is no sign-in.
 
-The app reads the reviewed bundle at `data/published/current.json`. It serves the public starter catalog when the file is absent. Follow the [publishing runbook](docs/PUBLISHING.md) to prepare content, publish updates, and roll back.
+The app reads the reviewed bundle at `data/published/current.json`. When the file is absent, it serves the bundled public release or the starter catalog. Follow the [publishing runbook](docs/PUBLISHING.md) for local updates, GitHub and Vercel releases, and rollback.
 
 Run the [weekly model review](prompts/weekly-model-review.md) to revisit recommendations and the [daily frontier news scan](prompts/daily-news.md) to collect news candidates. Enable web search and save their outputs for review.
 
@@ -44,7 +44,7 @@ For an existing published catalog, use `npm run content -- add-starter-guidance 
 
 The task finder shows up to three curated choices with exact settings. The model catalog also links to a wider directory that can load [authorized Artificial Analysis data](docs/ARTIFICIAL_ANALYSIS.md).
 
-Verify changes with `npm run typecheck`, `npm test`, and `npm run build`.
+Run `npm run ci` to validate the release, check types, run the full test suite, build the app, and smoke-test the production server.
 
 ## Build documents
 

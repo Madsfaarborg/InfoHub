@@ -3,6 +3,7 @@ import { constants } from "node:fs";
 import { open } from "node:fs/promises";
 import path from "node:path";
 import { cache } from "react";
+import publicRelease from "../content/public-release.json";
 import { catalogSchema } from "./catalog-schema";
 import { starterBundle } from "./starter";
 import { aaSnapshotFilename, aaSnapshotMaxBytes, aaSnapshotSchema } from "./aa-catalog";
@@ -56,12 +57,11 @@ export const readCatalog = cache(async (): Promise<CatalogResult> => {
   } catch (error) {
     const missing = (error as NodeJS.ErrnoException).code === "ENOENT";
     // Malformed operational content must not become a blank application.
-    // The visible warning distinguishes this safe public fallback.
-    if (!missing) console.error("InfoHub could not load its published catalog; serving the public starter catalog.");
+    if (!missing) console.error("InfoHub could not load its published catalog; serving the bundled public catalog.");
     return {
-      bundle: starterBundle(),
-      origin: "starter",
-      warning: missing ? null : "The team catalog is temporarily unavailable. Showing the public starter guide.",
+      bundle: publicRelease === null ? starterBundle() : catalogSchema.parse(publicRelease),
+      origin: publicRelease === null ? "starter" : "published",
+      warning: missing ? null : "The team catalog is temporarily unavailable. Showing the public guide.",
     };
   }
 });
