@@ -149,7 +149,7 @@ export function mergeNews(existing: NewsItem[], incoming: NewsItem[]): NewsItem[
   return result;
 }
 function requireReview(reviewed: boolean): void { if (!reviewed) throw new Error('Publication requires explicit editorial review: pass --reviewed'); }
-export async function publishNews(file: string, reviewed: boolean, dir = dataDirectory()): Promise<PublishedBundle> {
+export async function publishNews(file: string, reviewed: boolean, dir = dataDirectory(), confirmedOnly = false): Promise<PublishedBundle> {
   requireReview(reviewed); dir = dataDirectory(dir);
   const digest = validateDigest(await readJson(file));
   return withPublishLock(dir, async () => {
@@ -157,17 +157,21 @@ export async function publishNews(file: string, reviewed: boolean, dir = dataDir
     for (const candidate of digest.modelReviewCandidates) for (const id of candidate.variantIds) if (!previous.models.some(model => model.id === id)) throw new Error(`Unknown candidate variant ID: ${id}`);
     const operations = path.join(path.dirname(dir), 'operations'); await mkdir(operations, { recursive: true });
     const revision = nextRevision();
-    const approved = digest.status === 'partial' ? digest.items.filter(item => item.confidence === 'confirmed') : digest.items;
+    const approved = confirmedOnly || digest.status === 'partial' ? digest.items.filter(item => item.confidence === 'confirmed') : digest.items;
+    if (confirmedOnly && !approved.length && digest.status !== 'failed') return previous;
     await atomicJson(path.join(operations, `${revision}.json`), { revision, status: digest.status, modelReviewCandidates: digest.modelReviewCandidates, sourceFailures: digest.sourceFailures, heldItems: digest.items.filter(item => !approved.includes(item)), noNewsReason: digest.noNewsReason });
     if (digest.status === 'failed') throw new Error('Failed digest recorded in operations; published content is unchanged');
     return commit(dir, { ...previous, revision, generatedAt: new Date().toISOString(), news: mergeNews(previous.news, approved) }, previous);
   });
 }
-export async function publishCatalog(file: string, reviewed: boolean, dir = dataDirectory()): Promise<PublishedBundle> {
+export async function publishCatalog(file: string, reviewed: boolean, dir = dataDirectory(), requireCurrentRevision = false): Promise<PublishedBundle> {
   requireReview(reviewed); dir = dataDirectory(dir);
   const incoming = validateBundle(await readJson(file));
   return withPublishLock(dir, async () => {
     const previous = await current(dir);
+    if (requireCurrentRevision && incoming.revision !== previous.revision) {
+      throw new Error('Catalog changed since the review started. Reapply the supported edits to the latest public release.');
+    }
     return commit(dir, { ...incoming, revision: nextRevision(), generatedAt: new Date().toISOString(), news: previous.news }, previous);
   });
 }
@@ -191,6 +195,7 @@ export async function preparePublicRelease(
   input: string,
   reviewed: boolean,
   file = publicReleaseFile,
+  automatic = false,
 ): Promise<{ changed: boolean; revision: string }> {
   requireReview(reviewed);
   return withPublishLock(path.dirname(file), async () => {
@@ -201,8 +206,9 @@ export async function preparePublicRelease(
       const directory = path.join(scratch, 'published');
       await mkdir(directory);
       await atomicJson(path.join(directory, 'current.json'), previous);
-      const publish = kind === 'news' ? publishNews : publishCatalog;
-      const next = await publish(input, true, directory);
+      const next = kind === 'news'
+        ? await publishNews(input, true, directory, automatic)
+        : await publishCatalog(input, true, directory, automatic);
       const changed = !isDeepStrictEqual(next.news, previous.news)
         || !isDeepStrictEqual(next.models, previous.models)
         || !isDeepStrictEqual(next.benchmarks, previous.benchmarks);

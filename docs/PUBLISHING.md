@@ -57,3 +57,21 @@ Research runs produce candidates for editorial review. A reviewed daily digest o
 To set up the merge gate, require a pull request and the **Validate InfoHub** status from GitHub Actions in a rule targeting `main`. Require the branch to be current and leave bypass disabled. This checks the combined result when daily and weekly edits are in flight. No Vercel token is needed in GitHub Actions for this setup.
 
 To reverse a bad public content release, open a pull request reverting its commit. The correction runs through the same check and deploy process. If Vercel's immediate rollback is used, verify production domain assignment before expecting later merges to go live.
+
+## Scheduled publishing
+
+Point both automations at a local or managed checkout of `Madsfaarborg/InfoHub` with web search, Git, Node 22, npm, and an authenticated GitHub CLI. Start each run on current `main`, with an authenticated Git remote for pushes and a Git author linked to the Vercel account. Set up credentials in the runner rather than in its prompt or in the repository. In Codex, allow the runner to execute the publishing command with filesystem and network access. If the automation only returns chat text, it can still research, but it needs a repository-capable runner to ship.
+
+Replace the existing automation prompt with the corresponding instructions below. Keep the schedule and model settings already configured.
+
+### Daily runner instructions
+
+> Run the daily frontier news automation in the InfoHub repository. Read and follow the Reusable prompt in `prompts/daily-news.md` from current `main`. Enable scheduled publishing for this run. Use the repository publishing command with the verified public digest. Report the resulting pull request link, no-change outcome, or blocker.
+
+### Weekly runner instructions
+
+> Run the weekly model review in the InfoHub repository. Read and follow the Reusable prompt in `prompts/weekly-model-review.md` from current `main`. Enable scheduled publishing for this run. Save the memo privately and use the repository publishing command only for the directly supported public catalog edits. Report the resulting pull request link, no-change outcome, or blocker.
+
+Both runners use `npm run content:ship`. It prepares the candidate from a fresh checkout, runs the full release suite locally, commits only the public snapshot, pushes a new branch, opens a pull request, and enables auto-merge. GitHub repeats the release suite and requires the pull request to be up to date with `main`. Vercel Git integration builds the resulting `main` commit and repeats the checks before publishing it. No Vercel token or new GitHub Actions secret is required. Use `--check-only` in place of `--publish` to rehearse without creating a commit or pull request.
+
+Unattended daily releases accept confirmed items. Failed, unchanged, and vendor-claim-only scans produce no release. Unattended weekly releases require the current catalog revision, so an older report cannot replace newer catalog edits. If simultaneous releases leave a pull request out of date or conflicted, rerun the affected candidate against current `main`; review and close the superseded pull request. Raw digests, weekly memos, and private source notes stay outside Git.

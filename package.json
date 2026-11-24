@@ -14,7 +14,8 @@
     "test": "node --import tsx --test tests/*.test.ts",
     "test:smoke": "node --import tsx scripts/smoke.ts",
     "ci": "npm run content -- check-release && npm run typecheck && npm test && npm run build && npm run test:smoke",
-    "content": "node --import tsx scripts/content.ts"
+    "content": "node --import tsx scripts/content.ts",
+    "content:ship": "node scripts/ship-content.mjs"
   },
   "dependencies": {
     "ajv": "8.20.0",

@@ -25,7 +25,7 @@ Read ../docs/DECISIONS.md and ../docs/LEARNINGS.md before substantial work. Upda
 ## Engineering
 
 - Keep filesystem reads and publishing out of client components.
-- Validate operational content before publishing. Writes belong to the reviewed CLI. Keep raw automation output, client information, and licensed catalog data out of Git. Publish only approved public content through the checked pull request path.
+- Validate operational content before publishing. Use the checked pull request path for public releases. Opted-in scheduled publishing uses confirmed news and high-confidence catalog edits from current public evidence. Keep raw automation output, client information, and licensed catalog data out of Git.
 - Keep dependencies pinned, single-owner shared contracts, and isolated subagent file ownership.
 - Reserve 6-Astra for complex tasks. Use Sol for routine implementation, content, tests, and reviews, and use Terra when visual inspection is the main task.
 - Run `npm run ci` before releases. GitHub and Vercel use this same command to validate public content, check types, run tests, build, and smoke-test the production server. Verify affected interactive flows in the browser.
