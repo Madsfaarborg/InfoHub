@@ -71,7 +71,7 @@ After the schema is stable:
 
 Use 6-Astra only for complex tasks. Delegate a specific complex architecture decision or persistent failure with its constraints and reproduction case. Routine implementation, research, and reviews stay with Sol or Terra.
 
-For daily news, start with Sol 6.1 medium for source collection and structured summaries. Use Sol 6.2 medium only when source reconciliation repeatedly fails. Reserve Astra 6 high for a specific consequential ambiguity requiring careful review. Source access and factual verification remain necessary regardless of model.
+For the [weekly model review](../prompts/weekly-model-review.md), use GPT-6.2 Sol at high thinking to reconcile task results, effort settings, access routes, and costs. GPT-6.1 Sol at high is the fallback. For the [daily frontier news scan](../prompts/daily-news.md), use GPT-6.1 Sol at medium thinking. GPT-6.2 Sol at medium is the fallback. Enable web search for both. Reserve 6-Astra for a separate, complex review when conflicting evidence could change a consequential choice. Both routines produce candidates for maintainer review.
 
 ## Review and cost control
 

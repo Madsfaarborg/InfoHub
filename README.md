@@ -36,7 +36,9 @@ INFOHUB_UID="$(id -u)" INFOHUB_GID="$(id -g)" docker compose up --build
 
 Docker also binds to loopback by default. For colleagues on an intended private network, set `INFOHUB_BIND` to the server's private IP and restrict access using the host's network controls. There is no sign-in.
 
-The app reads the reviewed bundle at `data/published/current.json`. It serves the public starter catalog when the file is absent. Follow the [publishing runbook](docs/PUBLISHING.md) to prepare content, publish updates, and roll back. Run the [daily research prompt](prompts/daily-news.md) in your scheduler and save its output for review.
+The app reads the reviewed bundle at `data/published/current.json`. It serves the public starter catalog when the file is absent. Follow the [publishing runbook](docs/PUBLISHING.md) to prepare content, publish updates, and roll back.
+
+Run the [weekly model review](prompts/weekly-model-review.md) to revisit recommendations and the [daily frontier news scan](prompts/daily-news.md) to collect news candidates. Enable web search and save their outputs for review.
 
 For an existing published catalog, use `npm run content -- add-starter-guidance --reviewed` after reviewing the [creative and business guidance](docs/CREATIVE_GUIDANCE.md). This adds the new entries and preserves your existing records.
 
@@ -50,7 +52,7 @@ Verify changes with `npm run typecheck`, `npm test`, and `npm run build`.
 - [Design direction and screen behavior](docs/DESIGN.md)
 - [Data, recommendations, and publishing](docs/DATA_MODEL.md)
 - [Model selection and subagent workflow](docs/AGENT_WORKFLOW.md)
-- [Daily research prompt](prompts/daily-news.md)
+- [Weekly model review prompt](prompts/weekly-model-review.md) and [daily frontier news prompt](prompts/daily-news.md)
 - [Starter catalog sources](docs/CONTENT_SOURCES.md)
 - [Decisions](docs/DECISIONS.md), [learnings](docs/LEARNINGS.md), and [implementation guidance](src/AGENTS.md)
 

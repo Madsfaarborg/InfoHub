@@ -6,6 +6,8 @@ The default published directory is the absolute resolution of `data/published` f
 
 The bundle is owner-readable. When using the Docker Compose setup, set `INFOHUB_UID` and `INFOHUB_GID` to the publisher's non-root user and group IDs so the server can read the mounted file.
 
+The [daily frontier news prompt](../prompts/daily-news.md) produces a JSON candidate for `validate` and `publish-news`. The [weekly model review](../prompts/weekly-model-review.md) produces a Markdown memo for the maintainer. Review its evidence and apply any accepted change to the catalog through the usual `publish-catalog` flow.
+
 Run commands from the repository root:
 
 ```sh
