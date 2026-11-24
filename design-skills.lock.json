@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "installedAt": "2026-11-24",
+  "scope": "project",
+  "purpose": "Development guidance only; not production runtime dependencies",
+  "packages": [
+    {
+      "repository": "https://github.com/emilkowalski/skills",
+      "sourceRef": "64eb3deb9a5fbfa041faf783e0bc3fd635872e9c",
+      "license": "MIT",
+      "skills": [
+        {
+          "sourcePath": "skills/apple-design",
+          "installedPath": ".agents/skills/apple-design"
+        },
+        {
+          "sourcePath": "skills/emil-design-eng",
+          "installedPath": ".agents/skills/emil-design-eng"
+        }
+      ]
+    },
+    {
+      "repository": "https://github.com/heydamir/unslop",
+      "sourceRef": "620163eedb3529d9cd23a3994ed8d287d06f760d",
+      "license": "CC-BY-4.0",
+      "skills": [
+        {
+          "sourcePath": "skills/unslop",
+          "installedPath": ".agents/skills/unslop"
+        }
+      ]
+    }
+  ]
+}

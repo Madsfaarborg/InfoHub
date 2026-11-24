@@ -1,0 +1,35 @@
+# Synced ChatGPT project reference material stays local and read-only.
+/sources/
+/AGENTS.md
+
+# Dependencies and generated application output.
+node_modules/
+.next/
+out/
+dist/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+.DS_Store
+
+# Secrets and local operational content.
+.env
+.env.*
+!.env.example
+/data/
+/backups/
+/logs/
+/artifacts/
+*.log
+*.sqlite
+*.sqlite-*
+*.db
+*.pem
+*.key
+
+# Local editor and service state.
+/.codex/
+/.cursor/
+/.vscode/
+/.aws/
