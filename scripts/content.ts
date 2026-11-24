@@ -1,10 +1,23 @@
 import { pathToFileURL } from 'node:url';
-import { dataDirectory, initialize, publishCatalog, publishNews, rollback, upgradeStarterGuidance, validateFile } from '../src/lib/publish';
+import { dataDirectory, initialize, preparePublicRelease, publishCatalog, publishNews, readPublicRelease, rollback, upgradeStarterGuidance, validateFile } from '../src/lib/publish';
 import { syncArtificialAnalysis } from '../src/lib/aa-sync';
 
 export async function main(argv = process.argv.slice(2)): Promise<void> {
   const [command, ...args] = argv;
   const dir = dataDirectory();
+  if (command === 'check-release' && args.length === 0) {
+    console.log(`Valid public release: ${(await readPublicRelease()).revision}`);
+    return;
+  }
+  if (command === 'show-release' && args.length === 0) {
+    console.log(JSON.stringify(await readPublicRelease(), null, 2));
+    return;
+  }
+  if (command === 'prepare-release' && (args[0] === 'news' || args[0] === 'catalog') && (args.length === 2 || (args.length === 3 && args[2] === '--reviewed'))) {
+    const result = await preparePublicRelease(args[0], args[1], args[2] === '--reviewed');
+    console.log(result.changed ? `Prepared public release: ${result.revision}` : 'No public content changes.');
+    return;
+  }
   if (command === 'init' && args.length === 0) { const bundle = await initialize(dir); console.log(`Ready: ${bundle.revision} (${dir})`); return; }
   if (command === 'validate' && args.length === 1) { console.log(`Valid ${await validateFile(args[0])} file`); return; }
   if (command === 'sync-artificial-analysis' && (args.length === 0 || (args.length === 1 && args[0] === '--authorized'))) {
@@ -25,6 +38,6 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
     console.log(`Published: ${bundle.revision}`); return;
   }
   if (command === 'rollback' && args.length === 1) { console.log(`Restored: ${(await rollback(args[0], dir)).revision}`); return; }
-  throw new Error('Usage: npm run content -- init | validate FILE | add-starter-guidance --reviewed | publish-news FILE --reviewed | publish-catalog FILE --reviewed | sync-artificial-analysis --authorized | rollback REVISION');
+  throw new Error('Usage: npm run content -- init | validate FILE | check-release | show-release | prepare-release (news|catalog) FILE --reviewed | add-starter-guidance --reviewed | publish-news FILE --reviewed | publish-catalog FILE --reviewed | sync-artificial-analysis --authorized | rollback REVISION');
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(error => { console.error(error instanceof Error ? error.message : String(error)); process.exitCode = 1; });

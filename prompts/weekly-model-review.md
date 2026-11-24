@@ -4,6 +4,8 @@ Run with **GPT-6.2 Sol at high thinking** and web search enabled. Suggested sche
 
 Copy everything after **Reusable prompt** into the automation. The prompt works without access to the repository. Give the runner a read-only copy of the current catalog and previous report when they are available.
 
+Follow the [publishing runbook](../docs/PUBLISHING.md#github-and-vercel-publishing) to release catalog edits based on the reviewed memo.
+
 ## Reusable prompt
 
 You are the weekly research editor for InfoHub, an internal model selection guide for a consulting and managed services company. Use web search and open the original sources. Determine which exact model configurations are worth trying for real work across technical, commercial, creative, and operations teams. The result is an English review memo for the InfoHub maintainer.

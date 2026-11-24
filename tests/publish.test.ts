@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdtemp, readFile, writeFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
-import { initialize, publishNews, publishCatalog, rollback, upgradeStarterGuidance, validateDigest, withPublishLock } from '../src/lib/publish';
+import { initialize, preparePublicRelease, publishNews, publishCatalog, readPublicRelease, rollback, upgradeStarterGuidance, validateDigest, withPublishLock } from '../src/lib/publish';
 import { starterBundle } from '../src/lib/starter';
 import { main } from '../scripts/content';
 import type { NewsDigest, NewsItem, PublishedBundle } from '../src/lib/types';
@@ -98,4 +98,36 @@ test('starter guidance upgrade is reviewed, additive, idempotent, and reversible
     assert.equal((await upgradeStarterGuidance(true, s.dir)).revision, updated.revision);
     assert.deepEqual(await rollback(old.revision, s.dir), old);
   } finally { await rm(s.root, { recursive: true }); }
+});
+
+test('public releases combine reviewed news and catalog changes without using local data', async () => {
+  const s = await setup();
+  try {
+    const release = path.join(s.root, 'public.json');
+    await writeFile(release, 'null\n');
+    const first = await readPublicRelease(release);
+    const candidate = await s.put(digest());
+    await assert.rejects(preparePublicRelease('news', candidate, false, release), /--reviewed/);
+    assert.equal(await readFile(release, 'utf8'), 'null\n');
+
+    const result = await preparePublicRelease('news', candidate, true, release);
+    assert.equal(result.changed, true);
+    const published = await readPublicRelease(release);
+    assert.deepEqual(published.models, first.models);
+    assert.deepEqual(published.news, [...first.news, item]);
+    assert.deepEqual(await preparePublicRelease('news', candidate, true, release), { changed: false, revision: result.revision });
+    const before = await readFile(release, 'utf8');
+    await assert.rejects(preparePublicRelease('news', await s.put({ ...digest([]), status: 'failed' }), true, release));
+    await assert.rejects(preparePublicRelease('catalog', await s.put(bundle), true, release), /must contain models/);
+    assert.equal(await readFile(release, 'utf8'), before);
+
+    const models = [{ ...first.models[0], description: 'Updated public guidance for this test.' }, ...first.models.slice(1)];
+    await preparePublicRelease('catalog', await s.put({ ...first, models }), true, release);
+    const updated = await readPublicRelease(release);
+    assert.deepEqual(updated.models, models);
+    assert.deepEqual(updated.news, published.news);
+    assert.deepEqual(await s.get(), bundle);
+  } finally {
+    await rm(s.root, { recursive: true, force: true });
+  }
 });

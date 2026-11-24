@@ -2,6 +2,9 @@
 
 ## 24 November 2026
 
+- GitHub Actions and Vercel Git deployments are independent by default. Protect `main` with the GitHub status check and use the same failing build command on Vercel to hold production traffic on the last successful deployment.
+- Production smoke checks start Next.js with an empty local data directory. This detects an omitted or stale Git-bundled release that an existing local catalog could hide.
+
 - Sol 6.1 medium subagent dispatch succeeded in this session. Lower-tier delegation is available; actual billing savings are not exposed by the tools.
 - The workspace is a ChatGPT mirror. The root AGENTS.md and sources are synced references, so persistent build guidance belongs in a separate tracked file.
 - The initial palette's checked contrast ratios are 4.61:1 for white on vermilion, 15.01:1 for graphite on porcelain, and 4.83:1 for metadata on porcelain.
