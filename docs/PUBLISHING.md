@@ -10,13 +10,16 @@ Run commands from the repository root:
 
 ```sh
 npm run content -- init
+npm run content -- add-starter-guidance --reviewed
 npm run content -- validate /absolute/path/digest.json
 npm run content -- publish-news /absolute/path/digest.json --reviewed
 npm run content -- publish-catalog /absolute/path/catalog.json --reviewed
 npm run content -- rollback REVISION
 ```
 
-`init` validates and copies `src/content/starter.json` only when `current.json` does not exist. An existing current file must validate; initialization never overwrites or silently repairs it. An empty catalog is allowed, so maintainers can publish news before curating model records.
+`init` validates and publishes the bundled language, business, and image guidance only when `current.json` does not exist. An existing current file must validate. Initialization never overwrites it.
+
+For an existing deployment, review [the new guidance and source notes](CREATIVE_GUIDANCE.md) and run `add-starter-guidance --reviewed` to add missing starter image entries and fill empty business guidance for matching language-model IDs. Existing records, prices, custom task guidance, news, and benchmark results are preserved. This creates a normal revision that can be rolled back. Repeating the command with the same content leaves the current revision in place.
 
 `validate` detects a digest by its `status` field; other files must be complete published bundles. Validation reads explicit local JSON files, rejects files larger than 1 MiB and unknown fields, checks schemas, dates, source schemes, duplicate events and canonical source URLs, and checks benchmark model references. Digest timestamps must satisfy window start ≤ window end ≤ generation time ≤ now. Source retrieval cannot follow digest generation; publication/event dates cannot follow its calendar date. Maintain accurate host time.
 

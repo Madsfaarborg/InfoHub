@@ -271,6 +271,9 @@ table td a { white-space: nowrap; font-size: 12px; }
 .model-setup dt { color: var(--muted); font-size: 11px; margin-top: 16px; overflow-wrap: anywhere; }
 .model-setup dd { margin: 4px 0 0; font-size: 12px; }
 .model-id { overflow-wrap: anywhere; }
+.image-brief { margin-top: 32px; padding: 24px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); }
+.image-brief p { margin-top: 12px; color: var(--secondary); max-width: 35rem; }
+.model-setup .image-pricing { color: var(--ink); font-weight: 500; }
 .model-setup > .button { margin-top: 16px; width: 100%; }
 .model-setup > .copy-control { margin-top: 20px; }
 .price-pair { display: flex; justify-content: space-between; font-size: 12px; gap: 16px; margin-top: 16px; color: var(--secondary); }

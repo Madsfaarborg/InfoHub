@@ -14,6 +14,7 @@ export function CopySettings({ model }: { model: ModelVariant }) {
         "Setting: " + model.setting.label,
         ...Object.entries(model.setting.parameters).map(([key, value]) => key + ": " + String(value)),
         model.setting.note,
+        ...(model.image ? ["", "Example brief:", model.image.brief] : []),
       ].join("\n"));
       setState("copied");
     } catch { setState("error"); }

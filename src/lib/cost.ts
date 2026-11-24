@@ -1,6 +1,7 @@
 import type { ModelVariant } from "./types";
 
 export function estimateCost(model: ModelVariant, usage: { inputTokens: number; outputTokens: number; cachedTokens: number }): number | null {
+  if (model.image) return null;
   const { inputTokens, outputTokens, cachedTokens } = usage;
   if (![inputTokens, outputTokens, cachedTokens].every((value) => Number.isSafeInteger(value) && value >= 0) || cachedTokens > inputTokens) return null;
   const rates = [[inputTokens - cachedTokens, model.price.input], [cachedTokens, model.price.cachedInput], [outputTokens, model.price.output]] as const;

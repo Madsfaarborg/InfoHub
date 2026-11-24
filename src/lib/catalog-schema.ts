@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { categoryIds, type PublishedBundle } from "./types";
+import { categoryIds, imageWorkflowIds, type PublishedBundle } from "./types";
 
 const text = z.string().trim().min(1);
 const id = z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]*$/, "Use a stable identifier without spaces");
@@ -18,22 +18,32 @@ const money = z.number().finite().nonnegative();
 const source = z.strictObject({ label: text, url, kind: z.enum(["provider", "benchmark", "editorial"]), checkedAt: date });
 const guidance = z.strictObject({ bestFor: text, example: text, limitation: text, stepUp: text, preferred: z.boolean().optional() });
 const guidanceFields = Object.fromEntries(categoryIds.map((category) => [category, guidance.optional()])) as Record<(typeof categoryIds)[number], z.ZodOptional<typeof guidance>>;
-const model = z.strictObject({
+const imageWorkflows = z.partialRecord(z.enum(imageWorkflowIds), guidance)
+  .refine(workflows => Object.keys(workflows).length > 0, "Add at least one image workflow");
+export const modelVariantSchema = z.strictObject({
   id, name: text, developer: text, provider: text, modelId: text,
   tier: z.enum(["everyday", "balanced", "deep"]), deployment: z.enum(["hosted", "local"]),
   availability: z.enum(["available", "setup-required", "unavailable"]),
   setting: z.strictObject({ label: text, parameters: z.record(text, z.union([z.string(), z.number().finite(), z.boolean()])), note: z.string() }),
   description: text, toolUrl: url.nullable(),
   price: z.strictObject({ input: money.nullable(), output: money.nullable(), cachedInput: money.nullable(), currency: z.literal("USD"), verifiedAt: date, sourceUrl: url, note: z.string() }),
+  image: z.strictObject({ workflows: imageWorkflows, outputUsd: money.nullable(), priceBasis: text, brief: text }).optional(),
   guidance: z.strictObject(guidanceFields), sources: z.array(source).min(1), reviewedAt: date,
+}).superRefine((record, ctx) => {
+  if (record.image && [record.price.input, record.price.output, record.price.cachedInput].some(rate => rate !== null)) {
+    ctx.addIssue({ code: "custom", path: ["price"], message: "Image output pricing belongs in the image record" });
+  }
+  if (record.guidance.images) {
+    ctx.addIssue({ code: "custom", path: ["guidance", "images"], message: "Use image workflow guidance for the image category" });
+  }
 });
 const benchmark = z.strictObject({ id, variantId: id, suite: text, version: text, score: z.number().finite(), unit: text, higherIsBetter: z.boolean(), costUsd: money, sampleSize: z.number().int().positive(), testedAt: date, sourceUrl: url, note: z.string() });
 const newsSource = z.strictObject({ url, publisher: text, publishedDate: date.nullable(), eventDate: date.nullable(), retrievedAt: date });
-const news = z.strictObject({ eventKey: id, title: text, summary: text, whyItMatters: text, suggestedAction: text, tags: z.array(z.enum(["models-and-pricing", "coding-tools", "networking", "cybersecurity", "microsoft-and-cloud", "work-practices"])).min(1), urgency: z.enum(["routine", "time-sensitive"]), confidence: z.enum(["confirmed", "vendor-claim"]), recommendationImpact: z.enum(["none", "review"]), primarySource: newsSource, additionalSources: z.array(newsSource), supersedesEventKey: id.nullable() });
+const news = z.strictObject({ eventKey: id, title: text, summary: text, whyItMatters: text, suggestedAction: text, tags: z.array(z.enum(["models-and-pricing", "coding-tools", "networking", "cybersecurity", "microsoft-and-cloud", "work-practices", "creative-tools", "business-productivity"])).min(1), urgency: z.enum(["routine", "time-sensitive"]), confidence: z.enum(["confirmed", "vendor-claim"]), recommendationImpact: z.enum(["none", "review"]), primarySource: newsSource, additionalSources: z.array(newsSource), supersedesEventKey: id.nullable() });
 
 export const catalogSchema: z.ZodType<PublishedBundle> = z.strictObject({
   schemaVersion: z.literal("1.0"), revision: id, generatedAt: date,
-  models: z.array(model), benchmarks: z.array(benchmark), news: z.array(news),
+  models: z.array(modelVariantSchema), benchmarks: z.array(benchmark), news: z.array(news),
 }).superRefine((bundle, ctx) => {
   const checkDuplicates = (items: string[], field: string) => {
     const seen = new Set<string>();

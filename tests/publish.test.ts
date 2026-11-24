@@ -3,7 +3,8 @@ import assert from 'node:assert/strict';
 import { mkdtemp, readFile, writeFile, rm } from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
-import { initialize, publishNews, publishCatalog, rollback, validateDigest, withPublishLock } from '../src/lib/publish';
+import { initialize, publishNews, publishCatalog, rollback, upgradeStarterGuidance, validateDigest, withPublishLock } from '../src/lib/publish';
+import { starterBundle } from '../src/lib/starter';
 import { main } from '../scripts/content';
 import type { NewsDigest, NewsItem, PublishedBundle } from '../src/lib/types';
 const bundle: PublishedBundle = { schemaVersion: '1.0', revision: 'seed', generatedAt: '2026-01-01T12:00:00Z', models: [], benchmarks: [], news: [] };
@@ -78,5 +79,23 @@ test('reviewed catalog replaces catalog records while preserving published news'
     await publishNews(await s.put(digest()), true, s.dir);
     const result = await publishCatalog(await s.put(bundle), true, s.dir);
     assert.deepEqual(result.news, [item]); assert.deepEqual(result.models, bundle.models);
+  } finally { await rm(s.root, { recursive: true }); }
+});
+test('starter guidance upgrade is reviewed, additive, idempotent, and reversible', async () => {
+  const s = await setup();
+  try {
+    const terra = starterBundle().models.find(model => model.id === 'terra-low')!;
+    const custom = { ...terra, guidance: { marketing: { ...terra.guidance.marketing!, example: 'Custom company wording' } } };
+    await publishNews(await s.put(digest([{ ...item, tags: ['creative-tools', 'business-productivity'] }])), true, s.dir);
+    const old = await publishCatalog(await s.put({ ...bundle, models: [custom] }), true, s.dir);
+    await assert.rejects(upgradeStarterGuidance(false, s.dir), /--reviewed/);
+    const updated = await upgradeStarterGuidance(true, s.dir);
+    assert.notEqual(updated.revision, old.revision);
+    assert.deepEqual(updated.news, old.news);
+    assert.equal(updated.models[0].guidance.marketing?.example, 'Custom company wording');
+    assert.ok(updated.models[0].guidance.presentations);
+    assert.ok(updated.models.some(model => model.image));
+    assert.equal((await upgradeStarterGuidance(true, s.dir)).revision, updated.revision);
+    assert.deepEqual(await rollback(old.revision, s.dir), old);
   } finally { await rm(s.root, { recursive: true }); }
 });

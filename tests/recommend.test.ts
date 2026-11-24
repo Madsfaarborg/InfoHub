@@ -4,6 +4,8 @@ import { interpretTask, recommend } from "../src/lib/recommend";
 import type { CategoryId, ModelVariant, Tier } from "../src/lib/types";
 import starter from "../src/content/starter.json";
 import { catalogSchema } from "../src/lib/catalog-schema";
+import { starterBundle } from "../src/lib/starter";
+import { estimateCost } from "../src/lib/cost";
 
 const cases: [string, CategoryId | null][] = [
   ["Write a PowerShell script", "coding"], ["Create a Python automation", "coding"],
@@ -79,4 +81,33 @@ test("starter recommendations allow editorial choices within a tier to differ by
   assert.equal(recommend(published.models, "coding", options)[0].model.id, "sol-high");
   assert.equal(recommend(published.models, "debugging", options)[0].model.id, "astra-medium");
   assert.equal(recommend(published.models, "debugging", { ...options, localOnly: true }).length, 0);
+});
+
+test("creative and business requests follow the intended deliverable", () => {
+  for (const [input, category, workflow] of [
+    ["Generate a banner image for a managed services campaign", "images", "concepts"],
+    ["Remove the background from the product photo", "images", "edits"],
+    ["Design an event poster with a headline", "images", "layout"],
+    ["Write a LinkedIn post for our managed services launch", "marketing", undefined],
+    ["Create a presentation with images about our sales results", "presentations", undefined],
+    ["Summarize sales trends from this spreadsheet", "analysis", undefined],
+  ]) {
+    const interpreted = interpretTask(input!);
+    assert.equal(interpreted.category, category, input);
+    assert.equal(interpreted.imageWorkflow, workflow, input);
+  }
+});
+
+test("image workflows only suggest eligible image tools and bypass token pricing", () => {
+  const { models } = starterBundle();
+  const options = { priority: "value", complexity: "routine", localOnly: false } as const;
+  assert.equal(recommend(models, "images", options)[0].model.id, "nano-banana-21");
+  assert.equal(recommend(models, "images", { ...options, imageWorkflow: "edits" })[0].model.id, "gpt-image-sunburst-26");
+  assert.equal(recommend(models, "images", { ...options, imageWorkflow: "layout" })[0].model.id, "ideogram-46");
+  assert.deepEqual(recommend(models, "images", { ...options, localOnly: true }), []);
+  assert.equal(estimateCost(recommend(models, "images", options)[0].model, { inputTokens: 0, outputTokens: 0, cachedTokens: 0 }), null);
+  for (const category of ["marketing", "presentations", "analysis"] as const) {
+    assert.equal(recommend(models, category, options).length, 3);
+    assert.ok(recommend(models, category, options).every(result => !result.model.image));
+  }
 });

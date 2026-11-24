@@ -3,8 +3,8 @@ import { constants } from "node:fs";
 import { open } from "node:fs/promises";
 import path from "node:path";
 import { cache } from "react";
-import starter from "@/content/starter.json";
 import { catalogSchema } from "./catalog-schema";
+import { starterBundle } from "./starter";
 import type { PublishedBundle } from "./types";
 
 export interface CatalogResult {
@@ -46,7 +46,7 @@ export const readCatalog = cache(async (): Promise<CatalogResult> => {
     // The visible warning distinguishes this safe public fallback.
     if (!missing) console.error("InfoHub could not load its published catalog; serving the public starter catalog.");
     return {
-      bundle: catalogSchema.parse(starter),
+      bundle: starterBundle(),
       origin: "starter",
       warning: missing ? null : "The team catalog is temporarily unavailable. Showing the public starter guide.",
     };

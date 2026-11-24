@@ -8,7 +8,7 @@ import { estimateCost, formatUsd, priceIsStale } from "@/lib/cost";
 import { displayDate } from "@/lib/categories";
 
 export function Comparison({ models, benchmarks }: { models: ModelVariant[]; benchmarks: BenchmarkPoint[] }) {
-  const options = models.filter(model => model.deployment === "hosted" && model.availability === "available");
+  const options = models.filter(model => !model.image && model.deployment === "hosted" && model.availability === "available");
   const [selected, setSelected] = useState(() => {
     const unique = new Set<string>();
     return options.filter(model => {

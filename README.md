@@ -4,7 +4,7 @@ A locally hosted guide that helps colleagues choose an AI model and its thinking
 
 The intended audience is a consulting and managed service provider team working across network infrastructure, cybersecurity, automation, and customer delivery. InfoHub turns repeated model research into shared, practical guidance.
 
-**Status:** the first local build is ready for a pilot. The app includes task search, 10 frontier and Qwen model settings, a cost calculator, and a news feed with a local publishing tool. The measured comparison view fills in when compatible benchmark results are published.
+**Status:** the local pilot covers technical, creative, and business work. Search for image creation, marketing and sales, presentations, spreadsheets, and the original technical categories. The starter catalog includes 10 language-model settings and seven image configurations, with sources, suggested settings, and a local publishing tool.
 
 Confirmed direction:
 
@@ -37,6 +37,8 @@ INFOHUB_UID="$(id -u)" INFOHUB_GID="$(id -g)" docker compose up --build
 Docker also binds to loopback by default. For colleagues on an intended private network, set `INFOHUB_BIND` to the server's private IP and restrict access using the host's network controls. There is no sign-in.
 
 The app reads the reviewed bundle at `data/published/current.json`. It serves the public starter catalog when the file is absent. Follow the [publishing runbook](docs/PUBLISHING.md) to prepare content, publish updates, and roll back. Run the [daily research prompt](prompts/daily-news.md) in your scheduler and save its output for review.
+
+For an existing published catalog, use `npm run content -- add-starter-guidance --reviewed` after reviewing the [creative and business guidance](docs/CREATIVE_GUIDANCE.md). This adds the new entries and preserves your existing records.
 
 Verify changes with `npm run typecheck`, `npm test`, and `npm run build`.
 

@@ -20,6 +20,8 @@ Use stable internal IDs and validate every import. Keep the following entities s
 
 Preserve aliases for search, but never merge distinct providers, revisions, quantizations, or thinking settings solely because their display names look similar.
 
+Image variants use an optional `image` record with workflow-specific guidance, a draft brief, an optional USD output estimate, and a named billing basis. Their language-token rates are null. An image estimate describes a specific output size and quality or another documented basis. Older language-only bundles remain valid.
+
 ### Thinking controls
 
 Store provider-specific controls as validated key/value settings plus a readable explanation. Keep “unspecified,” “unsupported,” and “unknown” distinct.

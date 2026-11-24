@@ -10,6 +10,8 @@ Read ../docs/DECISIONS.md and ../docs/LEARNINGS.md before substantial work. Upda
 - Never invent current model prices, benchmark scores, or news. Preserve source links and check dates.
 - Local Qwen requires a configured deployment; do not portray an unconfigured model as ready to use or free.
 - Unknown or stale cost is not zero. Never ignore a local-only constraint.
+- Match image models to the requested workflow and keep image output rates, credits, and local infrastructure separate from language token costs. Record the size, quality, region, and source that apply.
+- Add bundled guidance to existing published catalogs through the reviewed additive upgrade. Preserve team content and validate both older and current bundle formats.
 
 ## Design
 

@@ -6,6 +6,7 @@ import Ajv2020 from 'ajv/dist/2020';
 import addFormats from 'ajv-formats';
 import digestSchema from '../../schemas/news-digest.schema.json';
 import { catalogSchema } from './catalog-schema';
+import { addStarterGuidance, starterBundle } from './starter';
 import type { NewsDigest, NewsItem, PublishedBundle } from './types';
 
 export const MAX_BYTES = 1024 * 1024;
@@ -119,11 +120,21 @@ async function commit(dir: string, bundle: PublishedBundle, previous?: Published
   await atomicJson(path.join(dir, 'current.json'), bundle);
   return bundle;
 }
-export async function initialize(dir = dataDirectory(), starter = path.resolve('src/content/starter.json')): Promise<PublishedBundle> {
+export async function initialize(dir = dataDirectory(), starter?: string): Promise<PublishedBundle> {
   dir = dataDirectory(dir);
   return withPublishLock(dir, async () => {
     try { return await current(dir); } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error; }
-    return commit(dir, validateBundle(await readJson(starter)));
+    return commit(dir, starter ? validateBundle(await readJson(starter)) : starterBundle());
+  });
+}
+export async function upgradeStarterGuidance(reviewed: boolean, dir = dataDirectory()): Promise<PublishedBundle> {
+  requireReview(reviewed);
+  dir = dataDirectory(dir);
+  return withPublishLock(dir, async () => {
+    const previous = await current(dir);
+    const models = addStarterGuidance(previous.models);
+    if (JSON.stringify(models) === JSON.stringify(previous.models)) return previous;
+    return commit(dir, { ...previous, models, revision: nextRevision(), generatedAt: new Date().toISOString() }, previous);
   });
 }
 export function mergeNews(existing: NewsItem[], incoming: NewsItem[]): NewsItem[] {

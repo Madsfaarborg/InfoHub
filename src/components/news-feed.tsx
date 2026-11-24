@@ -3,7 +3,16 @@ import { useState } from "react";
 import type { NewsItem, NewsTag } from "@/lib/types";
 import { NewsList } from "./news-list";
 
-const filters: { id: NewsTag | "all"; label: string }[] = [{ id: "all", label: "All notes" }, { id: "models-and-pricing", label: "Models & pricing" }, { id: "coding-tools", label: "Coding" }, { id: "networking", label: "Networking" }, { id: "cybersecurity", label: "Cybersecurity" }, { id: "microsoft-and-cloud", label: "Microsoft & cloud" }];
+const filters: { id: NewsTag | "all"; label: string }[] = [
+  { id: "all", label: "All notes" },
+  { id: "creative-tools", label: "Creative tools" },
+  { id: "business-productivity", label: "Business productivity" },
+  { id: "models-and-pricing", label: "Models & pricing" },
+  { id: "coding-tools", label: "Coding" },
+  { id: "networking", label: "Networking" },
+  { id: "cybersecurity", label: "Cybersecurity" },
+  { id: "microsoft-and-cloud", label: "Microsoft & cloud" },
+];
 export function NewsFeed({ items }: { items: NewsItem[] }) {
   const [filter, setFilter] = useState<NewsTag | "all">("all");
   const filtered = filter === "all" ? items : items.filter(item => item.tags.includes(filter));

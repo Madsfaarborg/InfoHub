@@ -1,5 +1,7 @@
-export const categoryIds = ["coding", "debugging", "networking", "security", "research", "writing"] as const;
+export const categoryIds = ["images", "marketing", "presentations", "analysis", "writing", "research", "coding", "debugging", "networking", "security"] as const;
 export type CategoryId = (typeof categoryIds)[number];
+export const imageWorkflowIds = ["concepts", "edits", "layout"] as const;
+export type ImageWorkflow = (typeof imageWorkflowIds)[number];
 export type Tier = "everyday" | "balanced" | "deep";
 export type Priority = "value" | "quality" | "speed";
 
@@ -39,6 +41,12 @@ export interface ModelVariant {
     sourceUrl: string;
     note: string;
   };
+  image?: {
+    workflows: Partial<Record<ImageWorkflow, TaskGuidance>>;
+    outputUsd: number | null;
+    priceBasis: string;
+    brief: string;
+  };
   guidance: Partial<Record<CategoryId, TaskGuidance>>;
   sources: EvidenceSource[];
   reviewedAt: string;
@@ -66,7 +74,7 @@ export interface NewsSource {
   eventDate: string | null;
   retrievedAt: string;
 }
-export type NewsTag = "models-and-pricing" | "coding-tools" | "networking" | "cybersecurity" | "microsoft-and-cloud" | "work-practices";
+export type NewsTag = "models-and-pricing" | "coding-tools" | "networking" | "cybersecurity" | "microsoft-and-cloud" | "work-practices" | "creative-tools" | "business-productivity";
 export interface NewsItem {
   eventKey: string;
   title: string;
@@ -107,6 +115,7 @@ export interface TaskInterpretation {
   alternatives: CategoryId[];
   complexity: "routine" | "complex";
   localOnly: boolean;
+  imageWorkflow?: ImageWorkflow;
 }
 export interface Recommendation {
   model: ModelVariant;

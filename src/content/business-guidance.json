@@ -1,0 +1,155 @@
+{
+  "terra-low": {
+    "marketing": {
+      "bestFor": "Editorial starting point for short copy from an approved brief.",
+      "example": "Draft three email subject lines for an approved November service offer.",
+      "limitation": "Use approved claims only; check tone, dates and offer terms.",
+      "stepUp": "Try Sonnet Medium when audience, objections and brand voice need to work together.",
+      "preferred": true
+    },
+    "presentations": {
+      "bestFor": "Editorial starting point for a short outline from settled notes.",
+      "example": "Turn approved team updates into five slide titles and speaker notes.",
+      "limitation": "An outline does not establish file creation or finished slide design.",
+      "stepUp": "Try Sol Medium when the deck needs a persuasive story or several audiences."
+    },
+    "analysis": {
+      "bestFor": "Editorial starting point for summarizing a small supplied table.",
+      "example": "Summarize a checked monthly sales table by region and flag missing values.",
+      "limitation": "Check totals in a spreadsheet; a summary does not verify formulas.",
+      "stepUp": "Try Sol Medium when comparisons require definitions, reconciliation or several tables."
+    }
+  },
+  "terra-medium": {
+    "presentations": {
+      "bestFor": "Editorial candidate for feedback on supplied slide images.",
+      "example": "Review supplied sales slides for crowded text and unclear reading order.",
+      "limitation": "Visual feedback needs readable images; it does not establish editable deck output.",
+      "stepUp": "Use Sol Medium for narrative gaps; use a design tool and human review for final layout.",
+      "preferred": true
+    },
+    "analysis": {
+      "bestFor": "Editorial candidate for explaining a supplied chart.",
+      "example": "Explain the visible change in a regional sales chart using its labels and supplied values.",
+      "limitation": "Small labels and cropped axes can mislead; check against underlying values.",
+      "stepUp": "Try Sol Medium when the chart and source table disagree; request missing data first.",
+      "preferred": true
+    }
+  },
+  "sol-medium": {
+    "marketing": {
+      "bestFor": "Editorial candidate for a client proposal with clear scope and inputs.",
+      "example": "Draft a support proposal from approved services, exclusions and client requirements.",
+      "limitation": "Have the owner verify scope and commitments; do not invent customer evidence.",
+      "stepUp": "Try Sonnet High when stakeholder needs conflict after a focused revision."
+    },
+    "presentations": {
+      "bestFor": "Editorial starting point for a sales deck story and speaker notes.",
+      "example": "Outline eight renewal slides linking the client brief to approved service outcomes.",
+      "limitation": "Story structure and design are separate; validate claims and review the rendered deck.",
+      "stepUp": "Try Sonnet High when the argument still fails to address competing buyer priorities.",
+      "preferred": true
+    },
+    "analysis": {
+      "bestFor": "Editorial starting point for structured spreadsheet summaries and comparison plans.",
+      "example": "Compare supplied Q3 and Q4 sales tables after agreeing currency and refund treatment.",
+      "limitation": "Verify calculations with approved tools; no workbook access or formula execution is assumed.",
+      "stepUp": "Try Sol High when a checked attempt leaves inconsistent definitions or unexplained totals.",
+      "preferred": true
+    }
+  },
+  "sonnet-medium": {
+    "marketing": {
+      "bestFor": "Editorial starting point for brand copy and internal communications.",
+      "example": "Draft a client launch email and staff briefing from the same approved product notes.",
+      "limitation": "A reviewer must check claims, tone and which details each audience may receive.",
+      "stepUp": "Try Sonnet High when a checked revision still cannot reconcile stakeholder constraints.",
+      "preferred": true
+    },
+    "presentations": {
+      "bestFor": "Editorial alternative for audience-specific slide copy.",
+      "example": "Adapt an approved sales outline into concise buyer-facing headlines and presenter notes.",
+      "limitation": "Slide copy does not establish visual polish, chart accuracy or file editing.",
+      "stepUp": "Try Sonnet High for unresolved narrative conflicts; review final design separately."
+    },
+    "analysis": {
+      "bestFor": "Editorial alternative for explaining verified findings to a business audience.",
+      "example": "Turn checked churn totals and analyst notes into a one-page leadership explanation.",
+      "limitation": "Keep observed patterns separate from causal claims; verify every cited value.",
+      "stepUp": "Try Sol High when findings depend on unresolved calculations or inconsistent definitions."
+    }
+  },
+  "qwen-hosted-thinking": {
+    "marketing": {
+      "bestFor": "Editorial hosted alternative for copy variations from an approved brief.",
+      "example": "Suggest three newsletter openings using supplied positioning and approved claims.",
+      "limitation": "Confirm provider approval before supplying business data; review claims and voice.",
+      "stepUp": "Compare a checked draft with Sonnet Medium if the brief or tone remains unmet."
+    },
+    "presentations": {
+      "bestFor": "Editorial hosted alternative for a structured presentation outline.",
+      "example": "Draft a six-slide partner briefing from approved agenda items and supporting facts.",
+      "limitation": "Confirm provider approval; an outline does not imply a finished presentation file.",
+      "stepUp": "Try Sol Medium when the narrative needs closer alignment with buyer objections."
+    },
+    "analysis": {
+      "bestFor": "Editorial hosted alternative for source-based business comparisons.",
+      "example": "Compare supplied, approved product-line summaries and list unanswered questions.",
+      "limitation": "Confirm provider approval and verify numbers; thinking mode is not proof of correctness.",
+      "stepUp": "Try Sol High if a checked attempt leaves material contradictions."
+    }
+  },
+  "sonnet-high": {
+    "marketing": {
+      "bestFor": "Editorial step-up for proposals with conflicting audience and scope constraints.",
+      "example": "Reconcile approved client requirements with service exclusions in a renewal proposal.",
+      "limitation": "Resolve missing facts with the owner; never invent testimonials, results or commitments.",
+      "stepUp": "Return to Medium after the message and scope pass review.",
+      "preferred": true
+    },
+    "presentations": {
+      "bestFor": "Editorial step-up for a sales narrative with competing buyer priorities.",
+      "example": "Rework a renewal deck to address finance and operations objections using approved evidence.",
+      "limitation": "More effort does not validate evidence or replace rendered slide and design review.",
+      "stepUp": "Return to Medium once the story is agreed; use a design workflow for final slides.",
+      "preferred": true
+    }
+  },
+  "sol-high": {
+    "analysis": {
+      "bestFor": "Editorial step-up for unresolved business-data discrepancies.",
+      "example": "Investigate why supplied regional totals differ from the checked company total.",
+      "limitation": "Needs definitions and source values; verify proposed calculations in an approved tool.",
+      "stepUp": "Request missing evidence or analyst review when uncertainty remains; return to Medium once resolved.",
+      "preferred": true
+    },
+    "presentations": {
+      "bestFor": "Editorial step-up for a data-heavy deck with unresolved evidence gaps.",
+      "example": "Check whether a supplied sales deck narrative follows the verified regional results.",
+      "limitation": "Narrative review does not execute workbook formulas or validate a finished slide file.",
+      "stepUp": "Return to Medium once claims and source figures agree; review visual design separately."
+    }
+  },
+  "qwen-nonthinking": {
+    "marketing": {
+      "bestFor": "Editorial local deployment option for tightly specified internal copy.",
+      "example": "Rewrite approved maintenance notes as a short staff announcement after local setup.",
+      "limitation": "Requires a configured, approved local deployment; operating cost and quality need evaluation.",
+      "stepUp": "Improve the brief first; use a stronger approved local option if checks fail."
+    },
+    "analysis": {
+      "bestFor": "Editorial local deployment option for a small, clearly labeled table summary.",
+      "example": "Summarize supplied office supply totals after configuring the local deployment.",
+      "limitation": "Requires setup and checked calculations; local deployment does not establish accuracy.",
+      "stepUp": "Use an approved local analysis workflow when joins or reconciliations are needed."
+    }
+  },
+  "qwen-thinking": {
+    "analysis": {
+      "bestFor": "Editorial local deployment option for comparing supplied business figures.",
+      "example": "Explain differences between two checked monthly tables using supplied category definitions.",
+      "limitation": "Requires configured local infrastructure; verify arithmetic and protect the local data path.",
+      "stepUp": "Request an analyst review when definitions conflict; retain the local-only constraint."
+    }
+  }
+}

@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: { default: "InfoHub — The right model for the work ahead", template: "%s · InfoHub" },
-  description: "Practical AI model guidance for networking, cybersecurity, coding, and the everyday work in between.",
+  description: "Practical AI model guidance for images, marketing, presentations, spreadsheets, and technical work.",
   robots: { index: false, follow: false },
 };
 

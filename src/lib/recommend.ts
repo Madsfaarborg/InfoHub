@@ -1,6 +1,10 @@
-import { categoryIds, type CategoryId, type ModelVariant, type Priority, type Recommendation, type TaskInterpretation, type Tier } from "./types";
+import { categoryIds, type CategoryId, type ImageWorkflow, type ModelVariant, type Priority, type Recommendation, type TaskInterpretation, type Tier } from "./types";
 
 const cues: Record<CategoryId, RegExp[]> = {
+  images: [/\b(?:images?|photos?|pictures?|artwork|illustrat(?:e|ion|ions)|visual asset|banner|poster|flyer|thumbnail|product shot|text.to.image|mock.?up|logo|background removal)\b/gi],
+  marketing: [/\b(?:marketing|campaign|sales|proposal|linkedin|social media|webinar|landing page|newsletter|ad copy|advertis(?:e|ement|ing)|case study|product launch)\b/gi],
+  presentations: [/\b(?:presentations?|slides?|slide deck|powerpoint|pitch deck|keynote|speaker notes|talk track)\b/gi],
+  analysis: [/\b(?:spreadsheet|excel|google sheets|pivot table|csv|kpis?|dashboard|formula|monthly trend|revenue trend|compare quarters|renewals|charts?)\b/gi],
   coding: [/\b(?:code|coding|script|scripting|powershell|python|bash|terraform|ansible|javascript|typescript|sql|implement|refactor|program|function|automation)\b/gi],
   debugging: [/\b(?:debug|debugging|bug|bugs|error|errors|exception|crash|crashes|failing|failure|broken|troubleshoot|troubleshooting|stack trace|root cause|doesn.t work)\b/gi],
   networking: [/\b(?:network|networking|firewall|routing|router|switch|dns|dhcp|vlan|vpn|bgp|ospf|tcp|packet|subnet|connectivity|latency)\b/gi],
@@ -8,6 +12,12 @@ const cues: Record<CategoryId, RegExp[]> = {
   research: [/\b(?:research|compare|comparison|investigate|evaluate|evaluation|architecture|architectural|design|trade.?offs|sources|citations|literature|survey|evidence|find out)\b/gi],
   writing: [/\b(?:write|writing|draft|rewrite|summarize|summarise|summary|email|document|documentation|customer update|proofread|translate|translation|report|explain|message|announcement)\b/gi],
 };
+
+export function interpretImageWorkflow(text: string): ImageWorkflow {
+  if (/\b(?:edit|retouch|remove|replace|re.?light|crop|restore|cut ?out)\b[^.!?]{0,65}\b(?:image|photo|picture|product shot|background|lighting|reflection|glare|object|logo)s?\b|\b(?:existing|original|supplied|attached|reference)\s+(?:image|photo|picture)\b/i.test(text)) return "edits";
+  if (/\b(?:poster|flyer|typography|text.?heavy|infographic|lettering|headline|with text|with (?:a |the )?title)\b/i.test(text)) return "layout";
+  return "concepts";
+}
 
 function requiresLocal(text: string): boolean {
   // Remove explicit negations of the constraint before looking for positive requirements.
@@ -25,10 +35,19 @@ function requiresLocal(text: string): boolean {
 export function interpretTask(text: string): TaskInterpretation {
   const normalized = text.toLowerCase();
   const counts = categoryIds.map((category) => ({ category, count: cues[category].reduce((sum, cue) => sum + [...normalized.matchAll(cue)].length, 0) }));
+  const boost = (category: CategoryId, amount: number) => { counts.find(item => item.category === category)!.count += amount; };
   // Strong action cues separate common overlaps such as writing a script or debugging Python.
   if (/\b(?:script|code|function|powershell|python|bash|terraform|ansible)\b/.test(normalized)) counts.find((item) => item.category === "coding")!.count += 1;
   if (/\b(?:debug|debugging|troubleshoot|troubleshooting|root cause|stack trace)\b/.test(normalized)) counts.find((item) => item.category === "debugging")!.count += 2;
   if (/\b(?:draft|rewrite|email|customer update|proofread|translate)\b/.test(normalized)) counts.find((item) => item.category === "writing")!.count += 2;
+  const imageRequest = /\b(?:generate|create|design|edit|retouch|make|remove|replace|illustrate|produce|draw)\b(?:(?!\b(?:presentation|slides?|deck|ad copy|post copy)\b)[^.!?]){0,85}\b(?:images?|photos?|pictures?|artwork|illustration|banner|poster|flyer|thumbnail|product shot|background|mock.?up|logo)\b/.test(normalized)
+    || /\b(?:product photo|text.to.image|image generation|campaign visuals|image editing)\b/.test(normalized);
+  if (imageRequest) boost("images", 7);
+  if (/\b(?:image|photo|picture|poster|flyer|banner|artwork)s?\b/.test(normalized)) boost("images", 2);
+  if (/\b(?:marketing|campaign|linkedin|sales proposal|landing page|ad copy|case study|social media)\b/.test(normalized)) boost("marketing", 3);
+  if (/\b(?:slide deck|slides?|powerpoint|presentation|pitch deck|speaker notes)\b/.test(normalized)) boost("presentations", 5);
+  if (/\b(?:spreadsheet|excel|csv|pivot table|google sheets|formula)\b/.test(normalized)) boost("analysis", 5);
+  if (/\b(?:analy[sz]e|summari[sz]e|explain)\b[^.!?]{0,65}\b(?:chart|kpis?|renewals|revenue|sales data|rows|columns)\b/.test(normalized)) boost("analysis", 3);
   const matches = counts.filter((item) => item.count > 0).sort((a, b) => b.count - a.count);
   const top = matches[0];
   const ambiguous = top && matches[1]?.count === top.count;
@@ -37,14 +56,20 @@ export function interpretTask(text: string): TaskInterpretation {
     alternatives: ambiguous ? matches.filter((item) => item.count === top.count).map((item) => item.category) : matches.slice(1).filter((item) => item.count >= (top?.count ?? 0) - 1).map((item) => item.category),
     complexity: /\b(?:complex|complicated|advanced|deep|multi[ -]?(?:step|system|service)|distributed|intermittent|race condition|root cause|architecture|architectural|production outage|large codebase|hard|difficult)\b/.test(normalized.replace(/\b(?:not|isn['’]?t|is not)\s+(?:complex|complicated|hard|difficult)\b/g, "")) ? "complex" : "routine",
     localOnly: requiresLocal(normalized),
+    ...(top?.category === "images" ? { imageWorkflow: interpretImageWorkflow(normalized) } : {}),
   };
 }
 
-export function recommend(models: ModelVariant[], category: CategoryId, options: { priority: Priority; localOnly: boolean; complexity: "routine" | "complex" }): Recommendation[] {
+export function guidanceFor(model: ModelVariant, category: CategoryId, workflow: ImageWorkflow = "concepts") {
+  return category === "images" ? model.image?.workflows[workflow] : model.image ? undefined : model.guidance[category];
+}
+
+export function recommend(models: ModelVariant[], category: CategoryId, options: { priority: Priority; localOnly: boolean; complexity: "routine" | "complex"; imageWorkflow?: ImageWorkflow }): Recommendation[] {
   const order: Tier[] = options.priority === "speed" ? ["everyday", "balanced", "deep"]
     : options.complexity === "complex" ? options.priority === "quality" ? ["deep", "balanced", "everyday"] : ["balanced", "everyday", "deep"]
     : options.priority === "quality" ? ["balanced", "everyday", "deep"] : ["everyday", "balanced", "deep"];
-  const eligible = models.filter((model) => model.availability === "available" && (!options.localOnly || model.deployment === "local") && model.guidance[category]);
+  const getGuidance = (model: ModelVariant) => guidanceFor(model, category, options.imageWorkflow);
+  const eligible = models.filter(model => model.availability === "available" && (!options.localOnly || model.deployment === "local") && getGuidance(model));
   const selected: ModelVariant[] = [];
   const seen = new Set<string>();
   const append = (model: ModelVariant) => {
@@ -52,11 +77,14 @@ export function recommend(models: ModelVariant[], category: CategoryId, options:
     if (seen.has(key) || selected.some((item) => item.id === model.id)) return;
     seen.add(key); selected.push(model);
   };
+  const imagePick = category === "images" ? eligible.find(model => getGuidance(model)?.preferred) : undefined;
+  if (imagePick) append(imagePick);
   for (const tier of order) {
+    if (tier === imagePick?.tier) continue;
     const candidates = eligible.filter((model) => model.tier === tier);
-    const candidate = candidates.find((model) => model.guidance[category]?.preferred) ?? candidates[0];
+    const candidate = candidates.find(model => getGuidance(model)?.preferred) ?? candidates[0];
     if (candidate) append(candidate);
   }
   for (const model of eligible) { if (selected.length >= 3) break; append(model); }
-  return selected.slice(0, 3).map((model, index) => ({ model, guidance: model.guidance[category]!, recommended: index === 0 }));
+  return selected.slice(0, 3).map((model, index) => ({ model, guidance: getGuidance(model)!, recommended: index === 0 }));
 }
