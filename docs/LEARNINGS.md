@@ -5,6 +5,7 @@
 - GitHub Actions and Vercel Git deployments are independent by default. Protect `main` with the GitHub status check and use the same failing build command on Vercel to hold production traffic on the last successful deployment.
 - Production smoke checks start Next.js with an empty local data directory. This detects an omitted or stale Git-bundled release that an existing local catalog could hide.
 - Automated catalog updates need a current revision check. A completed weekly research run may overlap a separate release, so generate from the current Git snapshot and stop on a stale revision.
+- A weekly run can have partial coverage while still verifying individual facts. Assess evidence for each proposed catalog change and report why no update qualifies when only tests or uncertain observations remain.
 
 - Sol 6.1 medium subagent dispatch succeeded in this session. Lower-tier delegation is available; actual billing savings are not exposed by the tools.
 - The workspace is a ChatGPT mirror. The root AGENTS.md and sources are synced references, so persistent build guidance belongs in a separate tracked file.

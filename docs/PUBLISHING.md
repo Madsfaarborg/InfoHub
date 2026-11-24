@@ -70,7 +70,7 @@ Replace the existing automation prompt with the corresponding instructions below
 
 ### Weekly runner instructions
 
-> Run the weekly model review in the InfoHub repository. Read and follow the Reusable prompt in `prompts/weekly-model-review.md` from current `main`. Enable scheduled publishing for this run. Save the memo privately and use the repository publishing command only for the directly supported public catalog edits. Report the resulting pull request link, no-change outcome, or blocker.
+> Run the weekly model review in the InfoHub repository. Read and follow the Reusable prompt in `prompts/weekly-model-review.md` from current `main`. Enable scheduled publishing. Generate a private catalog from `npm run --silent content -- show-release`, evaluate the evidence and apply qualifying findings to that catalog. Run `npm run content:ship -- catalog /absolute/path/catalog.json --publish` when qualifying changes exist. The command creates a pull request and enables auto-merge after the required checks. Keep the research memo private. Report the pull request, a specific reason no finding qualified, or the exact blocker. Do not create a memo-only pull request.
 
 Both runners use `npm run content:ship`. It prepares the candidate from a fresh checkout, runs the full release suite locally, commits only the public snapshot, pushes a new branch, opens a pull request, and enables auto-merge. GitHub repeats the release suite and requires the pull request to be up to date with `main`. Vercel Git integration builds the resulting `main` commit and repeats the checks before publishing it. No Vercel token or new GitHub Actions secret is required. Use `--check-only` in place of `--publish` to rehearse without creating a commit or pull request.
 
