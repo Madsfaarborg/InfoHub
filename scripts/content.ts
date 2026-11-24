@@ -13,8 +13,9 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
     console.log(JSON.stringify(await readPublicRelease(), null, 2));
     return;
   }
-  if (command === 'prepare-release' && (args[0] === 'news' || args[0] === 'catalog') && (args.length === 2 || (args.length === 3 && args[2] === '--reviewed'))) {
-    const result = await preparePublicRelease(args[0], args[1], args[2] === '--reviewed');
+  if (command === 'prepare-release' && (args[0] === 'news' || args[0] === 'catalog') && (args.length === 2 || (args.length === 3 && ['--reviewed', '--automatic'].includes(args[2])))) {
+    const automatic = args[2] === '--automatic';
+    const result = await preparePublicRelease(args[0], args[1], automatic || args[2] === '--reviewed', undefined, automatic);
     console.log(result.changed ? `Prepared public release: ${result.revision}` : 'No public content changes.');
     return;
   }
@@ -38,6 +39,6 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
     console.log(`Published: ${bundle.revision}`); return;
   }
   if (command === 'rollback' && args.length === 1) { console.log(`Restored: ${(await rollback(args[0], dir)).revision}`); return; }
-  throw new Error('Usage: npm run content -- init | validate FILE | check-release | show-release | prepare-release (news|catalog) FILE --reviewed | add-starter-guidance --reviewed | publish-news FILE --reviewed | publish-catalog FILE --reviewed | sync-artificial-analysis --authorized | rollback REVISION');
+  throw new Error('Usage: npm run content -- init | validate FILE | check-release | show-release | prepare-release (news|catalog) FILE (--reviewed|--automatic) | add-starter-guidance --reviewed | publish-news FILE --reviewed | publish-catalog FILE --reviewed | sync-artificial-analysis --authorized | rollback REVISION');
 }
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) main().catch(error => { console.error(error instanceof Error ? error.message : String(error)); process.exitCode = 1; });

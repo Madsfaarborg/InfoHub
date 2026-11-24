@@ -131,3 +131,23 @@ test('public releases combine reviewed news and catalog changes without using lo
     await rm(s.root, { recursive: true, force: true });
   }
 });
+
+test('unattended releases hold vendor claims and reject a stale catalog', async () => {
+  const s = await setup();
+  try {
+    const release = path.join(s.root, 'public.json');
+    await writeFile(release, 'null\n');
+    const previous = await readPublicRelease(release);
+    const vendorClaim = { ...item, confidence: 'vendor-claim' } as const;
+    const input = await s.put(digest([vendorClaim]));
+    assert.equal((await preparePublicRelease('news', input, true, release, true)).changed, false);
+    await preparePublicRelease('news', await s.put(digest()), true, release, true);
+    const updated = await readPublicRelease(release);
+    const models = [{ ...updated.models[0], description: 'Evidence-backed revision.' }, ...updated.models.slice(1)];
+    await assert.rejects(preparePublicRelease('catalog', await s.put({ ...previous, models }), true, release, true), /Catalog changed/);
+    assert.deepEqual(await readPublicRelease(release), updated);
+    assert.equal((await preparePublicRelease('catalog', await s.put({ ...updated, models }), true, release, true)).changed, true);
+  } finally {
+    await rm(s.root, { recursive: true, force: true });
+  }
+});
