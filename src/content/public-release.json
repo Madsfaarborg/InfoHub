@@ -166,6 +166,18 @@
           "checkedAt": "2026-11-25"
         }
       ],
+      "benchmarkProfile": {
+        "effort": "Medium",
+        "sourceLabel": "Artificial Analysis release comparison",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-sol-vs-gpt-6-1-terra",
+        "checkedAt": "2026-11-25",
+        "metrics": {
+          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 34.5, "unit": "%" },
+          "agentic": { "benchmark": "AutomationBench-AA", "score": 57.8, "unit": "%" },
+          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 28.4, "unit": "%" },
+          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 38, "unit": "index" }
+        }
+      },
       "id": "terra-medium",
       "name": "GPT-6.1 Terra",
       "developer": "OpenAI",
@@ -619,6 +631,18 @@
           "checkedAt": "2026-11-25"
         }
       ],
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis release comparison",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/claude-sonnet-5-5-vs-claude-opus-5-5",
+        "checkedAt": "2026-11-25",
+        "metrics": {
+          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 25.5, "unit": "%" },
+          "agentic": { "benchmark": "AutomationBench-AA", "score": 59.4, "unit": "%" },
+          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 25.2, "unit": "%" },
+          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 41, "unit": "index" }
+        }
+      },
       "id": "sonnet-high",
       "name": "Claude Sonnet 5.5",
       "developer": "Anthropic",
@@ -794,6 +818,18 @@
           "checkedAt": "2026-11-25"
         }
       ],
+      "benchmarkProfile": {
+        "effort": "Medium",
+        "sourceLabel": "Artificial Analysis release comparison",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-astra-vs-gpt-6-2-sol",
+        "checkedAt": "2026-11-25",
+        "metrics": {
+          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 46.6, "unit": "%" },
+          "agentic": { "benchmark": "AutomationBench-AA", "score": 72.8, "unit": "%" },
+          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 28.4, "unit": "%" },
+          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 57, "unit": "index" }
+        }
+      },
       "id": "astra-medium",
       "name": "GPT-6.2 Astra",
       "developer": "OpenAI",
@@ -1154,6 +1190,18 @@
           "checkedAt": "2026-11-25"
         }
       ],
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis release comparison",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-astra-vs-gpt-6-2-sol",
+        "checkedAt": "2026-11-25",
+        "metrics": {
+          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 40.2, "unit": "%" },
+          "agentic": { "benchmark": "AutomationBench-AA", "score": 69.9, "unit": "%" },
+          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 28.8, "unit": "%" },
+          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 55, "unit": "index" }
+        }
+      },
       "id": "sol-high",
       "name": "GPT-6.2 Sol",
       "developer": "OpenAI",
@@ -1377,6 +1425,18 @@
           "checkedAt": "2026-11-25"
         }
       ],
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis release comparison",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons",
+        "checkedAt": "2026-11-25",
+        "metrics": {
+          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 49.1, "unit": "%" },
+          "agentic": { "benchmark": "AutomationBench-AA", "score": 71.4, "unit": "%" },
+          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 21.8, "unit": "%" },
+          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 62, "unit": "index" }
+        }
+      },
       "id": "claude-fable-5-2",
       "name": "Claude Fable 5.2",
       "developer": "Anthropic",
@@ -1546,6 +1606,18 @@
           "checkedAt": "2026-11-25"
         }
       ],
+      "benchmarkProfile": {
+        "effort": "Medium",
+        "sourceLabel": "Artificial Analysis release comparison",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/claude-sonnet-5-5-vs-claude-opus-5-5",
+        "checkedAt": "2026-11-25",
+        "metrics": {
+          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 33.1, "unit": "%" },
+          "agentic": { "benchmark": "AutomationBench-AA", "score": 61.2, "unit": "%" },
+          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 25.6, "unit": "%" },
+          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 48, "unit": "index" }
+        }
+      },
       "id": "claude-opus-5-5",
       "name": "Claude Opus 5.5",
       "developer": "Anthropic",
@@ -2322,6 +2394,18 @@
           "checkedAt": "2026-11-25"
         }
       ],
+      "benchmarkProfile": {
+        "effort": "Medium",
+        "sourceLabel": "Artificial Analysis release comparison",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-1-sol-medium-vs-gpt-6-sol-medium",
+        "checkedAt": "2026-11-25",
+        "metrics": {
+          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 33.4, "unit": "%" },
+          "agentic": { "benchmark": "AutomationBench-AA", "score": 62.6, "unit": "%" },
+          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 30, "unit": "%" },
+          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 46, "unit": "index" }
+        }
+      },
       "id": "sol-6-1-medium",
       "name": "GPT-6.1 Sol",
       "developer": "OpenAI",
@@ -2486,6 +2570,18 @@
           "checkedAt": "2026-11-25"
         }
       ],
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis release comparison",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/claude-fable-5-1-high-vs-claude-fable-5-1-xhigh",
+        "checkedAt": "2026-11-25",
+        "metrics": {
+          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 30.3, "unit": "%" },
+          "agentic": { "benchmark": "AutomationBench-AA", "score": 55.3, "unit": "%" },
+          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 26.8, "unit": "%" },
+          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 47, "unit": "index" }
+        }
+      },
       "id": "claude-fable-5-1",
       "name": "Claude Fable 5.1",
       "developer": "Anthropic",

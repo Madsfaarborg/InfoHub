@@ -31,8 +31,24 @@ export interface ModelObservation {
   checkedAt: string;
 }
 
+export const benchmarkMetricIds = ["coding", "agentic", "instructionFollowing", "intelligence"] as const;
+export type BenchmarkMetricId = (typeof benchmarkMetricIds)[number];
+
+export interface ModelBenchmarkProfile {
+  effort: string;
+  sourceLabel: string;
+  sourceUrl: string;
+  checkedAt: string;
+  metrics: Partial<Record<BenchmarkMetricId, {
+    benchmark: string;
+    score: number;
+    unit: "%" | "index";
+  }>>;
+}
+
 export interface ModelVariant {
   observations?: ModelObservation[];
+  benchmarkProfile?: ModelBenchmarkProfile;
   id: string;
   name: string;
   developer: string;
