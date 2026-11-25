@@ -1,0 +1,98 @@
+[
+  {
+    "id": "sol-6-1-medium",
+    "name": "GPT-6.1 Sol",
+    "developer": "OpenAI",
+    "provider": "OpenAI Responses API",
+    "modelId": "gpt-6.1-sol",
+    "tier": "balanced",
+    "deployment": "hosted",
+    "availability": "available",
+    "setting": {
+      "label": "Medium",
+      "parameters": {
+        "reasoning.effort": "medium"
+      },
+      "note": "Provider-supported API effort for comparison with current models. Account access depends on the provider."
+    },
+    "description": "Earlier Sol available through the Responses API. Compare it with GPT-6.2 Sol for coding and document workflows already evaluated on this model.",
+    "toolUrl": "https://platform.openai.com/",
+    "price": {
+      "input": 2,
+      "output": 10,
+      "cachedInput": 0.1,
+      "currency": "USD",
+      "verifiedAt": "2026-11-25",
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+      "note": "Standard OpenAI API rates per million tokens for requests up to 272K input tokens. Above 272K, input and cache rates double and output is 1.5x for the whole request. Cache reads only. Tool charges, cache writes, faster tiers and regional premiums are excluded."
+    },
+    "limits": {
+      "contextTokens": 1050000,
+      "maxOutputTokens": 128000
+    },
+    "guidance": {},
+    "sources": [
+      {
+        "label": "Official API settings, limits and prices",
+        "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "kind": "provider",
+        "checkedAt": "2026-11-25"
+      },
+      {
+        "label": "OpenAI launch evaluation",
+        "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+        "kind": "provider",
+        "checkedAt": "2026-11-25"
+      }
+    ],
+    "reviewedAt": "2026-11-25"
+  },
+  {
+    "id": "astra-6-medium",
+    "name": "GPT-6 Astra",
+    "developer": "OpenAI",
+    "provider": "OpenAI Responses API",
+    "modelId": "gpt-6-astra",
+    "tier": "deep",
+    "deployment": "hosted",
+    "availability": "available",
+    "setting": {
+      "label": "Medium",
+      "parameters": {
+        "reasoning.effort": "medium"
+      },
+      "note": "Provider-supported API effort for comparison with current models. Account access depends on the provider."
+    },
+    "description": "Earlier Astra available through the Responses API. Compare it with GPT-6.2 Astra when testing changes to complex coding, research, or document workflows.",
+    "toolUrl": "https://platform.openai.com/",
+    "price": {
+      "input": 10,
+      "output": 50,
+      "cachedInput": 1,
+      "currency": "USD",
+      "verifiedAt": "2026-11-25",
+      "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "note": "Standard OpenAI API rates per million tokens for requests up to 272K input tokens. Above 272K, input and cache rates double and output is 1.5x for the whole request. Cache reads only. Tool charges, cache writes, faster tiers and regional premiums are excluded."
+    },
+    "limits": {
+      "contextTokens": 1050000,
+      "maxOutputTokens": 128000
+    },
+    "guidance": {},
+    "sources": [
+      {
+        "label": "Official API settings, limits and prices",
+        "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+        "kind": "provider",
+        "checkedAt": "2026-11-25"
+      },
+      {
+        "label": "OpenAI launch evaluation",
+        "url": "https://openai.com/index/gpt-6-astra/",
+        "kind": "provider",
+        "checkedAt": "2026-11-25"
+      }
+    ],
+    "reviewedAt": "2026-11-25"
+  }
+]

@@ -41,13 +41,26 @@ export default async function ModelPage({ params }: { params: Promise<{ id: stri
           <Info size={20} aria-hidden="true" />
           <div>
             <strong>{model.availability === "setup-required" ? "Local setup required" : "Currently unavailable"}</strong>
-            <p>Configure and evaluate the exact deployment before making this model available to colleagues.</p>
+            <p>{model.availability === "setup-required" ? "Configure and evaluate this deployment before use." : "This configuration is retained for reference."}</p>
           </div>
         </div>
       ) : null}
       <div className="detail-layout">
         <section>
-          <h2>A practical fit for</h2>
+          {model.observations?.length ? (
+            <section className="behavior-notes" aria-labelledby="behavior-title">
+              <h2 id="behavior-title">How it works in practice</h2>
+              {model.observations.map(note => (
+                <article key={note.url + note.summary}>
+                  <span className="small muted">{note.kind} · Checked {displayDate(note.checkedAt)}</span>
+                  <p>{note.summary}</p>
+                  <p className="small">{note.scope}</p>
+                  <a className="text-button" href={note.url} target="_blank" rel="noreferrer">{note.label} <ArrowUpRight size={14} aria-hidden="true" /></a>
+                </article>
+              ))}
+            </section>
+          ) : null}
+          {useCases.some(item => item.guidance) && <h2>A practical fit for</h2>}
           <div className="use-cases">
             {useCases.map(({ name, href, guidance }) => guidance ? <UseCase key={name} name={name} href={href} guidance={guidance} /> : null)}
           </div>

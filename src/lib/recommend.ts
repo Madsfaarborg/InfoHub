@@ -77,14 +77,28 @@ export function recommend(models: ModelVariant[], category: CategoryId, options:
     if (seen.has(key) || selected.some((item) => item.id === model.id)) return;
     seen.add(key); selected.push(model);
   };
+  // A review can contain a caution. Only an explicit editorial citation makes it
+  // support a recommendation for this task.
+  const supportsChoice = (model: ModelVariant) => {
+    const citation = getGuidance(model)?.evidenceUrl;
+    return Boolean(citation && model.observations?.some(note => note.url === citation && note.tasks.includes(category)));
+  };
+  const choose = (candidates: ModelVariant[]) => {
+    const supported = candidates.filter(supportsChoice);
+    const pool = supported.length ? supported : candidates;
+    const preferred = pool.filter(model => getGuidance(model)?.preferred);
+    const peers = preferred.length ? preferred : pool;
+    // For equally supported alternatives, offer another developer when possible.
+    return peers.find(model => selected.every(pick => pick.developer !== model.developer)) ?? peers[0];
+  };
   const imagePick = category === "images" ? eligible.find(model => getGuidance(model)?.preferred) : undefined;
   if (imagePick) append(imagePick);
   for (const tier of order) {
     if (tier === imagePick?.tier) continue;
     const candidates = eligible.filter((model) => model.tier === tier);
-    const candidate = candidates.find(model => getGuidance(model)?.preferred) ?? candidates[0];
+    const candidate = choose(candidates);
     if (candidate) append(candidate);
   }
   for (const model of eligible) { if (selected.length >= 3) break; append(model); }
-  return selected.slice(0, 3).map((model, index) => ({ model, guidance: getGuidance(model)!, recommended: index === 0 }));
+  return selected.slice(0, 3).map((model, index) => ({ model, category, guidance: getGuidance(model)!, recommended: index === 0 }));
 }

@@ -18,9 +18,21 @@ export interface TaskGuidance {
   limitation: string;
   stepUp: string;
   preferred?: boolean;
+  evidenceUrl?: string;
+}
+
+export interface ModelObservation {
+  tasks: CategoryId[];
+  kind: "Provider guidance" | "Independent evaluation" | "Practitioner report";
+  summary: string;
+  scope: string;
+  label: string;
+  url: string;
+  checkedAt: string;
 }
 
 export interface ModelVariant {
+  observations?: ModelObservation[];
   id: string;
   name: string;
   developer: string;
@@ -125,6 +137,7 @@ export interface TaskInterpretation {
   imageWorkflow?: ImageWorkflow;
 }
 export interface Recommendation {
+  category?: CategoryId;
   model: ModelVariant;
   guidance: TaskGuidance;
   recommended: boolean;
