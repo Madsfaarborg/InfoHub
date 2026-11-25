@@ -1,4 +1,16 @@
 {
+  "gpt-6-astra": {
+    "effort": "High",
+    "sourceLabel": "Artificial Analysis High-effort comparison",
+    "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-sol-high-vs-gpt-6-astra-high",
+    "checkedAt": "2026-11-25",
+    "metrics": {
+      "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 40.1, "unit": "%" },
+      "agentic": { "benchmark": "AutomationBench-AA", "score": 66.6, "unit": "%" },
+      "instructionFollowing": { "benchmark": "GDP.pdf", "score": 31, "unit": "%" },
+      "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.1", "score": 55, "unit": "index" }
+    }
+  },
   "gpt-6.1-terra": {
     "effort": "High",
     "sourceLabel": "Artificial Analysis release comparison",

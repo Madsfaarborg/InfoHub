@@ -87,7 +87,7 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
             <thead>
               <tr>
                 <SortableHeading label="Model" sortKey="name" activeSort={sort} onSort={updateSort} />
-                <SortableHeading label="Coding default" sortKey="codingDefault" activeSort={sort} onSort={updateSort} />
+                <th scope="col">Benchmark effort</th>
                 {benchmarkColumns.map(column => (
                   <SortableHeading key={column.key} label={column.label} detail={column.benchmark} sortKey={column.key} activeSort={sort} onSort={updateSort} />
                 ))}
@@ -104,8 +104,8 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
                     </Link>
                   </th>
                   <td>
-                    {row.codingDefault ? <span className="effort-value">{row.codingDefault}</span> : <span className="empty-value">—</span>}
-                    {row.codingDefault ? <small>Recommended starting point</small> : <small>No coding guidance</small>}
+                    <span className="effort-value">{row.benchmarkProfile?.effort ?? "Unavailable"}</span>
+                    {!row.benchmarkProfile ? <small>No verified High result</small> : null}
                   </td>
                   {benchmarkColumns.map(column => <BenchmarkCell key={column.key} profile={row.benchmarkProfile} metric={column.key} />)}
                   <td className="model-table-open"><ArrowRight size={16} aria-hidden="true" /></td>
