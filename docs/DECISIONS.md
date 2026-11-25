@@ -24,3 +24,5 @@
 ## 25 November 2026
 
 - Keep model behavior observations with their applicable tasks, source type, date, and test conditions. Give a recommendation credit for an observation only when its guidance explicitly cites that finding. Retain earlier versions as distinct profiles.
+- Present the primary model catalog as one row per developer and model family instead of one row per reasoning configuration. Keep each configuration on the family detail page, where sourced behavior and escalation guidance explain when the additional effort is useful.
+- Show a curated coding starting effort separately from benchmark results. Use independent, named evaluations for coding, agentic work, instruction following, and the intelligence index; preserve their original units, tested effort, source, and missing values instead of producing a composite score.

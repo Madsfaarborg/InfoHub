@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { categoryIds, imageWorkflowIds, type PublishedBundle } from "./types";
+import { benchmarkMetricIds, categoryIds, imageWorkflowIds, type PublishedBundle } from "./types";
 
 const text = z.string().trim().min(1);
 const id = z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]*$/, "Use a stable identifier without spaces");
@@ -26,6 +26,17 @@ export const modelVariantSchema = z.strictObject({
     kind: z.enum(["Provider guidance", "Independent evaluation", "Practitioner report"]),
     summary: text, scope: text, label: text, url, checkedAt: date,
   })).optional(),
+  benchmarkProfile: z.strictObject({
+    effort: text,
+    sourceLabel: text,
+    sourceUrl: url,
+    checkedAt: date,
+    metrics: z.partialRecord(z.enum(benchmarkMetricIds), z.strictObject({
+      benchmark: text,
+      score: z.number().finite(),
+      unit: z.enum(["%", "index"]),
+    })).refine(metrics => Object.keys(metrics).length > 0, "Add at least one benchmark metric"),
+  }).optional(),
   id, name: text, developer: text, provider: text, modelId: text,
   tier: z.enum(["everyday", "balanced", "deep"]), deployment: z.enum(["hosted", "local"]),
   availability: z.enum(["available", "setup-required", "unavailable"]),

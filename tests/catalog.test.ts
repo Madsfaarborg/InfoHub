@@ -12,6 +12,23 @@ function fixture(): PublishedBundle {
   };
 }
 test("validates the complete typed bundle with zero costs and scores", () => assert.deepEqual(catalogSchema.parse(fixture()), fixture()));
+test("validates sourced benchmark profiles without treating missing metrics as zero", () => {
+  const bundle = fixture();
+  bundle.models[0].benchmarkProfile = {
+    effort: "High",
+    sourceLabel: "Independent comparison",
+    sourceUrl: "https://example.com/benchmarks",
+    checkedAt: "2026-11-25",
+    metrics: {
+      coding: { benchmark: "Coding suite", score: 42.5, unit: "%" },
+      intelligence: { benchmark: "Intelligence index", score: 51, unit: "index" },
+    },
+  };
+  assert.equal(catalogSchema.safeParse(bundle).success, true);
+  const empty = fixture();
+  empty.models[0].benchmarkProfile = { ...bundle.models[0].benchmarkProfile, metrics: {} };
+  assert.equal(catalogSchema.safeParse(empty).success, false);
+});
 test("strictly rejects unknown properties at every object level", () => {
   for (const place of ["bundle", "model", "price", "settings", "guidance", "source", "benchmark", "news", "newsSource"]) {
     const bundle = fixture();
