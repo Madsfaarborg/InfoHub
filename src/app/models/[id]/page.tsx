@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Info } from "lucide-react";
 import { CopySettings } from "@/components/copy-settings";
+import { ReportedBenchmarks } from "@/components/reported-benchmarks";
 import { readCatalog } from "@/lib/repository";
 import { categories, displayDate, imageWorkflows, tierLabels } from "@/lib/categories";
 import { formatUsd, priceIsStale } from "@/lib/cost";
@@ -62,6 +63,12 @@ export default async function ModelPage({ params }: { params: Promise<{ id: stri
           <dl>
             <dt>Model identifier</dt>
             <dd className="mono model-id">{model.modelId}</dd>
+            {model.limits ? (
+              <>
+                <div><dt>Context window</dt><dd>{model.limits.contextTokens.toLocaleString("en")} tokens</dd></div>
+                <div><dt>Maximum output</dt><dd>{model.limits.maxOutputTokens.toLocaleString("en")} tokens</dd></div>
+              </>
+            ) : null}
             {Object.entries(model.setting.parameters).map(([key, value]) => (
               <div key={key}><dt>{key}</dt><dd className="mono">{String(value)}</dd></div>
             ))}
@@ -77,12 +84,14 @@ export default async function ModelPage({ params }: { params: Promise<{ id: stri
             <>
               <div className="price-pair"><span>Input / 1M tokens</span><strong>{model.price.input === null ? "Unknown" : formatUsd(model.price.input)}</strong></div>
               <div className="price-pair"><span>Output / 1M tokens</span><strong>{model.price.output === null ? "Unknown" : formatUsd(model.price.output)}</strong></div>
+              {model.price.cachedInput !== null ? <div className="price-pair"><span>Cache reads / 1M tokens</span><strong>{formatUsd(model.price.cachedInput)}</strong></div> : null}
             </>
           )}
           <p className="small">{model.price.note}</p>
           <p className="small muted"><a href={model.price.sourceUrl} target="_blank" rel="noreferrer">Checked {displayDate(model.price.verifiedAt)} <ArrowUpRight size={12} aria-hidden="true" /></a>{priceIsStale(model) ? " · Needs review" : ""}</p>
         </aside>
       </div>
+      <ReportedBenchmarks models={[model]} />
       <section className="sources-section">
         <div>
           <h2>Sources and scope</h2>

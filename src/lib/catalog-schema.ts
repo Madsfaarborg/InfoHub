@@ -27,6 +27,12 @@ export const modelVariantSchema = z.strictObject({
   setting: z.strictObject({ label: text, parameters: z.record(text, z.union([z.string(), z.number().finite(), z.boolean()])), note: z.string() }),
   description: text, toolUrl: url.nullable(),
   price: z.strictObject({ input: money.nullable(), output: money.nullable(), cachedInput: money.nullable(), currency: z.literal("USD"), verifiedAt: date, sourceUrl: url, note: z.string() }),
+  limits: z.strictObject({ contextTokens: z.number().int().positive(), maxOutputTokens: z.number().int().positive() }).optional(),
+  reportedBenchmarks: z.strictObject({
+    sourceLabel: text, sourceUrl: url, publishedAt: date,
+    results: z.array(z.strictObject({ name: text, percent: z.number().finite().min(0).max(100), conditions: text.optional() }))
+      .min(1).refine(results => new Set(results.map(result => result.name)).size === results.length, "Benchmark names must be unique within a report"),
+  }).optional(),
   image: z.strictObject({ workflows: imageWorkflows, outputUsd: money.nullable(), priceBasis: text, brief: text }).optional(),
   guidance: z.strictObject(guidanceFields), sources: z.array(source).min(1), reviewedAt: date,
 }).superRefine((record, ctx) => {

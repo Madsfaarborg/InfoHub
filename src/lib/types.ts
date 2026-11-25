@@ -41,6 +41,13 @@ export interface ModelVariant {
     sourceUrl: string;
     note: string;
   };
+  limits?: { contextTokens: number; maxOutputTokens: number };
+  reportedBenchmarks?: {
+    sourceLabel: string;
+    sourceUrl: string;
+    publishedAt: string;
+    results: { name: string; percent: number; conditions?: string }[];
+  };
   image?: {
     workflows: Partial<Record<ImageWorkflow, TaskGuidance>>;
     outputUsd: number | null;

@@ -19,3 +19,4 @@
 - Keep broad Artificial Analysis discovery in its own searchable directory. Task results stay limited to three curated choices with exact settings. Authorized source data is refreshed into a separate host snapshot and never auto-promoted into recommendations.
 - Prepare editorially approved daily news and weekly catalog changes as public content pull requests. GitHub and Vercel run the same CI command. The bundled release supplies hosted builds while a local operational catalog still takes precedence on a self-hosted installation.
 - Explicitly opted-in scheduled runs may ship confirmed public news and high-confidence catalog edits. The publishing command uses a fresh isolated checkout and protected auto-merge. Keep all other findings in private research output.
+- Store provider-reported scores with their model records, publication date, source, and test conditions. The cost-versus-quality chart requires cost and quality measured by the same evaluation.
