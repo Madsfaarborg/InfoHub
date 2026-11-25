@@ -47,8 +47,14 @@ function codingDefault(variants: ModelVariant[]) {
 }
 
 function benchmarkProfile(variants: ModelVariant[]) {
-  const profiles = variants.filter(model => model.benchmarkProfile);
-  if (!profiles.length) return null;
+  const profiles = variants.filter(model => /^high(?:\b|$)/i.test(model.benchmarkProfile?.effort ?? ""));
+  if (!profiles.length) {
+    for (const model of variants) {
+      const entry = Object.entries(highEffortResults).find(([id]) => id === model.modelId);
+      if (entry) return modelVariantSchema.shape.benchmarkProfile.parse(entry[1]) ?? null;
+    }
+    return null;
+  }
   const codingDefaultLabel = codingDefault(variants);
   const preferred = profiles.find(model => codingDefaultLabel && model.benchmarkProfile?.effort.toLocaleLowerCase("en").startsWith(codingDefaultLabel.toLocaleLowerCase("en")));
   return (preferred ?? profiles[0]).benchmarkProfile ?? null;
@@ -98,3 +104,5 @@ export function primaryGuidance(model: ModelVariant): { category: string; guidan
 export function benchmarkValue(profile: ModelBenchmarkProfile | null, metric: BenchmarkMetricId) {
   return profile?.metrics[metric] ?? null;
 }
+import highEffortResults from "../content/high-effort-benchmarks.json";
+import { modelVariantSchema } from "./catalog-schema";
