@@ -1,9 +1,49 @@
 {
   "schemaVersion": "1.0",
-  "revision": "2026-11-24T23-26-46-333Z-dc3ccf43",
-  "generatedAt": "2026-11-24T23:26:46.333Z",
+  "revision": "2026-11-25T09-27-20-086Z-7cff5be7",
+  "generatedAt": "2026-11-25T09:27:20.086Z",
   "models": [
     {
+      "observations": [
+        {
+          "tasks": [
+            "analysis",
+            "writing",
+            "debugging"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI recommends Terra for visual evidence such as screenshots and charts, focused fixes that can be verified, and short summaries.",
+          "scope": "Work and Codex guidance. Medium is the example effort for desktop navigation and focused fixes.",
+          "label": "ChatGPT Learn model selection",
+          "url": "https://learn.chatgpt.com/docs/model-selection",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "analysis",
+            "research"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI reports that Terra improved on its predecessor in chart and image reasoning and in multistep desktop tasks.",
+          "scope": "Provider-reported results from MMMU-Pro and OSWorld 2.1. The charts compare Terra at multiple efforts with earlier models.",
+          "label": "OpenAI GPT-6.1 Terra launch evaluation",
+          "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "research",
+            "analysis",
+            "coding"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "Terra was faster than Astra at Low on the Artificial Analysis suite, while Astra scored higher at Max on the composite index.",
+          "scope": "Artificial Analysis suite using API runs. The timing and composite scores reflect the tested task mix and effort settings.",
+          "label": "Artificial Analysis Terra and Astra comparison",
+          "url": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-astra-vs-gpt-6-1-terra",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "terra-low",
       "name": "GPT-6.1 Terra",
       "developer": "OpenAI",
@@ -86,6 +126,46 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "analysis",
+            "writing",
+            "debugging"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI recommends Terra for visual evidence such as screenshots and charts, focused fixes that can be verified, and short summaries.",
+          "scope": "Work and Codex guidance. Medium is the example effort for desktop navigation and focused fixes.",
+          "label": "ChatGPT Learn model selection",
+          "url": "https://learn.chatgpt.com/docs/model-selection",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "analysis",
+            "research"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI reports that Terra improved on its predecessor in chart and image reasoning and in multistep desktop tasks.",
+          "scope": "Provider-reported results from MMMU-Pro and OSWorld 2.1. The charts compare Terra at multiple efforts with earlier models.",
+          "label": "OpenAI GPT-6.1 Terra launch evaluation",
+          "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "research",
+            "analysis",
+            "coding"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "Terra was faster than Astra at Low on the Artificial Analysis suite, while Astra scored higher at Max on the composite index.",
+          "scope": "Artificial Analysis suite using API runs. The timing and composite scores reflect the tested task mix and effort settings.",
+          "label": "Artificial Analysis Terra and Astra comparison",
+          "url": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-astra-vs-gpt-6-1-terra",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "terra-medium",
       "name": "GPT-6.1 Terra",
       "developer": "OpenAI",
@@ -181,6 +261,59 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "writing",
+            "research"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI recommends Sol for everyday work in Work and Codex, including scoped code changes, draft documents, and workflows across apps.",
+          "scope": "Work and Codex guidance. OpenAI suggests Medium for draft documents or ordinary code changes and Extra high for workflows with several rounds of testing and revision.",
+          "label": "ChatGPT Learn model selection",
+          "url": "https://learn.chatgpt.com/docs/model-selection",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing"
+          ],
+          "kind": "Practitioner report",
+          "summary": "Sol matched Astra on the scoped support cases and cost about a quarter as much per run.",
+          "scope": "19 runs per model at medium effort through the Responses API. Tests included refund explanations, missing lookups, and questions about company facts.",
+          "label": "eesel AI support workflow test",
+          "url": "https://www.eesel.ai/blog/gpt-6-2-astra-review",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "Sol scored three points below GPT-6.1 Sol on the Artificial Analysis Coding Agent Index.",
+          "scope": "Codex harness at max effort. This measures the tested coding tasks under those conditions.",
+          "label": "Artificial Analysis GPT-6.2 evaluation",
+          "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "research",
+            "analysis"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI found that both GPT-6.2 models more often omitted known obstacles in reports about their work. The Codex developer prompt substantially reduced omissions.",
+          "scope": "Model-only evaluations compared with runs using the Codex developer prompt. Results depend on the surrounding instructions.",
+          "label": "OpenAI GPT-6.2 system card",
+          "url": "https://deploymentsafety.openai.com/gpt-6-2-astra-sol",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "sol-medium",
       "name": "GPT-6.2 Sol",
       "developer": "OpenAI",
@@ -282,6 +415,57 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Provider guidance",
+          "summary": "At low or medium effort, Sonnet can check in before finishing a multipart task. At higher effort or with an open-ended request, it can make extra changes. Define what counts as done and state which adjacent work is in scope.",
+          "scope": "Anthropic’s observations from agentic coding with Claude Sonnet 5.5. Behavior varies with the task and effort.",
+          "label": "Anthropic’s Sonnet 5.5 prompting guide",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5#steer-initiative-and-scope",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "research",
+            "networking",
+            "analysis"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Sonnet can answer from memory when a search would catch changes to requirements, permissions, or prices. Ask it to verify changing details and cite the source it checked.",
+          "scope": "Anthropic’s observation in chat and knowledge work. The workflow must give the model access to a search or retrieval tool.",
+          "label": "Anthropic’s guidance on search and knowledge work",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5#tool-use-in-chat-and-knowledge-work",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Anthropic describes Sonnet as a fit for scoped bug fixes and quick iterations. Give it a concrete failing example and a test that defines a successful patch.",
+          "scope": "Anthropic reports improved medium-effort terminal performance against Sonnet 5. This supports a trial on a scoped change. It does not establish a win over another provider on your repository.",
+          "label": "Anthropic · Sonnet 5.5 launch evaluation",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Practitioner report",
+          "summary": "CodeRabbit’s review pipeline caught 6 of 13 hard known bugs with Sonnet 5.5, compared with 4 for Sonnet 5. About 41% of its comments were actionable, so reviewers still had to filter the feedback.",
+          "scope": "A commercial code-review team’s own September 2026 test on 13 selected known-bug cases. Results depend on its review pipeline and case selection.",
+          "label": "CodeRabbit’s Sonnet 5.5 code review tests",
+          "url": "https://www.coderabbit.ai/blog/sonnet-5-5-model-review",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "sonnet-medium",
       "name": "Claude Sonnet 5.5",
       "developer": "Anthropic",
@@ -345,7 +529,8 @@
           "bestFor": "Scoped implementation in an existing codebase.",
           "example": "Add input validation and tests to an existing inventory script.",
           "limitation": "Needs source material; verify commands and technical claims before use.",
-          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts.",
+          "evidenceUrl": "https://www.anthropic.com/claude-sonnet-5-5"
         },
         "debugging": {
           "bestFor": "Debugging with a reproducer, logs, and competing explanations.",
@@ -383,6 +568,57 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Provider guidance",
+          "summary": "At low or medium effort, Sonnet can check in before finishing a multipart task. At higher effort or with an open-ended request, it can make extra changes. Define what counts as done and state which adjacent work is in scope.",
+          "scope": "Anthropic’s observations from agentic coding with Claude Sonnet 5.5. Behavior varies with the task and effort.",
+          "label": "Anthropic’s Sonnet 5.5 prompting guide",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5#steer-initiative-and-scope",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "research",
+            "networking",
+            "analysis"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Sonnet can answer from memory when a search would catch changes to requirements, permissions, or prices. Ask it to verify changing details and cite the source it checked.",
+          "scope": "Anthropic’s observation in chat and knowledge work. The workflow must give the model access to a search or retrieval tool.",
+          "label": "Anthropic’s guidance on search and knowledge work",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5#tool-use-in-chat-and-knowledge-work",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Anthropic describes Sonnet as a fit for scoped bug fixes and quick iterations. Give it a concrete failing example and a test that defines a successful patch.",
+          "scope": "Anthropic reports improved medium-effort terminal performance against Sonnet 5. This supports a trial on a scoped change. It does not establish a win over another provider on your repository.",
+          "label": "Anthropic · Sonnet 5.5 launch evaluation",
+          "url": "https://www.anthropic.com/claude-sonnet-5-5",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Practitioner report",
+          "summary": "CodeRabbit’s review pipeline caught 6 of 13 hard known bugs with Sonnet 5.5, compared with 4 for Sonnet 5. About 41% of its comments were actionable, so reviewers still had to filter the feedback.",
+          "scope": "A commercial code-review team’s own September 2026 test on 13 selected known-bug cases. Results depend on its review pipeline and case selection.",
+          "label": "CodeRabbit’s Sonnet 5.5 code review tests",
+          "url": "https://www.coderabbit.ai/blog/sonnet-5-5-model-review",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "sonnet-high",
       "name": "Claude Sonnet 5.5",
       "developer": "Anthropic",
@@ -479,6 +715,85 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "presentations",
+            "analysis",
+            "research"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI reports stronger template matching for decks and improved results on complex document and workbook assignments.",
+          "scope": "Provider evaluations and examples. Template fidelity depends on receiving the original file or a reference screenshot.",
+          "label": "OpenAI GPT-6.2 launch evaluation",
+          "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing",
+            "research",
+            "coding",
+            "debugging"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Astra tends to write more concisely and may pause for confirmation when intent is unclear. Specify the detail readers need and which decisions it can make while completing longer tasks.",
+          "scope": "OpenAI migration guidance for the Responses API based on observed behavior.",
+          "label": "OpenAI GPT-6.2 prompting guide",
+          "url": "https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing",
+            "coding",
+            "debugging"
+          ],
+          "kind": "Practitioner report",
+          "summary": "Early reviewers described explanations that compressed too much context and long builds that stopped before the work was complete.",
+          "scope": "MindStudio summarizes several early reviewers. Their experiences span different tasks and setups.",
+          "label": "MindStudio early tester roundup",
+          "url": "https://www.mindstudio.ai/blog/gpt-6-2-astra-early-reviews",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing"
+          ],
+          "kind": "Practitioner report",
+          "summary": "Astra produced a shorter help article while covering the supplied policies in the reviewer’s small support test.",
+          "scope": "Responses API at medium effort. The article length comparison averaged two runs per model and covered short support writing.",
+          "label": "eesel AI support workflow test",
+          "url": "https://www.eesel.ai/blog/gpt-6-2-astra-review",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "Astra matched GPT-6 Astra on the Artificial Analysis Coding Agent Index.",
+          "scope": "Codex harness at max effort. The result is specific to the tested coding tasks.",
+          "label": "Artificial Analysis GPT-6.2 evaluation",
+          "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "research",
+            "analysis"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI found that both GPT-6.2 models more often omitted known obstacles in reports about their work. The Codex developer prompt substantially reduced omissions.",
+          "scope": "Model-only evaluations compared with runs using the Codex developer prompt. Results depend on the surrounding instructions.",
+          "label": "OpenAI GPT-6.2 system card",
+          "url": "https://deploymentsafety.openai.com/gpt-6-2-astra-sol",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "astra-medium",
       "name": "GPT-6.2 Astra",
       "developer": "OpenAI",
@@ -506,6 +821,13 @@
         "note": "Standard OpenAI API USD per million tokens, requests with at most 272K input tokens. Above 272K, input/cache rates double and output is 1.5x for the whole request. Cache reads only; writes, tool charges, retries, faster tiers and regional premiums excluded."
       },
       "guidance": {
+        "presentations": {
+          "bestFor": "Matching an existing presentation template across a substantial deck.",
+          "example": "Give Astra a reference deck and checked figures, then ask for an editable quarterly review in the same layout.",
+          "limitation": "OpenAI evaluated template matching. Inspect slide layouts and verify every figure in the exported file.",
+          "stepUp": "Use a shorter outline workflow when the source deck or slide tools are unavailable.",
+          "evidenceUrl": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+        },
         "writing": {
           "bestFor": "Long decision documents that must explain uncertainty.",
           "example": "Prepare an architecture decision record with explicit trade-offs.",
@@ -563,6 +885,35 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "analysis",
+            "coding",
+            "debugging",
+            "writing"
+          ],
+          "kind": "Provider guidance",
+          "summary": "The original checkpoint’s chat template enables thinking by default. Use the template’s thinking switch when comparing short routine jobs with harder problems. Qwen warns that greedy decoding in thinking mode can cause repeated output.",
+          "scope": "Qwen’s original hybrid Qwen3-30B-A3B checkpoint. The July 2507 Thinking checkpoint and some serving templates have different controls.",
+          "label": "Qwen’s original Qwen3-30B-A3B model card",
+          "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B#switching-between-thinking-and-non-thinking-mode",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing",
+            "analysis",
+            "coding"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "In Artificial Analysis’s hosted tests of the April 2025 checkpoint, reasoning mode took substantially longer to show the first answer token than non-reasoning mode.",
+          "scope": "Hosted-provider latency medians for the original release. Serving hardware, quantization, and prompt mix can shift the figures. Test both modes on your own local setup.",
+          "label": "Artificial Analysis’s original Qwen3 30B A3B comparison",
+          "url": "https://artificialanalysis.ai/models/qwen3-30b-a3b-instruct",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "qwen-nonthinking",
       "name": "Qwen3-30B-A3B",
       "developer": "Qwen",
@@ -636,6 +987,35 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "analysis",
+            "coding",
+            "debugging",
+            "writing"
+          ],
+          "kind": "Provider guidance",
+          "summary": "The original checkpoint’s chat template enables thinking by default. Use the template’s thinking switch when comparing short routine jobs with harder problems. Qwen warns that greedy decoding in thinking mode can cause repeated output.",
+          "scope": "Qwen’s original hybrid Qwen3-30B-A3B checkpoint. The July 2507 Thinking checkpoint and some serving templates have different controls.",
+          "label": "Qwen’s original Qwen3-30B-A3B model card",
+          "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B#switching-between-thinking-and-non-thinking-mode",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing",
+            "analysis",
+            "coding"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "In Artificial Analysis’s hosted tests of the April 2025 checkpoint, reasoning mode took substantially longer to show the first answer token than non-reasoning mode.",
+          "scope": "Hosted-provider latency medians for the original release. Serving hardware, quantization, and prompt mix can shift the figures. Test both modes on your own local setup.",
+          "label": "Artificial Analysis’s original Qwen3 30B A3B comparison",
+          "url": "https://artificialanalysis.ai/models/qwen3-30b-a3b-instruct",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "qwen-thinking",
       "name": "Qwen3-30B-A3B",
       "developer": "Qwen",
@@ -721,6 +1101,59 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "writing",
+            "research"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI recommends Sol for everyday work in Work and Codex, including scoped code changes, draft documents, and workflows across apps.",
+          "scope": "Work and Codex guidance. OpenAI suggests Medium for draft documents or ordinary code changes and Extra high for workflows with several rounds of testing and revision.",
+          "label": "ChatGPT Learn model selection",
+          "url": "https://learn.chatgpt.com/docs/model-selection",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing"
+          ],
+          "kind": "Practitioner report",
+          "summary": "Sol matched Astra on the scoped support cases and cost about a quarter as much per run.",
+          "scope": "19 runs per model at medium effort through the Responses API. Tests included refund explanations, missing lookups, and questions about company facts.",
+          "label": "eesel AI support workflow test",
+          "url": "https://www.eesel.ai/blog/gpt-6-2-astra-review",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "Sol scored three points below GPT-6.1 Sol on the Artificial Analysis Coding Agent Index.",
+          "scope": "Codex harness at max effort. This measures the tested coding tasks under those conditions.",
+          "label": "Artificial Analysis GPT-6.2 evaluation",
+          "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "research",
+            "analysis"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI found that both GPT-6.2 models more often omitted known obstacles in reports about their work. The Codex developer prompt substantially reduced omissions.",
+          "scope": "Model-only evaluations compared with runs using the Codex developer prompt. Results depend on the surrounding instructions.",
+          "label": "OpenAI GPT-6.2 system card",
+          "url": "https://deploymentsafety.openai.com/gpt-6-2-astra-sol",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "sol-high",
       "name": "GPT-6.2 Sol",
       "developer": "OpenAI",
@@ -798,6 +1231,21 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "analysis",
+            "research"
+          ],
+          "kind": "Provider guidance",
+          "summary": "The dated May 17 Max endpoint accepts text and always uses reasoning. For a workflow with charts or screenshots, supply the extracted values or verify a different endpoint’s image support first.",
+          "scope": "Alibaba Cloud Model Studio’s May 17 snapshot. The rolling alias and June 8 vision-capable snapshot are separate entries with different capabilities.",
+          "label": "Alibaba Cloud Model Studio’s Qwen3.7 Max snapshots",
+          "url": "https://www.alibabacloud.com/help/en/model-studio/qwen3-7-max",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "qwen-hosted-thinking",
       "name": "Qwen3.7 Max · 2026-05-17",
       "developer": "Qwen",
@@ -890,6 +1338,45 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "research",
+            "analysis"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Treating earlier answers as settled reduced follow-up thinking but also reduced self-correction in Anthropic’s tests. Leave room to revisit earlier conclusions when new evidence arrives.",
+          "scope": "Anthropic’s tests at high effort used specific instructions about earlier answers. The effect may vary with other prompts.",
+          "label": "Anthropic’s Fable 5.2 guidance on earlier prompts",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2#review-prompts-and-harnesses-designed-for-earlier-models",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing",
+            "presentations",
+            "coding"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Fable follows hard constraints closely. Anthropic found that strict sentence limits can make prose choppy, while outdated instructions can lead agents to ask for unnecessary approvals.",
+          "scope": "Provider testing and early observations. Approval friction was observed mainly in multiagent workflows.",
+          "label": "Anthropic’s Fable 5.2 prompting guide",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "research",
+            "analysis"
+          ],
+          "kind": "Practitioner report",
+          "summary": "A Balyasny Asset Management researcher reported that Fable 5.2 traced an answer to the relevant sources, flagged a potentially misleading premise, and kept its conclusions within the evidence.",
+          "scope": "One investment-research example selected for Anthropic’s launch announcement.",
+          "label": "Balyasny’s early experience in Anthropic’s Fable 5.2 announcement",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "claude-fable-5-2",
       "name": "Claude Fable 5.2",
       "developer": "Anthropic",
@@ -974,7 +1461,8 @@
           "example": "Compare migration requirements across vendor guides and build a decision log linked to the original documents.",
           "limitation": "Open the cited documents to verify claims, dates, and compatibility requirements.",
           "stepUp": "Start with Opus 5.5, then use Fable to revisit unresolved tradeoffs.",
-          "preferred": true
+          "preferred": true,
+          "evidenceUrl": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
         },
         "coding": {
           "bestFor": "Planning complex migrations or resolving conflicting requirements across a codebase.",
@@ -1018,6 +1506,46 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "research"
+          ],
+          "kind": "Provider guidance",
+          "summary": "An Opus progress update can end an API turn while work is still open. Use an explicit completion condition and check unfinished items before the workflow treats the turn as final.",
+          "scope": "Anthropic’s observation on unattended multipart API tasks. An end-of-turn signal alone does not establish task completion.",
+          "label": "Anthropic’s guidance on unattended Opus 5.5 runs",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#unattended-agentic-runs",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "research",
+            "coding"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "METR found a modest improvement over Fable 5.1 on difficult AI research tasks and observed continued weaknesses in open-ended reasoning and research judgment.",
+          "scope": "Predeployment assessment with five tasks. Anthropic reviewed and edited the summary, and METR signed off on the final text.",
+          "label": "METR’s predeployment evaluation of Opus 5.5",
+          "url": "https://metr.org/blog/2026-09-22-claude-opus-5-5/",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing",
+            "marketing",
+            "presentations"
+          ],
+          "kind": "Practitioner report",
+          "summary": "A Ramp engineer reported that Opus 5.5 followed the team’s writing rules and produced a design specification that needed very little editing.",
+          "scope": "An early customer account selected for Anthropic’s release announcement. The example concerns workplace writing.",
+          "label": "Ramp’s early experience in Anthropic’s Opus 5.5 announcement",
+          "url": "https://www.anthropic.com/claude-opus-5-5",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "claude-opus-5-5",
       "name": "Claude Opus 5.5",
       "developer": "Anthropic",
@@ -1108,7 +1636,8 @@
           "example": "Draft a migration handover with the agreed scope, dependencies, and sign-off criteria.",
           "limitation": "Check each commitment against the signed scope and the current plan.",
           "stepUp": "Use a larger effort budget when the source documents conflict or leave gaps.",
-          "preferred": true
+          "preferred": true,
+          "evidenceUrl": "https://www.anthropic.com/claude-opus-5-5"
         },
         "research": {
           "bestFor": "Comparing documented options and drafting a practical recommendation.",
@@ -1158,6 +1687,30 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Google documents up to 14 references, with up to 10 object references and four character references. The model also supports 1K, 2K, and 4K output.",
+          "scope": "Gemini API image generation and reference inputs.",
+          "label": "Google Gemini image generation guide",
+          "url": "https://aistudio.google.com/docs/image-generation",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Practitioner report",
+          "summary": "Nano Banana 2.1 reproduced the requested wording in all nine images in ppl.studio’s OCR check. Nano Banana 2 reproduced it in seven.",
+          "scope": "Three English prompts, three attempts each, and two OCR passes in a practitioner’s own workflow.",
+          "label": "ppl.studio Nano Banana comparison",
+          "url": "https://ppl.studio/blog/nano-banana-2-1-vs-nano-banana-2",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "nano-banana-21",
       "name": "Nano Banana 2.1",
       "developer": "Google",
@@ -1224,6 +1777,30 @@
       "reviewedAt": "2026-11-25"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Adobe’s Image5 API uses the same payload for creation and editing. It generates from text when the reference list is empty and makes a prompt-driven edit when it contains images.",
+          "scope": "Firefly Services Generate Image API using `referenceBlobs`.",
+          "label": "Adobe Image5 feature guide",
+          "url": "https://developer.adobe.com/firefly-services/docs/firefly-api/guides/how-tos/cm-generate-image/feature-guide",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Practitioner report",
+          "summary": "Arcnel reported more than ten failed attempts to get a usable left-side view of a character with Image5 while preparing references for a 3D model.",
+          "scope": "One character turnaround in the Firefly web app in August 2026.",
+          "label": "Arcnel character turnaround test",
+          "url": "https://note.com/arcnel/n/n24bd7212c724",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "firefly-image5",
       "name": "Adobe Firefly Image5",
       "developer": "Adobe",
@@ -1287,6 +1864,30 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI recommends lower complexity for focused edits such as replacing a background. Higher complexity can help with dense text or layout, with possible latency and unwanted changes.",
+          "scope": "GPT Image 2.6 Sunburst through the Image API. Complexity controls planning, and quality controls rendering.",
+          "label": "OpenAI image generation guide",
+          "url": "https://developers.openai.com/api/docs/guides/image-generation",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Practitioner report",
+          "summary": "Instant Studio reported that Sunburst preserved the product through five successive changes to a café scene, each applied to the previous output.",
+          "scope": "One product packshot and one five-edit sequence using the default high complexity setting.",
+          "label": "Instant Studio five-round editing test",
+          "url": "https://www.instantstudio.ai/blog/judge-an-image-model-by-its-fifth-round-of-changes/",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "gpt-image-sunburst-26",
       "name": "GPT Image 2.6 Sunburst",
       "developer": "OpenAI",
@@ -1352,6 +1953,30 @@
       "reviewedAt": "2026-11-25"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Setting `magic_prompt` to `off` preserves the wording when a natural-language prompt is structured for generation. The API also accepts a mask for localized edits to the first source image.",
+          "scope": "Ideogram 4.6 generation API. Generated lettering still needs proofreading.",
+          "label": "Ideogram 4.6 generation API",
+          "url": "https://developer.ideogram.ai/api-reference/images/generate/ideogram-4-6",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "Ideogram 4.6 Precise Edit at High Quality placed first on Rapidata’s November 25 multi-step editing leaderboard. Its 95% interval overlaps that of Ideogram 4.5.",
+          "scope": "Pairwise human judgments of identity preservation over a fixed set of sequential edits. This configuration differs from the medium-quality generation preset.",
+          "label": "Rapidata Multi-Step Image Editing benchmark",
+          "url": "https://www.benchmark.ai/multi-step-image-edit",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "ideogram-46",
       "name": "Ideogram 4.6",
       "developer": "Ideogram",
@@ -1418,6 +2043,30 @@
       "reviewedAt": "2026-11-25"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Provider guidance",
+          "summary": "QwenCloud describes support for rendering text in 12 languages and for composing dense layouts such as menus and storyboards. Check the output with a reader of each language before reusing rendered copy.",
+          "scope": "Hosted QwenCloud image generation. Language coverage comes from the provider’s model page.",
+          "label": "QwenCloud model reference",
+          "url": "https://docs.qwencloud.com/models/qwen-image-3-0-pro",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "Artificial Analysis lists Qwen-Image-3.0-Pro separately from Qwen-Image-3.0 in its Text-to-Image Arena. The Pro variant had the higher estimate in the November 25 check.",
+          "scope": "AA-Image-T2I v2.1 overall human preference. This task does not measure whether localized wording is reproduced exactly.",
+          "label": "Artificial Analysis Text-to-Image Arena",
+          "url": "https://artificialanalysis.ai/embed/text-to-image-leaderboard/leaderboard/text-to-image",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "qwen-image-pro-30",
       "name": "Qwen Image 3.0 Pro",
       "developer": "Qwen",
@@ -1481,6 +2130,30 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Black Forest Labs documents a multi-reference workflow and optional bounding boxes for layout and edits. With automatic framing, the requested ratio takes precedence, followed by the first reference’s framing when present.",
+          "scope": "FLUX 3 Image API. Bounding boxes are prompt inputs, and exact dimensions are available separately.",
+          "label": "Black Forest Labs FLUX 3 Image API",
+          "url": "https://docs.bfl.ml/api-reference/utility/generate-an-image-with-flux-3",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Practitioner report",
+          "summary": "When swapping a paper cup for a mug in one café photo, Fuser measured changes in 0.4% of pixels outside the edit area with FLUX 3 Image and 7.7% with GPT Image 2.5 Flare.",
+          "scope": "One local edit in Fuser, using its pixel-difference threshold and the specific configurations in the report.",
+          "label": "Fuser typography and editing test",
+          "url": "https://fuser.studio/articles/flux-3-image-vs-gpt-image",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "flux-image-3",
       "name": "FLUX 3 Image",
       "developer": "Black Forest Labs",
@@ -1539,6 +2212,30 @@
       "reviewedAt": "2026-11-24"
     },
     {
+      "observations": [
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Qwen’s Diffusers example uses 50 inference steps and a true guidance scale of 4.0. It lists 1664 × 928 pixels for wide output and 1328 × 1328 pixels for square output.",
+          "scope": "Reference settings for local text-to-image generation using CUDA.",
+          "label": "Qwen-Image-2512 model card",
+          "url": "https://huggingface.co/Qwen/Qwen-Image-2512",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "images"
+          ],
+          "kind": "Practitioner report",
+          "summary": "Two 50-step, 1328 × 1328 generations took about 78 seconds each in an Igor’sLAB workstation test. The reported GPU memory use was around 31,000 MiB in both runs.",
+          "scope": "One RTX 5090 Windows workstation using ComfyUI. Timing includes text encoding and decoding.",
+          "label": "Igor’sLAB workstation test report",
+          "url": "https://igorslab.de/installer/KI-Pruefbericht_EN.html",
+          "checkedAt": "2026-11-25"
+        }
+      ],
       "id": "qwen-image-2512-local",
       "name": "Qwen-Image-2512",
       "developer": "Qwen",
@@ -1595,6 +2292,252 @@
         }
       ],
       "reviewedAt": "2026-11-24"
+    },
+    {
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "analysis",
+            "research"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI reports that 6.1 Sol matched GPT-6 Astra on DeepSWE 1.1 and approached it on questions about complex PDF documents at lower estimated cost.",
+          "scope": "Provider-reported DeepSWE 1.1 and GDP.pdf results. Cost per task is specific to those runs.",
+          "label": "OpenAI GPT-6.1 Sol launch evaluation",
+          "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "GPT-6.1 Sol scored three points above GPT-6.2 Sol on the Artificial Analysis Coding Agent Index.",
+          "scope": "Codex harness at max effort. Both models were evaluated on the same index.",
+          "label": "Artificial Analysis GPT-6.2 evaluation",
+          "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+          "checkedAt": "2026-11-25"
+        }
+      ],
+      "id": "sol-6-1-medium",
+      "name": "GPT-6.1 Sol",
+      "developer": "OpenAI",
+      "provider": "OpenAI Responses API",
+      "modelId": "gpt-6.1-sol",
+      "tier": "balanced",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "Medium",
+        "parameters": {
+          "reasoning.effort": "medium"
+        },
+        "note": "Provider-supported API effort for comparison with current models. Account access depends on the provider."
+      },
+      "description": "Earlier Sol available through the Responses API. Compare it with GPT-6.2 Sol for coding and document workflows already evaluated on this model.",
+      "toolUrl": "https://platform.openai.com/",
+      "price": {
+        "input": 2,
+        "output": 10,
+        "cachedInput": 0.1,
+        "currency": "USD",
+        "verifiedAt": "2026-11-25",
+        "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+        "note": "Standard OpenAI API rates per million tokens for requests up to 272K input tokens. Above 272K, input and cache rates double and output is 1.5x for the whole request. Cache reads only. Tool charges, cache writes, faster tiers and regional premiums are excluded."
+      },
+      "limits": {
+        "contextTokens": 1050000,
+        "maxOutputTokens": 128000
+      },
+      "guidance": {},
+      "sources": [
+        {
+          "label": "Official API settings, limits and prices",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+          "kind": "provider",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "label": "OpenAI launch evaluation",
+          "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+          "kind": "provider",
+          "checkedAt": "2026-11-25"
+        }
+      ],
+      "reviewedAt": "2026-11-25"
+    },
+    {
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "research",
+            "analysis",
+            "presentations"
+          ],
+          "kind": "Provider guidance",
+          "summary": "OpenAI documents GPT-6 Astra for complex reasoning, software work, research, and document creation. It gives teams an earlier baseline for comparison with GPT-6.2 Astra.",
+          "scope": "The API model page verifies supported settings. GPT-6 Astra is the earlier release with its own prices and tool configuration.",
+          "label": "OpenAI GPT-6 Astra model documentation",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "debugging"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "GPT-6 Astra matched its successor on the Artificial Analysis Coding Agent Index.",
+          "scope": "Codex harness at max effort. The result is specific to the tested coding tasks.",
+          "label": "Artificial Analysis GPT-6.2 evaluation",
+          "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+          "checkedAt": "2026-11-25"
+        }
+      ],
+      "id": "astra-6-medium",
+      "name": "GPT-6 Astra",
+      "developer": "OpenAI",
+      "provider": "OpenAI Responses API",
+      "modelId": "gpt-6-astra",
+      "tier": "deep",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "Medium",
+        "parameters": {
+          "reasoning.effort": "medium"
+        },
+        "note": "Provider-supported API effort for comparison with current models. Account access depends on the provider."
+      },
+      "description": "Earlier Astra available through the Responses API. Compare it with GPT-6.2 Astra when testing changes to complex coding, research, or document workflows.",
+      "toolUrl": "https://platform.openai.com/",
+      "price": {
+        "input": 10,
+        "output": 50,
+        "cachedInput": 1,
+        "currency": "USD",
+        "verifiedAt": "2026-11-25",
+        "sourceUrl": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+        "note": "Standard OpenAI API rates per million tokens for requests up to 272K input tokens. Above 272K, input and cache rates double and output is 1.5x for the whole request. Cache reads only. Tool charges, cache writes, faster tiers and regional premiums are excluded."
+      },
+      "limits": {
+        "contextTokens": 1050000,
+        "maxOutputTokens": 128000
+      },
+      "guidance": {},
+      "sources": [
+        {
+          "label": "Official API settings, limits and prices",
+          "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+          "kind": "provider",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "label": "OpenAI launch evaluation",
+          "url": "https://openai.com/index/gpt-6-astra/",
+          "kind": "provider",
+          "checkedAt": "2026-11-25"
+        }
+      ],
+      "reviewedAt": "2026-11-25"
+    },
+    {
+      "observations": [
+        {
+          "tasks": [
+            "research",
+            "networking"
+          ],
+          "kind": "Provider guidance",
+          "summary": "At low effort, Fable 5.1 relies on memory more often than Fable 5, even with retrieval available. Ask it to verify exact names and current details, or raise effort for the affected turn.",
+          "scope": "Anthropic’s comparison with Fable 5 in a setup with search or retrieval.",
+          "label": "Anthropic’s Fable 5.1 guidance on search",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1#search-triggering-at-low-effort",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "writing",
+            "presentations"
+          ],
+          "kind": "Provider guidance",
+          "summary": "At xhigh and max effort, Fable 5.1 may draft much of a long deliverable while thinking and then write it again in the reply. This can delay the response or exhaust the output budget.",
+          "scope": "Anthropic’s observation for long single-request deliverables, such as a full document rewrite.",
+          "label": "Anthropic’s Fable 5.1 guidance on long outputs",
+          "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1#leave-room-for-long-outputs-at-xhigh-and-max-effort",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "tasks": [
+            "coding",
+            "research",
+            "debugging"
+          ],
+          "kind": "Independent evaluation",
+          "summary": "Across independent runs of the same task, METR observed Fable 5.1 sometimes avoid and sometimes exploit a shortcut that improved the benchmark score. When evaluating autonomous work, inspect how it reached the result and repeat the test.",
+          "scope": "Examples from controlled game and software tasks in METR’s November 2026 AI R&D report. The examples show variability across runs and do not estimate its frequency in workplace tasks.",
+          "label": "METR’s November 2026 capability evaluation",
+          "url": "https://metr.org/blog/2026-11-20-q4-2026-capability-update/",
+          "checkedAt": "2026-11-25"
+        }
+      ],
+      "id": "claude-fable-5-1",
+      "name": "Claude Fable 5.1",
+      "developer": "Anthropic",
+      "provider": "Anthropic Claude API",
+      "modelId": "claude-fable-5-1",
+      "tier": "deep",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "High · adaptive thinking",
+        "parameters": {
+          "output_config.effort": "high"
+        },
+        "note": "Adaptive thinking is always on. High is the Claude API default."
+      },
+      "description": "Earlier Fable release for demanding reasoning and long tasks. Anthropic lists it under legacy models and marks the API endpoint active with retirement no sooner than September 1, 2027.",
+      "toolUrl": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+      "price": {
+        "input": 10,
+        "output": 50,
+        "cachedInput": 0.25,
+        "currency": "USD",
+        "verifiedAt": "2026-11-25",
+        "sourceUrl": "https://platform.claude.com/docs/en/about-claude/pricing#model-pricing",
+        "note": "Standard first-party Claude API rates per million tokens. Cache writes, data residency, and server tools can change the bill. Output includes billed thinking tokens."
+      },
+      "limits": {
+        "contextTokens": 1000000,
+        "maxOutputTokens": 128000
+      },
+      "guidance": {},
+      "sources": [
+        {
+          "label": "Anthropic’s Fable 5.1 model documentation",
+          "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+          "kind": "provider",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "label": "Anthropic’s API model lifecycle",
+          "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+          "kind": "provider",
+          "checkedAt": "2026-11-25"
+        },
+        {
+          "label": "Anthropic’s Claude API pricing",
+          "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+          "kind": "provider",
+          "checkedAt": "2026-11-25"
+        }
+      ],
+      "reviewedAt": "2026-11-25"
     }
   ],
   "benchmarks": [],

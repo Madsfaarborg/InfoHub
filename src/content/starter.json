@@ -261,7 +261,8 @@
           "bestFor": "Scoped implementation in an existing codebase.",
           "example": "Add input validation and tests to an existing inventory script.",
           "limitation": "Needs source material; verify commands and technical claims before use.",
-          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts."
+          "stepUp": "Step up for unresolved contradictions or repeated unsuccessful attempts.",
+          "evidenceUrl": "https://www.anthropic.com/claude-sonnet-5-5"
         },
         "debugging": {
           "bestFor": "Debugging with a reproducer, logs, and competing explanations.",

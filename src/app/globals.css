@@ -477,3 +477,7 @@ table td a { white-space: nowrap; font-size: 12px; }
 @media (prefers-contrast: more) {
   :root { --muted: #47494d; --secondary: #383a3d; --line: #85877f; }
 }
+
+.behavior-notes { margin-bottom: 2.5rem; }
+.behavior-notes article { margin-block: 1.25rem 1.75rem; max-width: 68ch; }
+.behavior-notes article p { margin-block: .5rem; }

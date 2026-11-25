@@ -96,7 +96,8 @@
         "example": "Compare migration requirements across vendor guides and build a decision log linked to the original documents.",
         "limitation": "Open the cited documents to verify claims, dates, and compatibility requirements.",
         "stepUp": "Start with Opus 5.5, then use Fable to revisit unresolved tradeoffs.",
-        "preferred": true
+        "preferred": true,
+        "evidenceUrl": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
       }
     },
     "sources": [
@@ -230,7 +231,8 @@
         "example": "Draft a migration handover with the agreed scope, dependencies, and sign-off criteria.",
         "limitation": "Check each commitment against the signed scope and the current plan.",
         "stepUp": "Use a larger effort budget when the source documents conflict or leave gaps.",
-        "preferred": true
+        "preferred": true,
+        "evidenceUrl": "https://www.anthropic.com/claude-opus-5-5"
       },
       "presentations": {
         "bestFor": "Structuring a decision deck from technical evidence.",

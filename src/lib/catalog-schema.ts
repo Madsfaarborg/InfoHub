@@ -16,11 +16,16 @@ const date = z.string().refine((value) => {
 }, "Use a valid ISO date or timestamp");
 const money = z.number().finite().nonnegative();
 const source = z.strictObject({ label: text, url, kind: z.enum(["provider", "benchmark", "editorial"]), checkedAt: date });
-const guidance = z.strictObject({ bestFor: text, example: text, limitation: text, stepUp: text, preferred: z.boolean().optional() });
+const guidance = z.strictObject({ bestFor: text, example: text, limitation: text, stepUp: text, preferred: z.boolean().optional(), evidenceUrl: url.optional() });
 const guidanceFields = Object.fromEntries(categoryIds.map((category) => [category, guidance.optional()])) as Record<(typeof categoryIds)[number], z.ZodOptional<typeof guidance>>;
 const imageWorkflows = z.partialRecord(z.enum(imageWorkflowIds), guidance)
   .refine(workflows => Object.keys(workflows).length > 0, "Add at least one image workflow");
 export const modelVariantSchema = z.strictObject({
+  observations: z.array(z.strictObject({
+    tasks: z.array(z.enum(categoryIds)).min(1),
+    kind: z.enum(["Provider guidance", "Independent evaluation", "Practitioner report"]),
+    summary: text, scope: text, label: text, url, checkedAt: date,
+  })).optional(),
   id, name: text, developer: text, provider: text, modelId: text,
   tier: z.enum(["everyday", "balanced", "deep"]), deployment: z.enum(["hosted", "local"]),
   availability: z.enum(["available", "setup-required", "unavailable"]),
