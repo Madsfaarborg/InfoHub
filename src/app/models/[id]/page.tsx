@@ -171,6 +171,12 @@ function EffortCard({ model, codingDefault }: { model: ModelVariant; codingDefau
         </div>
       ) : <p className="empty-evidence">This earlier configuration is retained for behavior and pricing reference.</p>}
       <div className="effort-setup">
+        {model.benchmarkProfile && model.benchmarkProfile.effort !== "High" ? (
+          <div><span>{model.benchmarkProfile.effort} benchmark results</span>
+            {Object.values(model.benchmarkProfile.metrics).map(result => <p key={result.benchmark}>{result.benchmark}: {result.score}{result.unit === "%" ? "%" : ""}</p>)}
+            <a href={model.benchmarkProfile.sourceUrl}>{model.benchmarkProfile.sourceLabel}</a>
+          </div>
+        ) : null}
         <div>
           <span>Model identifier</span>
           <code>{model.modelId}</code>

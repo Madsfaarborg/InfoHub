@@ -1,0 +1,114 @@
+{
+  "gpt-6.1-terra": {
+    "effort": "High",
+    "sourceLabel": "Artificial Analysis release comparison",
+    "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-sol-vs-gpt-6-1-terra",
+    "checkedAt": "2026-11-25",
+    "metrics": {
+      "coding": {
+        "benchmark": "FrontierCode-AA 2.0",
+        "score": 37.5,
+        "unit": "%"
+      },
+      "agentic": {
+        "benchmark": "AutomationBench-AA",
+        "score": 58.5,
+        "unit": "%"
+      },
+      "instructionFollowing": {
+        "benchmark": "GDP.pdf",
+        "score": 28,
+        "unit": "%"
+      },
+      "intelligence": {
+        "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+        "score": 43,
+        "unit": "index"
+      }
+    }
+  },
+  "gpt-6.2-astra": {
+    "effort": "High",
+    "sourceLabel": "Artificial Analysis release comparison",
+    "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-astra-vs-gpt-6-2-sol",
+    "checkedAt": "2026-11-25",
+    "metrics": {
+      "coding": {
+        "benchmark": "FrontierCode-AA 2.0",
+        "score": 47.1,
+        "unit": "%"
+      },
+      "agentic": {
+        "benchmark": "AutomationBench-AA",
+        "score": 76,
+        "unit": "%"
+      },
+      "instructionFollowing": {
+        "benchmark": "GDP.pdf",
+        "score": 28.6,
+        "unit": "%"
+      },
+      "intelligence": {
+        "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+        "score": 60,
+        "unit": "index"
+      }
+    }
+  },
+  "claude-opus-5-5": {
+    "effort": "High",
+    "sourceLabel": "Artificial Analysis release comparison",
+    "sourceUrl": "https://artificialanalysis.ai/models/comparisons/claude-sonnet-5-5-vs-claude-opus-5-5",
+    "checkedAt": "2026-11-25",
+    "metrics": {
+      "coding": {
+        "benchmark": "FrontierCode-AA 2.0",
+        "score": 35.9,
+        "unit": "%"
+      },
+      "agentic": {
+        "benchmark": "AutomationBench-AA",
+        "score": 63.2,
+        "unit": "%"
+      },
+      "instructionFollowing": {
+        "benchmark": "GDP.pdf",
+        "score": 28.8,
+        "unit": "%"
+      },
+      "intelligence": {
+        "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+        "score": 52,
+        "unit": "index"
+      }
+    }
+  },
+  "gpt-6.1-sol": {
+    "effort": "High",
+    "sourceLabel": "Artificial Analysis release comparison",
+    "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-1-sol-high-vs-gpt-6-sol-high",
+    "checkedAt": "2026-11-25",
+    "metrics": {
+      "coding": {
+        "benchmark": "FrontierCode-AA 2.0",
+        "score": 36.7,
+        "unit": "%"
+      },
+      "agentic": {
+        "benchmark": "AutomationBench-AA",
+        "score": 64.5,
+        "unit": "%"
+      },
+      "instructionFollowing": {
+        "benchmark": "GDP.pdf",
+        "score": 32,
+        "unit": "%"
+      },
+      "intelligence": {
+        "benchmark": "Artificial Analysis Intelligence Index v5.0.1",
+        "score": 50,
+        "unit": "index"
+      }
+    }
+  }
+}

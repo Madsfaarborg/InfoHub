@@ -54,7 +54,7 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
       <div className="section-heading model-table-heading">
         <div>
           <h2 id="model-table-title">Language model comparison</h2>
-          <p>One row per model family. Benchmark cells name the exact effort used.</p>
+          <p>One row per model family. Benchmark results use High effort; unavailable results are left blank.</p>
         </div>
         <span className="small muted">{visibleRows.length} of {rows.length} models</span>
       </div>
