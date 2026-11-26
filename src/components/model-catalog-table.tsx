@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUp, Search } from "lucide-react";
 import type { BenchmarkMetricId, ModelBenchmarkProfile } from "@/lib/types";
+import { Dropdown } from "./dropdown";
 
 export interface ModelCatalogRow {
   id: string;
@@ -64,21 +65,8 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
           <Search size={16} aria-hidden="true" />
           <input type="search" value={query} onChange={event => setQuery(event.target.value)} placeholder="Search models" />
         </label>
-        <label>
-          <span className="sr-only">Filter by developer</span>
-          <select value={provider} onChange={event => setProvider(event.target.value)}>
-            <option value="all">All developers</option>
-            {providers.map(item => <option key={item} value={item}>{item}</option>)}
-          </select>
-        </label>
-        <label>
-          <span className="sr-only">Filter by coverage</span>
-          <select value={coverage} onChange={event => setCoverage(event.target.value)}>
-            <option value="all">All coverage</option>
-            <option value="benchmarked">Benchmarked models</option>
-            <option value="coding">Coding models</option>
-          </select>
-        </label>
+        <Dropdown label="Filter by developer" value={provider} onChange={setProvider} options={[{ value: "all", label: "All developers" }, ...providers.map(item => ({ value: item, label: item }))]} />
+        <Dropdown label="Filter by coverage" value={coverage} onChange={setCoverage} options={[{ value: "all", label: "All coverage" }, { value: "benchmarked", label: "Benchmarked models" }, { value: "coding", label: "Coding models" }]} />
       </div>
       {visibleRows.length ? (
         <div className="model-table-scroll">
