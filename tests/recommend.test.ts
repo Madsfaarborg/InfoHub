@@ -111,3 +111,24 @@ test("image workflows only suggest eligible image tools and bypass token pricing
     assert.ok(recommend(models, category, options).every(result => !result.model.image));
   }
 });
+
+test("interprets English and Danish task phrasing and feeds preferences into ranking", () => {
+  for (const [query, category, priority, localOnly] of [
+    ["Pods keep restarting after a rollout. I need a quick starting point.", "debugging", "speed", false],
+    ["Pods bliver ved med at genstarte. Jeg vil have en grundig fejlsøgning kun lokalt.", "debugging", "quality", true],
+    ["Skriv en mail til kunden om hændelsen", "writing", undefined, false],
+    ["Lav en præsentation med salgstal", "presentations", undefined, false],
+    ["Find mønstre i salgstallene til en lav pris", "analysis", "value", false],
+    ["Fjern baggrunden fra produktfotoet", "images", undefined, false],
+  ] as const) {
+    const intent = interpretTask(query);
+    assert.equal(intent.category, category, query);
+    assert.equal(intent.priority, priority, query);
+    assert.equal(intent.localOnly, localOnly, query);
+  }
+
+  const { priority, localOnly, complexity } = interpretTask("Tilføj en funktion. Jeg vil have en grundig gennemgang af det komplekse flow.");
+  assert.ok(priority);
+  assert.equal(recommend(models, "coding", { priority, localOnly, complexity })[0].model.id, "deep");
+  assert.equal(interpretTask("Fjern baggrunden fra produktfotoet").imageWorkflow, "edits");
+});
