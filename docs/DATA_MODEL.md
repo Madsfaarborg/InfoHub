@@ -22,6 +22,8 @@ Preserve aliases for search, but never merge distinct providers, revisions, quan
 
 Image variants use an optional `image` record with workflow-specific guidance, a draft brief, an optional USD output estimate, and a named billing basis. Their language-token rates are null. An image estimate describes a specific output size and quality or another documented basis. Older language-only bundles remain valid.
 
+Language variants can carry an optional `benchmarkProfile` for a single, explicitly named effort. It stores the source, checked date, and separate coding, agentic, instruction-following, and intelligence results in their original units. Profiles may be partial; an absent metric remains absent and must never become zero. The model directory groups variants with the same developer and model name into one family row, while keeping the tested effort visible beside every result.
+
 ### Thinking controls
 
 Store provider-specific controls as validated key/value settings plus a readable explanation. Keep “unspecified,” “unsupported,” and “unknown” distinct.

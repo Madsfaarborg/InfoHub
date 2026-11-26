@@ -8,6 +8,7 @@ import { guidanceFor, interpretImageWorkflow, interpretTask, recommend } from "@
 import type { CategoryId, ImageWorkflow, ModelVariant, Priority, TaskInterpretation } from "@/lib/types";
 import { CategoryIcon } from "./category-icon";
 import { ModelCard } from "./model-card";
+import { Dropdown } from "./dropdown";
 
 const priorityLabels: Record<Priority, string> = {
   value: "Good value",
@@ -26,7 +27,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
   useEffect(() => {
     const focusSearch = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement;
-      if (event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey && !target.closest("input, textarea, select, [contenteditable]")) {
+      if (!event.defaultPrevented && event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey && !target.closest("input, textarea, select, [contenteditable]")) {
         event.preventDefault();
         input.current?.focus();
       }
@@ -76,21 +77,28 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
       <div className="section-heading"><div><h2 id="results-heading">{selected ? selected.name : interpretation.alternatives.length ? "Which part should the model help with?" : "Choose a task category"}</h2><p>{selected ? selected.description : interpretation.alternatives.length ? "Choose the main goal to see model recommendations." : "Pick the category that best describes your task."}</p></div><span className="small muted" aria-live="polite">{selected ? results.length + (results.length === 1 ? " suggestion" : " suggestions") : ""}</span></div>
       {category ? <>
         <div className="result-controls" aria-label="Adjust task interpretation" role="group">
-          <div className="control-group"><label htmlFor="task-category">Task</label><select id="task-category" value={category} onChange={event => choose(event.target.value as CategoryId)}>{categories.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}</select></div>
+          <div className="control-group">
+            <label htmlFor="task-category">Task</label>
+            <Dropdown id="task-category" label="Task" value={category}
+              onChange={value => choose(value as CategoryId)}
+              options={categories.map(item => ({ value: item.id, label: item.name }))} />
+          </div>
           {isImage ? (
             <div className="control-group">
               <SlidersHorizontal size={16} aria-hidden="true" />
               <label htmlFor="image-workflow">Image task</label>
-              <select id="image-workflow" value={imageWorkflow} onChange={event => setInterpretation(current => ({ ...current, imageWorkflow: event.target.value as ImageWorkflow }))}>
-                {imageWorkflows.map(workflow => <option key={workflow.id} value={workflow.id}>{workflow.name}</option>)}
-              </select>
+              <Dropdown id="image-workflow" label="Image task" value={imageWorkflow} onChange={value => setInterpretation(current => ({ ...current, imageWorkflow: value as ImageWorkflow }))} options={imageWorkflows.map(workflow => ({ value: workflow.id, label: workflow.name }))} />
             </div>
           ) : <>
-            <div className="control-group"><SlidersHorizontal size={16} aria-hidden="true" /><label htmlFor="priority">Prioritize</label><select id="priority" value={priority} onChange={event => {
-              setPriority(event.target.value as Priority);
-              setInterpretation(current => ({ ...current, priority: undefined }));
-            }}>{Object.entries(priorityLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}</select></div>
-            <div className="control-group"><label htmlFor="complexity">Task scope</label><select id="complexity" value={interpretation.complexity} onChange={event => setInterpretation(current => ({ ...current, complexity: event.target.value as "routine" | "complex" }))}><option value="routine">Well-defined</option><option value="complex">Complex / uncertain</option></select></div>
+            <div className="control-group">
+              <SlidersHorizontal size={16} aria-hidden="true" />
+              <label htmlFor="priority">Prioritize</label>
+              <Dropdown id="priority" label="Prioritize" value={priority} onChange={value => {
+                setPriority(value as Priority);
+                setInterpretation(current => ({ ...current, priority: undefined }));
+              }} options={Object.entries(priorityLabels).map(([value, label]) => ({ value, label }))} />
+            </div>
+            <div className="control-group"><label htmlFor="complexity">Task scope</label><Dropdown id="complexity" label="Task scope" value={interpretation.complexity} onChange={value => setInterpretation(current => ({ ...current, complexity: value as "routine" | "complex" }))} options={[{ value: "routine", label: "Well-defined" }, { value: "complex", label: "Complex / uncertain" }]} /></div>
           </>}
           <label className="toggle-label"><input type="checkbox" checked={localOnly} onChange={event => setLocalOnly(event.target.checked)} /><span className="toggle-track" aria-hidden="true" />Local models only</label>
         </div>

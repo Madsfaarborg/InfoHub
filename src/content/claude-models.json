@@ -1,0 +1,272 @@
+[
+  {
+    "id": "claude-fable-5-2",
+    "name": "Claude Fable 5.2",
+    "developer": "Anthropic",
+    "provider": "Anthropic Claude API",
+    "modelId": "claude-fable-5-2",
+    "tier": "deep",
+    "deployment": "hosted",
+    "availability": "available",
+    "setting": {
+      "label": "High · adaptive thinking",
+      "parameters": {
+        "output_config.effort": "high"
+      },
+      "note": "Adaptive thinking is always on. High is the Claude API default. Try xhigh on a representative task before raising effort for a long run."
+    },
+    "description": "Anthropic’s premium model for open-ended engineering and demanding reasoning. Its standard input and output rates are twice those of Claude Opus 5.5, with the same cache-read rate.",
+    "toolUrl": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+    "price": {
+      "input": 8,
+      "output": 40,
+      "cachedInput": 0.2,
+      "currency": "USD",
+      "verifiedAt": "2026-11-24",
+      "sourceUrl": "https://platform.claude.com/docs/en/about-claude/pricing#model-pricing",
+      "note": "Standard first-party Claude API rates apply across the full context window. Cache writes, Fast mode, data residency, and server tools can change the bill. Output includes billed thinking tokens."
+    },
+    "limits": {
+      "contextTokens": 1000000,
+      "maxOutputTokens": 128000
+    },
+    "reportedBenchmarks": {
+      "sourceLabel": "Anthropic’s Fable 5.2 evaluation",
+      "sourceUrl": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "publishedAt": "2026-11-09",
+      "results": [
+        {
+          "name": "FrontierCode 2.0",
+          "percent": 49.1,
+          "conditions": "Xhigh effort"
+        },
+        {
+          "name": "FrontierSWE v2",
+          "percent": 69.9,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "AutomationBench",
+          "percent": 51.4,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "OSWorld 2.1 (offline set, partial)",
+          "percent": 89.3,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "AA-Briefcase v1.1 (rubric)",
+          "percent": 66.1,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "Humanity’s Last Exam (with tools)",
+          "percent": 74.2,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "Chartography (no tools)",
+          "percent": 73.4,
+          "conditions": "Highest available effort"
+        }
+      ]
+    },
+    "guidance": {
+      "coding": {
+        "bestFor": "Planning complex migrations or resolving conflicting requirements across a codebase.",
+        "example": "Map how several services share a data schema, then propose a staged migration with compatibility tests.",
+        "limitation": "Run the project’s tests and review the changes. Longer reasoning and tool loops can raise total cost.",
+        "stepUp": "Start with Opus 5.5 for well-scoped work. Try Fable when the change crosses several systems or an initial plan leaves gaps."
+      },
+      "debugging": {
+        "bestFor": "Investigating difficult failures with several plausible causes.",
+        "example": "Compare test logs and recent dependency changes to explain an intermittent failure in a data export.",
+        "limitation": "Logs can support multiple explanations. Reproduce the suspected cause before changing production code.",
+        "stepUp": "Use Fable for a second pass when an initial investigation cannot distinguish between explanations."
+      },
+      "analysis": {
+        "bestFor": "Reconciling complex evidence across long reports, charts, and spreadsheets.",
+        "example": "Trace conflicting renewal totals back to the definitions used in each report.",
+        "limitation": "Verify calculated totals against the spreadsheet and ask for the source of each disputed value.",
+        "stepUp": "Use Opus 5.5 for a single dataset. Try Fable when several sources use incompatible definitions."
+      },
+      "research": {
+        "bestFor": "Synthesizing large sets of sources when the evidence conflicts.",
+        "example": "Compare migration requirements across vendor guides and build a decision log linked to the original documents.",
+        "limitation": "Open the cited documents to verify claims, dates, and compatibility requirements.",
+        "stepUp": "Start with Opus 5.5, then use Fable to revisit unresolved tradeoffs.",
+        "preferred": true,
+        "evidenceUrl": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+      }
+    },
+    "sources": [
+      {
+        "label": "Claude Fable 5.2 API overview",
+        "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+        "kind": "provider",
+        "checkedAt": "2026-11-24"
+      },
+      {
+        "label": "Claude API pricing",
+        "url": "https://platform.claude.com/docs/en/about-claude/pricing#model-pricing",
+        "kind": "provider",
+        "checkedAt": "2026-11-24"
+      },
+      {
+        "label": "Claude API effort settings",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
+        "kind": "provider",
+        "checkedAt": "2026-11-24"
+      },
+      {
+        "label": "Anthropic’s Fable 5.2 and Opus 5.5 benchmark results",
+        "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "kind": "benchmark",
+        "checkedAt": "2026-11-24"
+      }
+    ],
+    "reviewedAt": "2026-11-24"
+  },
+  {
+    "id": "claude-opus-5-5",
+    "name": "Claude Opus 5.5",
+    "developer": "Anthropic",
+    "provider": "Anthropic Claude API",
+    "modelId": "claude-opus-5-5",
+    "tier": "balanced",
+    "deployment": "hosted",
+    "availability": "available",
+    "setting": {
+      "label": "Medium · adaptive thinking",
+      "parameters": {
+        "output_config.effort": "medium"
+      },
+      "note": "Adaptive thinking is always on. Medium is the Claude API default. Try high for long or ambiguous work if a representative evaluation shows a gain."
+    },
+    "description": "Anthropic’s general-purpose model for substantial coding and knowledge work. It offers the same context and output limits as Claude Fable 5.2 at half the standard input and output rates.",
+    "toolUrl": "https://platform.claude.com/docs/en/models/opus-5-5/overview",
+    "price": {
+      "input": 4,
+      "output": 20,
+      "cachedInput": 0.2,
+      "currency": "USD",
+      "verifiedAt": "2026-11-24",
+      "sourceUrl": "https://platform.claude.com/docs/en/about-claude/pricing#model-pricing",
+      "note": "Standard first-party Claude API rates apply across the full context window. Cache writes, Fast mode, data residency, and server tools can change the bill. Output includes billed thinking tokens."
+    },
+    "limits": {
+      "contextTokens": 1000000,
+      "maxOutputTokens": 128000
+    },
+    "reportedBenchmarks": {
+      "sourceLabel": "Anthropic’s Fable 5.2 evaluation",
+      "sourceUrl": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "publishedAt": "2026-11-09",
+      "results": [
+        {
+          "name": "FrontierCode 2.0",
+          "percent": 45.5,
+          "conditions": "Max effort"
+        },
+        {
+          "name": "FrontierSWE v2",
+          "percent": 62.3,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "AutomationBench",
+          "percent": 42.5,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "OSWorld 2.1 (offline set, partial)",
+          "percent": 87.2,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "AA-Briefcase v1.1 (rubric)",
+          "percent": 61.2,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "Humanity’s Last Exam (with tools)",
+          "percent": 67.7,
+          "conditions": "Highest available effort"
+        },
+        {
+          "name": "Chartography (no tools)",
+          "percent": 64.4,
+          "conditions": "Highest available effort"
+        }
+      ]
+    },
+    "guidance": {
+      "coding": {
+        "bestFor": "Implementing code changes with clear acceptance criteria.",
+        "example": "Refactor a PowerShell reporting script, preserve its output format, and add regression tests.",
+        "limitation": "Check the diff and run the acceptance tests in the intended environment.",
+        "stepUp": "Try Fable 5.2 when a change spans several systems or the acceptance criteria conflict."
+      },
+      "debugging": {
+        "bestFor": "Tracing failures across logs, configuration, and recent code changes.",
+        "example": "Find which change made a scheduled report fail and propose a minimal fix.",
+        "limitation": "Confirm the failure and fix with a reproducible test.",
+        "stepUp": "Try Fable 5.2 if competing explanations survive your first set of checks."
+      },
+      "analysis": {
+        "bestFor": "Explaining trends and checking formulas across structured data.",
+        "example": "Reconcile totals across two monthly exports and list which rows account for the difference.",
+        "limitation": "Recalculate results in the worksheet before sharing them.",
+        "stepUp": "Try Fable 5.2 when multiple sources use conflicting definitions."
+      },
+      "research": {
+        "bestFor": "Comparing documented options and drafting a practical recommendation.",
+        "example": "Summarize three vendor migration guides and list their prerequisites with source links.",
+        "limitation": "Verify eligibility, service limits, and dates against the original documentation.",
+        "stepUp": "Try Fable 5.2 when evidence is inconsistent or depends on interacting constraints."
+      },
+      "writing": {
+        "bestFor": "Turning technical notes into a clear customer-facing document.",
+        "example": "Draft a migration handover with the agreed scope, dependencies, and sign-off criteria.",
+        "limitation": "Check each commitment against the signed scope and the current plan.",
+        "stepUp": "Use a larger effort budget when the source documents conflict or leave gaps.",
+        "preferred": true,
+        "evidenceUrl": "https://www.anthropic.com/claude-opus-5-5"
+      },
+      "presentations": {
+        "bestFor": "Structuring a decision deck from technical evidence.",
+        "example": "Create an outline comparing three hosting options with assumptions, tradeoffs, and a decision slide.",
+        "limitation": "Verify figures and source claims before laying out the slides.",
+        "stepUp": "Try Fable 5.2 for comparing alternatives with several conflicting constraints."
+      }
+    },
+    "sources": [
+      {
+        "label": "Claude Opus 5.5 API overview",
+        "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview",
+        "kind": "provider",
+        "checkedAt": "2026-11-24"
+      },
+      {
+        "label": "Claude API pricing",
+        "url": "https://platform.claude.com/docs/en/about-claude/pricing#model-pricing",
+        "kind": "provider",
+        "checkedAt": "2026-11-24"
+      },
+      {
+        "label": "Claude API effort settings",
+        "url": "https://platform.claude.com/docs/en/build-with-claude/effort",
+        "kind": "provider",
+        "checkedAt": "2026-11-24"
+      },
+      {
+        "label": "Anthropic’s Fable 5.2 and Opus 5.5 benchmark results",
+        "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "kind": "benchmark",
+        "checkedAt": "2026-11-24"
+      }
+    ],
+    "reviewedAt": "2026-11-24"
+  }
+]

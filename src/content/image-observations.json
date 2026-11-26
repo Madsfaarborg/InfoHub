@@ -1,0 +1,170 @@
+{
+  "gemini-nano-banana-2.1": [
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Provider guidance",
+      "summary": "Google documents up to 14 references, with up to 10 object references and four character references. The model also supports 1K, 2K, and 4K output.",
+      "scope": "Gemini API image generation and reference inputs.",
+      "label": "Google Gemini image generation guide",
+      "url": "https://aistudio.google.com/docs/image-generation",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Practitioner report",
+      "summary": "Nano Banana 2.1 reproduced the requested wording in all nine images in ppl.studio’s OCR check. Nano Banana 2 reproduced it in seven.",
+      "scope": "Three English prompts, three attempts each, and two OCR passes in a practitioner’s own workflow.",
+      "label": "ppl.studio Nano Banana comparison",
+      "url": "https://ppl.studio/blog/nano-banana-2-1-vs-nano-banana-2",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "firefly_image": [
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Provider guidance",
+      "summary": "Adobe’s Image5 API uses the same payload for creation and editing. It generates from text when the reference list is empty and makes a prompt-driven edit when it contains images.",
+      "scope": "Firefly Services Generate Image API using `referenceBlobs`.",
+      "label": "Adobe Image5 feature guide",
+      "url": "https://developer.adobe.com/firefly-services/docs/firefly-api/guides/how-tos/cm-generate-image/feature-guide",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Practitioner report",
+      "summary": "Arcnel reported more than ten failed attempts to get a usable left-side view of a character with Image5 while preparing references for a 3D model.",
+      "scope": "One character turnaround in the Firefly web app in August 2026.",
+      "label": "Arcnel character turnaround test",
+      "url": "https://note.com/arcnel/n/n24bd7212c724",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "gpt-image-2.6-sunburst": [
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Provider guidance",
+      "summary": "OpenAI recommends lower complexity for focused edits such as replacing a background. Higher complexity can help with dense text or layout, with possible latency and unwanted changes.",
+      "scope": "GPT Image 2.6 Sunburst through the Image API. Complexity controls planning, and quality controls rendering.",
+      "label": "OpenAI image generation guide",
+      "url": "https://developers.openai.com/api/docs/guides/image-generation",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Practitioner report",
+      "summary": "Instant Studio reported that Sunburst preserved the product through five successive changes to a café scene, each applied to the previous output.",
+      "scope": "One product packshot and one five-edit sequence using the default high complexity setting.",
+      "label": "Instant Studio five-round editing test",
+      "url": "https://www.instantstudio.ai/blog/judge-an-image-model-by-its-fifth-round-of-changes/",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "ideogram-4-6": [
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Provider guidance",
+      "summary": "Setting `magic_prompt` to `off` preserves the wording when a natural-language prompt is structured for generation. The API also accepts a mask for localized edits to the first source image.",
+      "scope": "Ideogram 4.6 generation API. Generated lettering still needs proofreading.",
+      "label": "Ideogram 4.6 generation API",
+      "url": "https://developer.ideogram.ai/api-reference/images/generate/ideogram-4-6",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Independent evaluation",
+      "summary": "Ideogram 4.6 Precise Edit at High Quality placed first on Rapidata’s November 25 multi-step editing leaderboard. Its 95% interval overlaps that of Ideogram 4.5.",
+      "scope": "Pairwise human judgments of identity preservation over a fixed set of sequential edits. This configuration differs from the medium-quality generation preset.",
+      "label": "Rapidata Multi-Step Image Editing benchmark",
+      "url": "https://www.benchmark.ai/multi-step-image-edit",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "qwen-image-3.0-pro": [
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Provider guidance",
+      "summary": "QwenCloud describes support for rendering text in 12 languages and for composing dense layouts such as menus and storyboards. Check the output with a reader of each language before reusing rendered copy.",
+      "scope": "Hosted QwenCloud image generation. Language coverage comes from the provider’s model page.",
+      "label": "QwenCloud model reference",
+      "url": "https://docs.qwencloud.com/models/qwen-image-3-0-pro",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Independent evaluation",
+      "summary": "Artificial Analysis lists Qwen-Image-3.0-Pro separately from Qwen-Image-3.0 in its Text-to-Image Arena. The Pro variant had the higher estimate in the November 25 check.",
+      "scope": "AA-Image-T2I v2.1 overall human preference. This task does not measure whether localized wording is reproduced exactly.",
+      "label": "Artificial Analysis Text-to-Image Arena",
+      "url": "https://artificialanalysis.ai/embed/text-to-image-leaderboard/leaderboard/text-to-image",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "flux-3-image": [
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Provider guidance",
+      "summary": "Black Forest Labs documents a multi-reference workflow and optional bounding boxes for layout and edits. With automatic framing, the requested ratio takes precedence, followed by the first reference’s framing when present.",
+      "scope": "FLUX 3 Image API. Bounding boxes are prompt inputs, and exact dimensions are available separately.",
+      "label": "Black Forest Labs FLUX 3 Image API",
+      "url": "https://docs.bfl.ml/api-reference/utility/generate-an-image-with-flux-3",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Practitioner report",
+      "summary": "When swapping a paper cup for a mug in one café photo, Fuser measured changes in 0.4% of pixels outside the edit area with FLUX 3 Image and 7.7% with GPT Image 2.5 Flare.",
+      "scope": "One local edit in Fuser, using its pixel-difference threshold and the specific configurations in the report.",
+      "label": "Fuser typography and editing test",
+      "url": "https://fuser.studio/articles/flux-3-image-vs-gpt-image",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "Qwen/Qwen-Image-2512": [
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Provider guidance",
+      "summary": "Qwen’s Diffusers example uses 50 inference steps and a true guidance scale of 4.0. It lists 1664 × 928 pixels for wide output and 1328 × 1328 pixels for square output.",
+      "scope": "Reference settings for local text-to-image generation using CUDA.",
+      "label": "Qwen-Image-2512 model card",
+      "url": "https://huggingface.co/Qwen/Qwen-Image-2512",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "images"
+      ],
+      "kind": "Practitioner report",
+      "summary": "Two 50-step, 1328 × 1328 generations took about 78 seconds each in an Igor’sLAB workstation test. The reported GPU memory use was around 31,000 MiB in both runs.",
+      "scope": "One RTX 5090 Windows workstation using ComfyUI. Timing includes text encoding and decoding.",
+      "label": "Igor’sLAB workstation test report",
+      "url": "https://igorslab.de/installer/KI-Pruefbericht_EN.html",
+      "checkedAt": "2026-11-25"
+    }
+  ]
+}

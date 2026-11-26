@@ -27,3 +27,8 @@
 - Verified the separate directory with 34 synthetic entries in the production browser build. Search, category filters, pagination, source links without a snapshot, and the three model-and-setting choices worked. All 121 automated tests passed. A live API sync still requires the organization's authorized key.
 - Use a weekly evidence memo for model selection and an importable daily JSON digest for announcements. Weekly evidence can lead to maintainer proposals, while a daily release or vendor claim only triggers review.
 - For daily JSON, set the generation timestamp after fetching sources. Use a stable event key and direct permalink. The importer strips URL fragments and common tracking parameters, so separate entries from the same changelog need actual event-specific links.
+
+## 25 November 2026
+
+- Public comparison pages can provide effort-specific results for a compact catalog profile, but the effort and benchmark version are part of the result. Grouping model families is a presentation choice only; it must not collapse or average configuration-level evidence.
+- “Adaptive thinking” in a setting label describes the reasoning mechanism, not an effort named “Thinking.” Derive the coding default from the configured effort prefix and keep unsupported or uncurated defaults visibly missing.

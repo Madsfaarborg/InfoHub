@@ -6,7 +6,9 @@ import { formatUsd, priceIsStale } from "@/lib/cost";
 import { CopySettings } from "./copy-settings";
 
 export function ModelCard({ result, deeperOption }: { result: Recommendation; deeperOption?: boolean }) {
-  const { model, guidance, recommended } = result;
+  const { model, guidance, recommended, category } = result;
+  const relevant = model.observations?.filter(note => category && note.tasks.includes(category)) ?? [];
+  const observation = relevant.find(note => note.url === guidance.evidenceUrl) ?? relevant[0];
   return <article className={recommended ? "model-card recommended" : "model-card"}>
     <div className="card-topline"><span>{tierLabels[model.tier]}</span>{recommended ? <span className="recommended-label"><Check size={13} aria-hidden="true" />Start here</span> : deeperOption ? <span>Deeper option</span> : null}</div>
     <div className="model-heading"><div className="provider-mark" aria-hidden="true">{model.developer.charAt(0)}</div><span className="provider-name">{model.provider}</span></div>
@@ -16,8 +18,13 @@ export function ModelCard({ result, deeperOption }: { result: Recommendation; de
     <div className="example"><span>For example</span><p>{guidance.example}</p></div>
     <p className="step-up"><ArrowUpRight size={16} aria-hidden="true" /><span>{guidance.stepUp}</span></p>
     <details className="model-evidence"><summary>Limitations and sources <ChevronDown size={14} aria-hidden="true" /></summary><div>
+      {observation && <div>
+        <p>{observation.summary}</p>
+        <p className="small">{observation.scope}</p>
+        <p className="small"><a href={observation.url} target="_blank" rel="noreferrer">{observation.label} <ArrowUpRight size={12} aria-hidden="true" /></a> · {observation.kind} · Checked {displayDate(observation.checkedAt)}</p>
+      </div>}
       <p>{guidance.limitation}</p>
-      <p className="small">Task fit is editorial guidance, not a measured ranking. Reviewed {displayDate(model.reviewedAt)}.</p>
+      <p className="small">Editorial task guidance. Reviewed {displayDate(model.reviewedAt)}.</p>
       <ul>{model.sources.map(source => <li key={source.url}><a href={source.url} target="_blank" rel="noreferrer">{source.label} <ArrowUpRight size={12} aria-hidden="true" /></a></li>)}</ul>
     </div></details>
     <div className="card-price">{model.image ? <>

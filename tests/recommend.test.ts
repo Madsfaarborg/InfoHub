@@ -112,6 +112,25 @@ test("image workflows only suggest eligible image tools and bypass token pricing
   }
 });
 
+test("only an explicitly cited observation about the requested task supports a pick", () => {
+  const url = "https://example.org/patch-trial";
+  const note = { url, tasks: ["coding"], kind: "Practitioner report", summary: "Completed a scoped patch.", scope: "One trial.", label: "Patch trial", checkedAt: "2026-11-25" } as const;
+  const entry = (id: string, task: CategoryId, cited: boolean) => model(id, "balanced", {
+    observations: [{ ...note, tasks: [task] }],
+    guidance: { coding: { ...guidance, evidenceUrl: cited ? url : undefined } },
+  });
+  const candidates = [entry("unrelated", "writing", true), entry("uncited", "coding", false), entry("supported", "coding", true)];
+  const result = recommend(candidates, "coding", { priority: "quality", complexity: "routine", localOnly: false });
+  assert.equal(result[0].model.id, "supported");
+  assert.equal(result[0].category, "coding");
+});
+
+test("equal alternatives can introduce another developer within a tier", () => {
+  const candidates = [model("starter", "everyday"), model("same-developer", "balanced"), model("alternative", "balanced", { developer: "Another developer" })];
+  const result = recommend(candidates, "coding", { priority: "value", complexity: "routine", localOnly: false });
+  assert.deepEqual(result.slice(0, 2).map(item => item.model.id), ["starter", "alternative"]);
+});
+
 test("interprets English and Danish task phrasing and feeds preferences into ranking", () => {
   for (const [query, category, priority, localOnly] of [
     ["Pods keep restarting after a rollout. I need a quick starting point.", "debugging", "speed", false],

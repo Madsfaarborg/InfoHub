@@ -4,7 +4,7 @@ A locally hosted guide that helps colleagues choose an AI model and its thinking
 
 The intended audience is a consulting and managed service provider team working across network infrastructure, cybersecurity, automation, and customer delivery. InfoHub turns repeated model research into shared, practical guidance.
 
-**Status:** the local pilot covers technical, creative, and business work. Search for image creation, marketing and sales, presentations, spreadsheets, and the original technical categories. The starter catalog includes 10 language-model settings and seven image configurations, with sources, suggested settings, and a local publishing tool.
+**Status:** the local pilot covers technical, creative, and business work. Search for image creation, marketing and sales, presentations, spreadsheets, and the original technical categories. The starter catalog includes 12 language-model settings and seven image configurations, with sources, suggested settings, and a local publishing tool.
 
 Confirmed direction:
 

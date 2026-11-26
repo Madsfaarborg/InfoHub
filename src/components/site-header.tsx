@@ -8,7 +8,13 @@ import { useState } from "react";
 export function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const links = [{ href: "/tasks", label: "Find a model" }, { href: "/models", label: "Models" }, { href: "/compare", label: "Compare" }, { href: "/news", label: "News" }];
+  const links = [
+    { href: "/tasks", label: "Find a model" },
+    { href: "/models", label: "Models" },
+    { href: "/frontier-personalities", label: "Frontier Personalities" },
+    { href: "/compare", label: "Compare" },
+    { href: "/news", label: "News" },
+  ];
   return <header className="site-header">
     <div className="header-inner">
       <Link href="/" className="wordmark" aria-label="InfoHub home" onClick={() => setOpen(false)}>

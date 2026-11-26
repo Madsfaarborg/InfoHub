@@ -135,7 +135,7 @@ export async function upgradeStarterGuidance(reviewed: boolean, dir = dataDirect
   return withPublishLock(dir, async () => {
     const previous = await current(dir);
     const models = addStarterGuidance(previous.models);
-    if (JSON.stringify(models) === JSON.stringify(previous.models)) return previous;
+    if (isDeepStrictEqual(models, previous.models)) return previous;
     return commit(dir, { ...previous, models, revision: nextRevision(), generatedAt: new Date().toISOString() }, previous);
   });
 }

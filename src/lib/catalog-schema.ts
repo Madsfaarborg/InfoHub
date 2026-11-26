@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { categoryIds, imageWorkflowIds, type PublishedBundle } from "./types";
+import { benchmarkMetricIds, categoryIds, imageWorkflowIds, type PublishedBundle } from "./types";
 
 const text = z.string().trim().min(1);
 const id = z.string().regex(/^[a-zA-Z0-9][a-zA-Z0-9._-]*$/, "Use a stable identifier without spaces");
@@ -16,17 +16,39 @@ const date = z.string().refine((value) => {
 }, "Use a valid ISO date or timestamp");
 const money = z.number().finite().nonnegative();
 const source = z.strictObject({ label: text, url, kind: z.enum(["provider", "benchmark", "editorial"]), checkedAt: date });
-const guidance = z.strictObject({ bestFor: text, example: text, limitation: text, stepUp: text, preferred: z.boolean().optional() });
+const guidance = z.strictObject({ bestFor: text, example: text, limitation: text, stepUp: text, preferred: z.boolean().optional(), evidenceUrl: url.optional() });
 const guidanceFields = Object.fromEntries(categoryIds.map((category) => [category, guidance.optional()])) as Record<(typeof categoryIds)[number], z.ZodOptional<typeof guidance>>;
 const imageWorkflows = z.partialRecord(z.enum(imageWorkflowIds), guidance)
   .refine(workflows => Object.keys(workflows).length > 0, "Add at least one image workflow");
 export const modelVariantSchema = z.strictObject({
+  observations: z.array(z.strictObject({
+    tasks: z.array(z.enum(categoryIds)).min(1),
+    kind: z.enum(["Provider guidance", "Independent evaluation", "Practitioner report"]),
+    summary: text, scope: text, label: text, url, checkedAt: date,
+  })).optional(),
+  benchmarkProfile: z.strictObject({
+    effort: text,
+    sourceLabel: text,
+    sourceUrl: url,
+    checkedAt: date,
+    metrics: z.partialRecord(z.enum(benchmarkMetricIds), z.strictObject({
+      benchmark: text,
+      score: z.number().finite(),
+      unit: z.enum(["%", "index"]),
+    })).refine(metrics => Object.keys(metrics).length > 0, "Add at least one benchmark metric"),
+  }).optional(),
   id, name: text, developer: text, provider: text, modelId: text,
   tier: z.enum(["everyday", "balanced", "deep"]), deployment: z.enum(["hosted", "local"]),
   availability: z.enum(["available", "setup-required", "unavailable"]),
   setting: z.strictObject({ label: text, parameters: z.record(text, z.union([z.string(), z.number().finite(), z.boolean()])), note: z.string() }),
   description: text, toolUrl: url.nullable(),
   price: z.strictObject({ input: money.nullable(), output: money.nullable(), cachedInput: money.nullable(), currency: z.literal("USD"), verifiedAt: date, sourceUrl: url, note: z.string() }),
+  limits: z.strictObject({ contextTokens: z.number().int().positive(), maxOutputTokens: z.number().int().positive() }).optional(),
+  reportedBenchmarks: z.strictObject({
+    sourceLabel: text, sourceUrl: url, publishedAt: date,
+    results: z.array(z.strictObject({ name: text, percent: z.number().finite().min(0).max(100), conditions: text.optional() }))
+      .min(1).refine(results => new Set(results.map(result => result.name)).size === results.length, "Benchmark names must be unique within a report"),
+  }).optional(),
   image: z.strictObject({ workflows: imageWorkflows, outputUsd: money.nullable(), priceBasis: text, brief: text }).optional(),
   guidance: z.strictObject(guidanceFields), sources: z.array(source).min(1), reviewedAt: date,
 }).superRefine((record, ctx) => {

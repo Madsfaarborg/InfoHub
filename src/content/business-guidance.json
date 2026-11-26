@@ -151,5 +151,14 @@
       "limitation": "Requires configured local infrastructure; verify arithmetic and protect the local data path.",
       "stepUp": "Request an analyst review when definitions conflict; retain the local-only constraint."
     }
+  },
+  "astra-medium": {
+    "presentations": {
+      "bestFor": "Matching an existing presentation template across a substantial deck.",
+      "example": "Give Astra a reference deck and checked figures, then ask for an editable quarterly review in the same layout.",
+      "limitation": "OpenAI evaluated template matching. Inspect slide layouts and verify every figure in the exported file.",
+      "stepUp": "Use a shorter outline workflow when the source deck or slide tools are unavailable.",
+      "evidenceUrl": "https://openai.com/index/introducing-gpt-6-2-astra-sol/"
+    }
   }
 }

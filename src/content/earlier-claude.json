@@ -1,0 +1,56 @@
+[
+  {
+    "id": "claude-fable-5-1",
+    "name": "Claude Fable 5.1",
+    "developer": "Anthropic",
+    "provider": "Anthropic Claude API",
+    "modelId": "claude-fable-5-1",
+    "tier": "deep",
+    "deployment": "hosted",
+    "availability": "available",
+    "setting": {
+      "label": "High · adaptive thinking",
+      "parameters": {
+        "output_config.effort": "high"
+      },
+      "note": "Adaptive thinking is always on. High is the Claude API default."
+    },
+    "description": "Earlier Fable release for demanding reasoning and long tasks. Anthropic lists it under legacy models and marks the API endpoint active with retirement no sooner than September 1, 2027.",
+    "toolUrl": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+    "price": {
+      "input": 10,
+      "output": 50,
+      "cachedInput": 0.25,
+      "currency": "USD",
+      "verifiedAt": "2026-11-25",
+      "sourceUrl": "https://platform.claude.com/docs/en/about-claude/pricing#model-pricing",
+      "note": "Standard first-party Claude API rates per million tokens. Cache writes, data residency, and server tools can change the bill. Output includes billed thinking tokens."
+    },
+    "limits": {
+      "contextTokens": 1000000,
+      "maxOutputTokens": 128000
+    },
+    "guidance": {},
+    "sources": [
+      {
+        "label": "Anthropic’s Fable 5.1 model documentation",
+        "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+        "kind": "provider",
+        "checkedAt": "2026-11-25"
+      },
+      {
+        "label": "Anthropic’s API model lifecycle",
+        "url": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+        "kind": "provider",
+        "checkedAt": "2026-11-25"
+      },
+      {
+        "label": "Anthropic’s Claude API pricing",
+        "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+        "kind": "provider",
+        "checkedAt": "2026-11-25"
+      }
+    ],
+    "reviewedAt": "2026-11-25"
+  }
+]

@@ -19,3 +19,12 @@
 - Keep broad Artificial Analysis discovery in its own searchable directory. Task results stay limited to three curated choices with exact settings. Authorized source data is refreshed into a separate host snapshot and never auto-promoted into recommendations.
 - Prepare editorially approved daily news and weekly catalog changes as public content pull requests. GitHub and Vercel run the same CI command. The bundled release supplies hosted builds while a local operational catalog still takes precedence on a self-hosted installation.
 - Explicitly opted-in scheduled runs may ship confirmed public news and high-confidence catalog edits. The publishing command uses a fresh isolated checkout and protected auto-merge. Keep all other findings in private research output.
+- Store provider-reported scores with their model records, publication date, source, and test conditions. The cost-versus-quality chart requires cost and quality measured by the same evaluation.
+
+## 25 November 2026
+
+- Keep model behavior observations with their applicable tasks, source type, date, and test conditions. Give a recommendation credit for an observation only when its guidance explicitly cites that finding. Retain earlier versions as distinct profiles.
+- Present the primary model catalog as one row per developer and model family instead of one row per reasoning configuration. Keep each configuration on the family detail page, where sourced behavior and escalation guidance explain when the additional effort is useful.
+- Show a curated coding starting effort separately from benchmark results. Use independent, named evaluations for coding, agentic work, instruction following, and the intelligence index; preserve their original units, tested effort, source, and missing values instead of producing a composite score.
+
+- Refresh Frontier Personalities as reviewed editorial content. Verify the exact versions against provider catalogs and attach sources to each observation. Keep community anecdotes scoped to the reported task and setup.

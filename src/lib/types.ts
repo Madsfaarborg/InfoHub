@@ -18,9 +18,37 @@ export interface TaskGuidance {
   limitation: string;
   stepUp: string;
   preferred?: boolean;
+  evidenceUrl?: string;
+}
+
+export interface ModelObservation {
+  tasks: CategoryId[];
+  kind: "Provider guidance" | "Independent evaluation" | "Practitioner report";
+  summary: string;
+  scope: string;
+  label: string;
+  url: string;
+  checkedAt: string;
+}
+
+export const benchmarkMetricIds = ["coding", "agentic", "instructionFollowing", "intelligence"] as const;
+export type BenchmarkMetricId = (typeof benchmarkMetricIds)[number];
+
+export interface ModelBenchmarkProfile {
+  effort: string;
+  sourceLabel: string;
+  sourceUrl: string;
+  checkedAt: string;
+  metrics: Partial<Record<BenchmarkMetricId, {
+    benchmark: string;
+    score: number;
+    unit: "%" | "index";
+  }>>;
 }
 
 export interface ModelVariant {
+  observations?: ModelObservation[];
+  benchmarkProfile?: ModelBenchmarkProfile;
   id: string;
   name: string;
   developer: string;
@@ -40,6 +68,13 @@ export interface ModelVariant {
     verifiedAt: string;
     sourceUrl: string;
     note: string;
+  };
+  limits?: { contextTokens: number; maxOutputTokens: number };
+  reportedBenchmarks?: {
+    sourceLabel: string;
+    sourceUrl: string;
+    publishedAt: string;
+    results: { name: string; percent: number; conditions?: string }[];
   };
   image?: {
     workflows: Partial<Record<ImageWorkflow, TaskGuidance>>;
@@ -119,6 +154,7 @@ export interface TaskInterpretation {
   imageWorkflow?: ImageWorkflow;
 }
 export interface Recommendation {
+  category?: CategoryId;
   model: ModelVariant;
   guidance: TaskGuidance;
   recommended: boolean;

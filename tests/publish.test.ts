@@ -95,6 +95,10 @@ test('starter guidance upgrade is reviewed, additive, idempotent, and reversible
     assert.equal(updated.models[0].guidance.marketing?.example, 'Custom company wording');
     assert.ok(updated.models[0].guidance.presentations);
     assert.ok(updated.models.some(model => model.image));
+    for (const id of ['claude-fable-5-2', 'claude-opus-5-5']) {
+      const model = updated.models.find(model => model.id === id);
+      assert.ok(model?.reportedBenchmarks?.results.length, id);
+    }
     assert.equal((await upgradeStarterGuidance(true, s.dir)).revision, updated.revision);
     assert.deepEqual(await rollback(old.revision, s.dir), old);
   } finally { await rm(s.root, { recursive: true }); }

@@ -1,0 +1,158 @@
+{
+  "claude-sonnet-5-5": [
+    {
+      "tasks": ["coding", "debugging"],
+      "kind": "Provider guidance",
+      "summary": "At low or medium effort, Sonnet can check in before finishing a multipart task. At higher effort or with an open-ended request, it can make extra changes. Define what counts as done and state which adjacent work is in scope.",
+      "scope": "Anthropic’s observations from agentic coding with Claude Sonnet 5.5. Behavior varies with the task and effort.",
+      "label": "Anthropic’s Sonnet 5.5 prompting guide",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5#steer-initiative-and-scope",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["research", "networking", "analysis"],
+      "kind": "Provider guidance",
+      "summary": "Sonnet can answer from memory when a search would catch changes to requirements, permissions, or prices. Ask it to verify changing details and cite the source it checked.",
+      "scope": "Anthropic’s observation in chat and knowledge work. The workflow must give the model access to a search or retrieval tool.",
+      "label": "Anthropic’s guidance on search and knowledge work",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-sonnet-5-5#tool-use-in-chat-and-knowledge-work",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["coding", "debugging"],
+      "kind": "Provider guidance",
+      "summary": "Anthropic describes Sonnet as a fit for scoped bug fixes and quick iterations. Give it a concrete failing example and a test that defines a successful patch.",
+      "scope": "Anthropic reports improved medium-effort terminal performance against Sonnet 5. This supports a trial on a scoped change. It does not establish a win over another provider on your repository.",
+      "label": "Anthropic · Sonnet 5.5 launch evaluation",
+      "url": "https://www.anthropic.com/claude-sonnet-5-5",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["coding", "debugging"],
+      "kind": "Practitioner report",
+      "summary": "CodeRabbit’s review pipeline caught 6 of 13 hard known bugs with Sonnet 5.5, compared with 4 for Sonnet 5. About 41% of its comments were actionable, so reviewers still had to filter the feedback.",
+      "scope": "A commercial code-review team’s own September 2026 test on 13 selected known-bug cases. Results depend on its review pipeline and case selection.",
+      "label": "CodeRabbit’s Sonnet 5.5 code review tests",
+      "url": "https://www.coderabbit.ai/blog/sonnet-5-5-model-review",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "claude-opus-5-5": [
+    {
+      "tasks": ["coding", "debugging", "research"],
+      "kind": "Provider guidance",
+      "summary": "An Opus progress update can end an API turn while work is still open. Use an explicit completion condition and check unfinished items before the workflow treats the turn as final.",
+      "scope": "Anthropic’s observation on unattended multipart API tasks. An end-of-turn signal alone does not establish task completion.",
+      "label": "Anthropic’s guidance on unattended Opus 5.5 runs",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5-5#unattended-agentic-runs",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["research", "coding"],
+      "kind": "Independent evaluation",
+      "summary": "METR found a modest improvement over Fable 5.1 on difficult AI research tasks and observed continued weaknesses in open-ended reasoning and research judgment.",
+      "scope": "Predeployment assessment with five tasks. Anthropic reviewed and edited the summary, and METR signed off on the final text.",
+      "label": "METR’s predeployment evaluation of Opus 5.5",
+      "url": "https://metr.org/blog/2026-09-22-claude-opus-5-5/",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["writing", "marketing", "presentations"],
+      "kind": "Practitioner report",
+      "summary": "A Ramp engineer reported that Opus 5.5 followed the team’s writing rules and produced a design specification that needed very little editing.",
+      "scope": "An early customer account selected for Anthropic’s release announcement. The example concerns workplace writing.",
+      "label": "Ramp’s early experience in Anthropic’s Opus 5.5 announcement",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "claude-fable-5-2": [
+    {
+      "tasks": ["research", "analysis"],
+      "kind": "Provider guidance",
+      "summary": "Treating earlier answers as settled reduced follow-up thinking but also reduced self-correction in Anthropic’s tests. Leave room to revisit earlier conclusions when new evidence arrives.",
+      "scope": "Anthropic’s tests at high effort used specific instructions about earlier answers. The effect may vary with other prompts.",
+      "label": "Anthropic’s Fable 5.2 guidance on earlier prompts",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2#review-prompts-and-harnesses-designed-for-earlier-models",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["writing", "presentations", "coding"],
+      "kind": "Provider guidance",
+      "summary": "Fable follows hard constraints closely. Anthropic found that strict sentence limits can make prose choppy, while outdated instructions can lead agents to ask for unnecessary approvals.",
+      "scope": "Provider testing and early observations. Approval friction was observed mainly in multiagent workflows.",
+      "label": "Anthropic’s Fable 5.2 prompting guide",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["research", "analysis"],
+      "kind": "Practitioner report",
+      "summary": "A Balyasny Asset Management researcher reported that Fable 5.2 traced an answer to the relevant sources, flagged a potentially misleading premise, and kept its conclusions within the evidence.",
+      "scope": "One investment-research example selected for Anthropic’s launch announcement.",
+      "label": "Balyasny’s early experience in Anthropic’s Fable 5.2 announcement",
+      "url": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "claude-fable-5-1": [
+    {
+      "tasks": ["research", "networking"],
+      "kind": "Provider guidance",
+      "summary": "At low effort, Fable 5.1 relies on memory more often than Fable 5, even with retrieval available. Ask it to verify exact names and current details, or raise effort for the affected turn.",
+      "scope": "Anthropic’s comparison with Fable 5 in a setup with search or retrieval.",
+      "label": "Anthropic’s Fable 5.1 guidance on search",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1#search-triggering-at-low-effort",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["writing", "presentations"],
+      "kind": "Provider guidance",
+      "summary": "At xhigh and max effort, Fable 5.1 may draft much of a long deliverable while thinking and then write it again in the reply. This can delay the response or exhaust the output budget.",
+      "scope": "Anthropic’s observation for long single-request deliverables, such as a full document rewrite.",
+      "label": "Anthropic’s Fable 5.1 guidance on long outputs",
+      "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-1#leave-room-for-long-outputs-at-xhigh-and-max-effort",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["coding", "research", "debugging"],
+      "kind": "Independent evaluation",
+      "summary": "Across independent runs of the same task, METR observed Fable 5.1 sometimes avoid and sometimes exploit a shortcut that improved the benchmark score. When evaluating autonomous work, inspect how it reached the result and repeat the test.",
+      "scope": "Examples from controlled game and software tasks in METR’s November 2026 AI R&D report. The examples show variability across runs and do not estimate its frequency in workplace tasks.",
+      "label": "METR’s November 2026 capability evaluation",
+      "url": "https://metr.org/blog/2026-11-20-q4-2026-capability-update/",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "Qwen/Qwen3-30B-A3B": [
+    {
+      "tasks": ["analysis", "coding", "debugging", "writing"],
+      "kind": "Provider guidance",
+      "summary": "The original checkpoint’s chat template enables thinking by default. Use the template’s thinking switch when comparing short routine jobs with harder problems. Qwen warns that greedy decoding in thinking mode can cause repeated output.",
+      "scope": "Qwen’s original hybrid Qwen3-30B-A3B checkpoint. The July 2507 Thinking checkpoint and some serving templates have different controls.",
+      "label": "Qwen’s original Qwen3-30B-A3B model card",
+      "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B#switching-between-thinking-and-non-thinking-mode",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": ["writing", "analysis", "coding"],
+      "kind": "Independent evaluation",
+      "summary": "In Artificial Analysis’s hosted tests of the April 2025 checkpoint, reasoning mode took substantially longer to show the first answer token than non-reasoning mode.",
+      "scope": "Hosted-provider latency medians for the original release. Serving hardware, quantization, and prompt mix can shift the figures. Test both modes on your own local setup.",
+      "label": "Artificial Analysis’s original Qwen3 30B A3B comparison",
+      "url": "https://artificialanalysis.ai/models/qwen3-30b-a3b-instruct",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "qwen3.7-max-2026-05-17": [
+    {
+      "tasks": ["coding", "analysis", "research"],
+      "kind": "Provider guidance",
+      "summary": "The dated May 17 Max endpoint accepts text and always uses reasoning. For a workflow with charts or screenshots, supply the extracted values or verify a different endpoint’s image support first.",
+      "scope": "Alibaba Cloud Model Studio’s May 17 snapshot. The rolling alias and June 8 vision-capable snapshot are separate entries with different capabilities.",
+      "label": "Alibaba Cloud Model Studio’s Qwen3.7 Max snapshots",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/qwen3-7-max",
+      "checkedAt": "2026-11-25"
+    }
+  ]
+}

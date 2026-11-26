@@ -43,6 +43,12 @@ Use one lead scenario per category and flag changes for useful subtasks. Track v
 
 Label the evidence for each significant conclusion: independent measurement, team evaluation, provider documentation or claim, or dated observation. Mark confidence **high**, **medium**, or **low** with a short reason. Use high only for direct, applicable, reproducible or independently corroborated evidence with no material unresolved conflict. Use medium when relevant evidence has a meaningful caveat. Use low for indirect, unreplicated, or incomplete evidence. Label a proposed test **unverified** until results exist.
 
+### How each model works in practice
+
+Review the qualitative observations on each curated model, including older versions still used for comparison. Open original practitioner reports, independent analyses, and provider prompting guides. Seek conflicting experiences. In your own words describe the observed behavior, the work it affected, the exact setting or product surface when known, and the limits of the evidence. Link directly to the source, label its type, and date the check. Distinguish firsthand tests from roundups and provider-selected examples. Record sparse coverage as a gap. Use public sources that permit access.
+
+For catalog updates, record findings under the matching model’s `observations` with task IDs, kind, summary, scope, label, URL, and checkedAt. A scoped, accurately attributed observation may describe a single report. Add a task guidance `evidenceUrl` only where the observation positively supports that specific choice and configuration. Comparative promotions still require the publishing evidence standard below.
+
 ### Make value actionable
 
 - Report price with currency, unit, access route, and date. For token estimates, state input, cached input, billable output including reasoning where the provider bills it there, tool charges, and assumed retries. Count billable reasoning only once. Distinguish rates, assumed task cost, observed cost, and subscription access. For local models, say which hardware, serving setup, and utilization support the estimate or mark cost unknown.

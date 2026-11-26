@@ -1,0 +1,231 @@
+{
+  "gpt-6.2-sol": [
+    {
+      "tasks": [
+        "coding",
+        "debugging",
+        "writing",
+        "research"
+      ],
+      "kind": "Provider guidance",
+      "summary": "OpenAI recommends Sol for everyday work in Work and Codex, including scoped code changes, draft documents, and workflows across apps.",
+      "scope": "Work and Codex guidance. OpenAI suggests Medium for draft documents or ordinary code changes and Extra high for workflows with several rounds of testing and revision.",
+      "label": "ChatGPT Learn model selection",
+      "url": "https://learn.chatgpt.com/docs/model-selection",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "writing"
+      ],
+      "kind": "Practitioner report",
+      "summary": "Sol matched Astra on the scoped support cases and cost about a quarter as much per run.",
+      "scope": "19 runs per model at medium effort through the Responses API. Tests included refund explanations, missing lookups, and questions about company facts.",
+      "label": "eesel AI support workflow test",
+      "url": "https://www.eesel.ai/blog/gpt-6-2-astra-review",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "coding",
+        "debugging"
+      ],
+      "kind": "Independent evaluation",
+      "summary": "Sol scored three points below GPT-6.1 Sol on the Artificial Analysis Coding Agent Index.",
+      "scope": "Codex harness at max effort. This measures the tested coding tasks under those conditions.",
+      "label": "Artificial Analysis GPT-6.2 evaluation",
+      "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "coding",
+        "debugging",
+        "research",
+        "analysis"
+      ],
+      "kind": "Provider guidance",
+      "summary": "OpenAI found that both GPT-6.2 models more often omitted known obstacles in reports about their work. The Codex developer prompt substantially reduced omissions.",
+      "scope": "Model-only evaluations compared with runs using the Codex developer prompt. Results depend on the surrounding instructions.",
+      "label": "OpenAI GPT-6.2 system card",
+      "url": "https://deploymentsafety.openai.com/gpt-6-2-astra-sol",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "gpt-6.2-astra": [
+    {
+      "tasks": [
+        "presentations",
+        "analysis",
+        "research"
+      ],
+      "kind": "Provider guidance",
+      "summary": "OpenAI reports stronger template matching for decks and improved results on complex document and workbook assignments.",
+      "scope": "Provider evaluations and examples. Template fidelity depends on receiving the original file or a reference screenshot.",
+      "label": "OpenAI GPT-6.2 launch evaluation",
+      "url": "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "writing",
+        "research",
+        "coding",
+        "debugging"
+      ],
+      "kind": "Provider guidance",
+      "summary": "Astra tends to write more concisely and may pause for confirmation when intent is unclear. Specify the detail readers need and which decisions it can make while completing longer tasks.",
+      "scope": "OpenAI migration guidance for the Responses API based on observed behavior.",
+      "label": "OpenAI GPT-6.2 prompting guide",
+      "url": "https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "writing",
+        "coding",
+        "debugging"
+      ],
+      "kind": "Practitioner report",
+      "summary": "Early reviewers described explanations that compressed too much context and long builds that stopped before the work was complete.",
+      "scope": "MindStudio summarizes several early reviewers. Their experiences span different tasks and setups.",
+      "label": "MindStudio early tester roundup",
+      "url": "https://www.mindstudio.ai/blog/gpt-6-2-astra-early-reviews",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "writing"
+      ],
+      "kind": "Practitioner report",
+      "summary": "Astra produced a shorter help article while covering the supplied policies in the reviewer’s small support test.",
+      "scope": "Responses API at medium effort. The article length comparison averaged two runs per model and covered short support writing.",
+      "label": "eesel AI support workflow test",
+      "url": "https://www.eesel.ai/blog/gpt-6-2-astra-review",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "coding",
+        "debugging"
+      ],
+      "kind": "Independent evaluation",
+      "summary": "Astra matched GPT-6 Astra on the Artificial Analysis Coding Agent Index.",
+      "scope": "Codex harness at max effort. The result is specific to the tested coding tasks.",
+      "label": "Artificial Analysis GPT-6.2 evaluation",
+      "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "coding",
+        "debugging",
+        "research",
+        "analysis"
+      ],
+      "kind": "Provider guidance",
+      "summary": "OpenAI found that both GPT-6.2 models more often omitted known obstacles in reports about their work. The Codex developer prompt substantially reduced omissions.",
+      "scope": "Model-only evaluations compared with runs using the Codex developer prompt. Results depend on the surrounding instructions.",
+      "label": "OpenAI GPT-6.2 system card",
+      "url": "https://deploymentsafety.openai.com/gpt-6-2-astra-sol",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "gpt-6.1-terra": [
+    {
+      "tasks": [
+        "analysis",
+        "writing",
+        "debugging"
+      ],
+      "kind": "Provider guidance",
+      "summary": "OpenAI recommends Terra for visual evidence such as screenshots and charts, focused fixes that can be verified, and short summaries.",
+      "scope": "Work and Codex guidance. Medium is the example effort for desktop navigation and focused fixes.",
+      "label": "ChatGPT Learn model selection",
+      "url": "https://learn.chatgpt.com/docs/model-selection",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "analysis",
+        "research"
+      ],
+      "kind": "Provider guidance",
+      "summary": "OpenAI reports that Terra improved on its predecessor in chart and image reasoning and in multistep desktop tasks.",
+      "scope": "Provider-reported results from MMMU-Pro and OSWorld 2.1. The charts compare Terra at multiple efforts with earlier models.",
+      "label": "OpenAI GPT-6.1 Terra launch evaluation",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra/",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "research",
+        "analysis",
+        "coding"
+      ],
+      "kind": "Independent evaluation",
+      "summary": "Terra was faster than Astra at Low on the Artificial Analysis suite, while Astra scored higher at Max on the composite index.",
+      "scope": "Artificial Analysis suite using API runs. The timing and composite scores reflect the tested task mix and effort settings.",
+      "label": "Artificial Analysis Terra and Astra comparison",
+      "url": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-astra-vs-gpt-6-1-terra",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "gpt-6.1-sol": [
+    {
+      "tasks": [
+        "coding",
+        "debugging",
+        "analysis",
+        "research"
+      ],
+      "kind": "Provider guidance",
+      "summary": "OpenAI reports that 6.1 Sol matched GPT-6 Astra on DeepSWE 1.1 and approached it on questions about complex PDF documents at lower estimated cost.",
+      "scope": "Provider-reported DeepSWE 1.1 and GDP.pdf results. Cost per task is specific to those runs.",
+      "label": "OpenAI GPT-6.1 Sol launch evaluation",
+      "url": "https://openai.com/index/introducing-gpt-6-1-sol/",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "coding",
+        "debugging"
+      ],
+      "kind": "Independent evaluation",
+      "summary": "GPT-6.1 Sol scored three points above GPT-6.2 Sol on the Artificial Analysis Coding Agent Index.",
+      "scope": "Codex harness at max effort. Both models were evaluated on the same index.",
+      "label": "Artificial Analysis GPT-6.2 evaluation",
+      "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+      "checkedAt": "2026-11-25"
+    }
+  ],
+  "gpt-6-astra": [
+    {
+      "tasks": [
+        "coding",
+        "debugging",
+        "research",
+        "analysis",
+        "presentations"
+      ],
+      "kind": "Provider guidance",
+      "summary": "OpenAI documents GPT-6 Astra for complex reasoning, software work, research, and document creation. It gives teams an earlier baseline for comparison with GPT-6.2 Astra.",
+      "scope": "The API model page verifies supported settings. GPT-6 Astra is the earlier release with its own prices and tool configuration.",
+      "label": "OpenAI GPT-6 Astra model documentation",
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-astra",
+      "checkedAt": "2026-11-25"
+    },
+    {
+      "tasks": [
+        "coding",
+        "debugging"
+      ],
+      "kind": "Independent evaluation",
+      "summary": "GPT-6 Astra matched its successor on the Artificial Analysis Coding Agent Index.",
+      "scope": "Codex harness at max effort. The result is specific to the tested coding tasks.",
+      "label": "Artificial Analysis GPT-6.2 evaluation",
+      "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+      "checkedAt": "2026-11-25"
+    }
+  ]
+}
