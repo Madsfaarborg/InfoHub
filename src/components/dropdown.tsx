@@ -91,7 +91,7 @@ export function Dropdown({ id, name, label, options, value, defaultValue, onChan
       {options.map((option, index) => <div key={option.value} id={listId + "-" + index}
         role="option" aria-selected={option.value === selectedValue}
         className={"dropdown-option" + (active === index ? " is-active" : "")}
-        onMouseMove={() => setActive(index)} onPointerDown={event => event.preventDefault()} onClick={() => choose(index)}>
+        onMouseMove={() => setActive(index)} onPointerDown={event => { if (event.pointerType === "mouse") event.preventDefault(); }} onClick={() => choose(index)}>
         <span>{option.label}</span>{option.value === selectedValue ? <Check size={16} aria-hidden="true" /> : null}
       </div>)}
     </div> : null}
