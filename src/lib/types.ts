@@ -150,6 +150,7 @@ export interface TaskInterpretation {
   alternatives: CategoryId[];
   complexity: "routine" | "complex";
   localOnly: boolean;
+  priority?: Priority;
   imageWorkflow?: ImageWorkflow;
 }
 export interface Recommendation {

@@ -5,7 +5,7 @@
 - Keep the hub English, local, and account-free, as confirmed by the owner.
 - Preserve the synced root AGENTS.md. Maintain repository guidance in src/AGENTS.md and learning records here.
 - Use Next.js App Router with TypeScript, system fonts, and plain CSS design tokens. The interface needs no styling framework to implement this scope.
-- Keep search in browser memory with deterministic, editable task interpretation.
+- Keep search in browser memory with deterministic, editable task interpretation. Recognize English and Danish task phrases and preferences. Ask the user to choose a category when the strongest matches are tied or close, then rank the reviewed settings using the selected task and preferences.
 - Use a typed public starter catalog and optional validated local published bundle. Content publishing is a host-side CLI operation.
 - Distinguish supported provider settings and prices from editorial task-fit suggestions. No invented benchmark scores.
 - Unconfigured local Qwen appears as a deployment option, not an available hosted service.

@@ -10,6 +10,12 @@ import { CategoryIcon } from "./category-icon";
 import { ModelCard } from "./model-card";
 import { Dropdown } from "./dropdown";
 
+const priorityLabels: Record<Priority, string> = {
+  value: "Good value",
+  quality: "Thoroughness",
+  speed: "A quick starting point",
+};
+
 export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]; initialCategory?: CategoryId }) {
   const [query, setQuery] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -18,11 +24,10 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
   const [priority, setPriority] = useState<Priority>("value");
   const [localOnly, setLocalOnly] = useState(false);
   const input = useRef<HTMLInputElement>(null);
-  const resultsRef = useRef<HTMLElement>(null);
   useEffect(() => {
     const focusSearch = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement;
-      if (event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey && !target.closest("input, textarea, select, [contenteditable]")) {
+      if (!event.defaultPrevented && event.key === "/" && !event.ctrlKey && !event.metaKey && !event.altKey && !target.closest("input, textarea, select, [contenteditable]")) {
         event.preventDefault();
         input.current?.focus();
       }
@@ -50,6 +55,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
     setInterpretation(next);
     setCategory(next.category);
     setLocalOnly(next.localOnly);
+    setPriority(next.priority ?? (interpretation.priority ? "value" : priority));
     setSubmitted(true);
   }
   const showResults = submitted || !!initialCategory;
@@ -67,10 +73,16 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
       <p className="search-help"><LockKeyhole size={12} aria-hidden="true" />Your task stays in this browser</p>
       <div className="task-shortcuts" aria-label="Choose a task">{categories.map(item => <button key={item.id} onClick={() => choose(item.id)} aria-pressed={category === item.id} className={category === item.id ? "task-chip selected" : "task-chip"}><CategoryIcon category={item.id} size={16} />{item.name}</button>)}</div>
     </section>
-    {showResults ? <section className="results-section content-width" ref={resultsRef} aria-labelledby="results-heading">
-      <div className="section-heading"><div><h2 id="results-heading">{selected ? selected.name : "Choose a task category"}</h2><p>{selected ? selected.description : "Pick the category that best describes your task."}</p></div><span className="small muted" aria-live="polite">{selected ? results.length + (results.length === 1 ? " suggestion" : " suggestions") : ""}</span></div>
+    {showResults ? <section className="results-section content-width" aria-labelledby="results-heading">
+      <div className="section-heading"><div><h2 id="results-heading">{selected ? selected.name : interpretation.alternatives.length ? "Which part should the model help with?" : "Choose a task category"}</h2><p>{selected ? selected.description : interpretation.alternatives.length ? "Choose the main goal to see model recommendations." : "Pick the category that best describes your task."}</p></div><span className="small muted" aria-live="polite">{selected ? results.length + (results.length === 1 ? " suggestion" : " suggestions") : ""}</span></div>
       {category ? <>
-        <div className="result-controls">
+        <div className="result-controls" aria-label="Adjust task interpretation" role="group">
+          <div className="control-group">
+            <label htmlFor="task-category">Task</label>
+            <Dropdown id="task-category" label="Task" value={category}
+              onChange={value => choose(value as CategoryId)}
+              options={categories.map(item => ({ value: item.id, label: item.name }))} />
+          </div>
           {isImage ? (
             <div className="control-group">
               <SlidersHorizontal size={16} aria-hidden="true" />
@@ -78,14 +90,25 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
               <Dropdown id="image-workflow" label="Image task" value={imageWorkflow} onChange={value => setInterpretation(current => ({ ...current, imageWorkflow: value as ImageWorkflow }))} options={imageWorkflows.map(workflow => ({ value: workflow.id, label: workflow.name }))} />
             </div>
           ) : <>
-            <div className="control-group"><SlidersHorizontal size={16} aria-hidden="true" /><label htmlFor="priority">Prioritize</label><Dropdown id="priority" label="Prioritize" value={priority} onChange={value => setPriority(value as Priority)} options={[{ value: "value", label: "Good value" }, { value: "quality", label: "Thoroughness" }, { value: "speed", label: "A quick starting point" }]} /></div>
+            <div className="control-group">
+              <SlidersHorizontal size={16} aria-hidden="true" />
+              <label htmlFor="priority">Prioritize</label>
+              <Dropdown id="priority" label="Prioritize" value={priority} onChange={value => {
+                setPriority(value as Priority);
+                setInterpretation(current => ({ ...current, priority: undefined }));
+              }} options={Object.entries(priorityLabels).map(([value, label]) => ({ value, label }))} />
+            </div>
             <div className="control-group"><label htmlFor="complexity">Task scope</label><Dropdown id="complexity" label="Task scope" value={interpretation.complexity} onChange={value => setInterpretation(current => ({ ...current, complexity: value as "routine" | "complex" }))} options={[{ value: "routine", label: "Well-defined" }, { value: "complex", label: "Complex / uncertain" }]} /></div>
           </>}
           <label className="toggle-label"><input type="checkbox" checked={localOnly} onChange={event => setLocalOnly(event.target.checked)} /><span className="toggle-track" aria-hidden="true" />Local models only</label>
         </div>
         {interpretation.alternatives.length ? <div className="interpretation-note">Another possible fit: {interpretation.alternatives.filter(id => id !== category).map(id => <button className="inline-button" key={id} onClick={() => choose(id)}>{categories.find(item => item.id === id)?.name}</button>)}</div> : null}
         {results.length ? <>
-          <div className="model-grid">{results.map(result => <ModelCard key={result.model.id} result={result} />)}</div>
+          <div className="model-grid">{results.map(result => <ModelCard
+            key={result.model.id}
+            result={result}
+            deeperOption={!isImage && !result.recommended && result.model.tier === "deep" && results[0].model.tier !== "deep"}
+          />)}</div>
           <p className="results-footnote">{isImage ? "These are editorial picks for this workflow. API image rates, subscription credits, and local hardware costs have different billing bases." : "Recommendations are editorial. API access and company approval are separate. Actual spend depends on tokens, thinking, and retries."}</p>
         </> : <div className="empty-panel">
           <div className="empty-icon"><LockKeyhole size={23} strokeWidth={1.5} aria-hidden="true" /></div>
