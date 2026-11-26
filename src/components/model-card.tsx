@@ -5,12 +5,18 @@ import { tierLabels, displayDate } from "@/lib/categories";
 import { formatUsd, priceIsStale } from "@/lib/cost";
 import { CopySettings } from "./copy-settings";
 
+const tierDescriptions = {
+  everyday: "For straightforward tasks",
+  balanced: "For more involved work",
+  deep: "For complex, demanding work",
+} as const;
+
 export function ModelCard({ result, deeperOption }: { result: Recommendation; deeperOption?: boolean }) {
   const { model, guidance, recommended, category } = result;
   const relevant = model.observations?.filter(note => category && note.tasks.includes(category)) ?? [];
   const observation = relevant.find(note => note.url === guidance.evidenceUrl) ?? relevant[0];
   return <article className={recommended ? "model-card recommended" : "model-card"}>
-    <div className="card-topline"><span>{tierLabels[model.tier]}</span>{recommended ? <span className="recommended-label"><Check size={13} aria-hidden="true" />Start here</span> : deeperOption ? <span>Deeper option</span> : null}</div>
+    <div className="card-topline"><div className="card-tier"><span className="card-tier-label">{tierLabels[model.tier]}</span><span className="card-tier-description">{tierDescriptions[model.tier]}</span></div>{recommended ? <span className="recommended-label"><Check size={13} aria-hidden="true" />Start here</span> : deeperOption ? <span>Deeper option</span> : null}</div>
     <div className="model-heading"><div className="provider-mark" aria-hidden="true">{model.developer.charAt(0)}</div><span className="provider-name">{model.provider}</span></div>
     <h3><Link href={"/models/" + model.id}>{model.name}</Link></h3>
     <p className="model-setting">{model.setting.label}<span>·</span>{model.deployment === "local" ? "Local" : model.image ? "Hosted" : "Hosted API"}</p>

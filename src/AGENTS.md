@@ -24,6 +24,7 @@ Read ../docs/DECISIONS.md and ../docs/LEARNINGS.md before substantial work. Upda
 
 ## Engineering
 
+- When a solution is ready for the owner to test in preview and consider for production, commit the relevant changes, push the branch, and open a pull request without waiting to be asked. Include the pull request and preview links when available; report any blocker or incomplete validation. Do not merge or deploy to production unless authorized.
 - Keep filesystem reads and publishing out of client components.
 - Validate operational content before publishing. Use the checked pull request path for public releases. Opted-in scheduled publishing uses confirmed news and high-confidence catalog edits from current public evidence. Keep raw automation output, client information, and licensed catalog data out of Git.
 - Keep dependencies pinned, single-owner shared contracts, and isolated subagent file ownership.
