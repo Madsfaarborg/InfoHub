@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
-  "revision": "2026-11-25T09-27-20-086Z-7cff5be7",
-  "generatedAt": "2026-11-25T09:27:20.086Z",
+  "revision": "2026-11-26T06-04-32-707Z-77114c60",
+  "generatedAt": "2026-11-26T06:04:32.708Z",
   "models": [
     {
       "observations": [
@@ -172,10 +172,26 @@
         "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-sol-vs-gpt-6-1-terra",
         "checkedAt": "2026-11-25",
         "metrics": {
-          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 34.5, "unit": "%" },
-          "agentic": { "benchmark": "AutomationBench-AA", "score": 57.8, "unit": "%" },
-          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 28.4, "unit": "%" },
-          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 38, "unit": "index" }
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 34.5,
+            "unit": "%"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 57.8,
+            "unit": "%"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 28.4,
+            "unit": "%"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 38,
+            "unit": "index"
+          }
         }
       },
       "id": "terra-medium",
@@ -637,10 +653,26 @@
         "sourceUrl": "https://artificialanalysis.ai/models/comparisons/claude-sonnet-5-5-vs-claude-opus-5-5",
         "checkedAt": "2026-11-25",
         "metrics": {
-          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 25.5, "unit": "%" },
-          "agentic": { "benchmark": "AutomationBench-AA", "score": 59.4, "unit": "%" },
-          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 25.2, "unit": "%" },
-          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 41, "unit": "index" }
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 25.5,
+            "unit": "%"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 59.4,
+            "unit": "%"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 25.2,
+            "unit": "%"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 41,
+            "unit": "index"
+          }
         }
       },
       "id": "sonnet-high",
@@ -824,10 +856,26 @@
         "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-astra-vs-gpt-6-2-sol",
         "checkedAt": "2026-11-25",
         "metrics": {
-          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 46.6, "unit": "%" },
-          "agentic": { "benchmark": "AutomationBench-AA", "score": 72.8, "unit": "%" },
-          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 28.4, "unit": "%" },
-          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 57, "unit": "index" }
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 46.6,
+            "unit": "%"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 72.8,
+            "unit": "%"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 28.4,
+            "unit": "%"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 57,
+            "unit": "index"
+          }
         }
       },
       "id": "astra-medium",
@@ -1196,10 +1244,26 @@
         "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-2-astra-vs-gpt-6-2-sol",
         "checkedAt": "2026-11-25",
         "metrics": {
-          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 40.2, "unit": "%" },
-          "agentic": { "benchmark": "AutomationBench-AA", "score": 69.9, "unit": "%" },
-          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 28.8, "unit": "%" },
-          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 55, "unit": "index" }
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 40.2,
+            "unit": "%"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 69.9,
+            "unit": "%"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 28.8,
+            "unit": "%"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 55,
+            "unit": "index"
+          }
         }
       },
       "id": "sol-high",
@@ -1431,10 +1495,26 @@
         "sourceUrl": "https://artificialanalysis.ai/models/comparisons",
         "checkedAt": "2026-11-25",
         "metrics": {
-          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 49.1, "unit": "%" },
-          "agentic": { "benchmark": "AutomationBench-AA", "score": 71.4, "unit": "%" },
-          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 21.8, "unit": "%" },
-          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 62, "unit": "index" }
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 49.1,
+            "unit": "%"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 71.4,
+            "unit": "%"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 21.8,
+            "unit": "%"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 62,
+            "unit": "index"
+          }
         }
       },
       "id": "claude-fable-5-2",
@@ -1612,10 +1692,26 @@
         "sourceUrl": "https://artificialanalysis.ai/models/comparisons/claude-sonnet-5-5-vs-claude-opus-5-5",
         "checkedAt": "2026-11-25",
         "metrics": {
-          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 33.1, "unit": "%" },
-          "agentic": { "benchmark": "AutomationBench-AA", "score": 61.2, "unit": "%" },
-          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 25.6, "unit": "%" },
-          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 48, "unit": "index" }
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 33.1,
+            "unit": "%"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 61.2,
+            "unit": "%"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 25.6,
+            "unit": "%"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 48,
+            "unit": "index"
+          }
         }
       },
       "id": "claude-opus-5-5",
@@ -2400,10 +2496,26 @@
         "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gpt-6-1-sol-medium-vs-gpt-6-sol-medium",
         "checkedAt": "2026-11-25",
         "metrics": {
-          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 33.4, "unit": "%" },
-          "agentic": { "benchmark": "AutomationBench-AA", "score": 62.6, "unit": "%" },
-          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 30, "unit": "%" },
-          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 46, "unit": "index" }
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 33.4,
+            "unit": "%"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 62.6,
+            "unit": "%"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 30,
+            "unit": "%"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 46,
+            "unit": "index"
+          }
         }
       },
       "id": "sol-6-1-medium",
@@ -2576,10 +2688,26 @@
         "sourceUrl": "https://artificialanalysis.ai/models/comparisons/claude-fable-5-1-high-vs-claude-fable-5-1-xhigh",
         "checkedAt": "2026-11-25",
         "metrics": {
-          "coding": { "benchmark": "FrontierCode-AA 2.0", "score": 30.3, "unit": "%" },
-          "agentic": { "benchmark": "AutomationBench-AA", "score": 55.3, "unit": "%" },
-          "instructionFollowing": { "benchmark": "GDP.pdf", "score": 26.8, "unit": "%" },
-          "intelligence": { "benchmark": "Artificial Analysis Intelligence Index v5.0.2", "score": 47, "unit": "index" }
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 30.3,
+            "unit": "%"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 55.3,
+            "unit": "%"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 26.8,
+            "unit": "%"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 47,
+            "unit": "index"
+          }
         }
       },
       "id": "claude-fable-5-1",
@@ -2688,6 +2816,145 @@
           "publishedDate": "2026-11-24",
           "eventDate": "2026-11-24",
           "retrievedAt": "2026-11-24T23:07:56+00:00"
+        }
+      ],
+      "supersedesEventKey": null
+    },
+    {
+      "eventKey": "microsoft.agent-framework.malicious-packages-repository-update.2026-11-25",
+      "title": "Microsoft warns about malicious Agent Framework Python releases",
+      "summary": "Microsoft’s November 25 update confirms that unauthorized versions 1.26.1 and 1.26.2 of the agent-framework Python meta-package contained credential-stealing code. The releases were uploaded on November 17 and removed from PyPI. Microsoft says its repository remains temporarily unavailable while it investigates, with no confirmed restoration timeline.",
+      "whyItMatters": "Agent development environments and CI builds that installed either release may have exposed credentials.",
+      "suggestedAction": "Check lockfiles, build logs, images and package caches for the affected versions. If present, follow Microsoft’s guidance to rotate accessible credentials, rebuild clean environments and review audit logs.",
+      "tags": [
+        "cybersecurity",
+        "coding-tools",
+        "microsoft-and-cloud"
+      ],
+      "urgency": "time-sensitive",
+      "confidence": "confirmed",
+      "recommendationImpact": "none",
+      "primarySource": {
+        "url": "https://devblogs.microsoft.com/agent-framework/microsoft-agent-framework-repository-update/",
+        "publisher": "Microsoft",
+        "publishedDate": "2026-11-25",
+        "eventDate": "2026-11-25",
+        "retrievedAt": "2026-11-26T06:03:30+00:00"
+      },
+      "additionalSources": [
+        {
+          "url": "https://github.com/advisories/GHSA-764m-3ppc-5m73",
+          "publisher": "GitHub",
+          "publishedDate": "2026-11-18",
+          "eventDate": "2026-11-17",
+          "retrievedAt": "2026-11-26T06:03:30+00:00"
+        }
+      ],
+      "supersedesEventKey": null
+    },
+    {
+      "eventKey": "github.copilot-code-review.organization-billing-default.2026-12-30",
+      "title": "Copilot code review billing defaults change on December 30",
+      "summary": "GitHub announced that unset billing policies for code reviews by licensed Copilot members will default to the repository’s organization on December 30, 2026. The change covers Copilot Business and Enterprise. Existing explicit choices persist. Accounts without AI Credits paid usage, with a billing lock, or without a billable customer will use Member billing.",
+      "whyItMatters": "Administrators may need to choose who pays for automated reviews before organizational spending increases.",
+      "suggestedAction": "Review the enterprise or organization Copilot policy and select Member before December 30 if reviews should continue using members’ entitlements.",
+      "tags": [
+        "coding-tools",
+        "models-and-pricing"
+      ],
+      "urgency": "time-sensitive",
+      "confidence": "confirmed",
+      "recommendationImpact": "none",
+      "primarySource": {
+        "url": "https://github.blog/changelog/2026-11-25-copilot-code-review-billing-will-default-to-the-organization/",
+        "publisher": "GitHub",
+        "publishedDate": "2026-11-25",
+        "eventDate": "2026-11-25",
+        "retrievedAt": "2026-11-26T06:03:30+00:00"
+      },
+      "additionalSources": [],
+      "supersedesEventKey": null
+    },
+    {
+      "eventKey": "alibaba.model-studio.decision-model.2026-11-25",
+      "title": "Alibaba adds decision-model for structured routing and scoring",
+      "summary": "Alibaba Cloud Model Studio added decision-model on November 25. It accepts text and images for classification, binary decisions and scoring, returning decision results with probabilities and confidence scores. Documentation lists a 268,288-token context window and Singapore input pricing of $0.042 per million tokens. It has a dedicated Decision Model API.",
+      "whyItMatters": "Operations teams can evaluate a specialized API for ticket classification and agent routing.",
+      "suggestedAction": "Test routing accuracy and confidence calibration on representative public or approved sample tickets, and verify the dedicated API contract before integration.",
+      "tags": [
+        "models-and-pricing",
+        "business-productivity"
+      ],
+      "urgency": "routine",
+      "confidence": "confirmed",
+      "recommendationImpact": "review",
+      "primarySource": {
+        "url": "https://www.alibabacloud.com/help/en/model-studio/decision-model-stable",
+        "publisher": "Alibaba Cloud",
+        "publishedDate": "2026-11-25",
+        "eventDate": "2026-11-25",
+        "retrievedAt": "2026-11-26T06:03:30+00:00"
+      },
+      "additionalSources": [
+        {
+          "url": "https://www.alibabacloud.com/help/en/model-studio/decision-model-api",
+          "publisher": "Alibaba Cloud",
+          "publishedDate": null,
+          "eventDate": null,
+          "retrievedAt": "2026-11-26T06:03:30+00:00"
+        }
+      ],
+      "supersedesEventKey": null
+    },
+    {
+      "eventKey": "alibaba.qwen4-max-preview.retired-standard-routing.2026-11-25",
+      "title": "Qwen4-Max-Preview retires and routes to Qwen4-Max",
+      "summary": "Alibaba’s Model Studio release log now states that Qwen4-Max-Preview retired on November 25, 2026. Requests using the original preview model ID automatically route to Qwen4-Max and are billed at its standard rate. The preview’s limited-time discount has ended. This changes the backend and billing of callers that retain the preview identifier.",
+      "whyItMatters": "Existing integrations can continue sending requests while their model configuration and costs change.",
+      "suggestedAction": "Find preview model IDs in application configuration, migrate to an explicit supported Qwen4-Max identifier, and check current regional rates and usage bills.",
+      "tags": [
+        "models-and-pricing"
+      ],
+      "urgency": "routine",
+      "confidence": "confirmed",
+      "recommendationImpact": "review",
+      "primarySource": {
+        "url": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+        "publisher": "Alibaba Cloud",
+        "publishedDate": null,
+        "eventDate": "2026-11-25",
+        "retrievedAt": "2026-11-26T06:03:30+00:00"
+      },
+      "additionalSources": [],
+      "supersedesEventKey": null
+    },
+    {
+      "eventKey": "cloudflare.search-for-agents.beta.2026-11-25",
+      "title": "Cloudflare launches Search for Agents in beta",
+      "summary": "Cloudflare launched Search for Agents in beta across all plans. Enabling it for an onboarded domain creates an AI Search instance, indexes site content and exposes a discoverable /.well-known/search endpoint. Agents retrieve relevant Markdown using GET or HTTP QUERY requests. Ingestion, storage and queries follow AI Search pricing and plan limits.",
+      "whyItMatters": "Teams maintaining customer documentation can offer agent-accessible retrieval through an existing Cloudflare domain.",
+      "suggestedAction": "Pilot it on public documentation, review indexing scope and WAF controls, and check AI Search usage limits before enabling it for a customer domain.",
+      "tags": [
+        "coding-tools",
+        "microsoft-and-cloud"
+      ],
+      "urgency": "routine",
+      "confidence": "confirmed",
+      "recommendationImpact": "none",
+      "primarySource": {
+        "url": "https://developers.cloudflare.com/changelog/post/2026-11-25-search-for-agents/",
+        "publisher": "Cloudflare",
+        "publishedDate": "2026-11-25",
+        "eventDate": "2026-11-25",
+        "retrievedAt": "2026-11-26T06:03:30+00:00"
+      },
+      "additionalSources": [
+        {
+          "url": "https://developers.cloudflare.com/ai-search/how-to/search-for-agents/",
+          "publisher": "Cloudflare",
+          "publishedDate": null,
+          "eventDate": "2026-11-25",
+          "retrievedAt": "2026-11-26T06:03:30+00:00"
         }
       ],
       "supersedesEventKey": null
