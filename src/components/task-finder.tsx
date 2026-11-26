@@ -8,6 +8,7 @@ import { guidanceFor, interpretImageWorkflow, interpretTask, recommend } from "@
 import type { CategoryId, ImageWorkflow, ModelVariant, Priority, TaskInterpretation } from "@/lib/types";
 import { CategoryIcon } from "./category-icon";
 import { ModelCard } from "./model-card";
+import { Dropdown } from "./dropdown";
 
 export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]; initialCategory?: CategoryId }) {
   const [query, setQuery] = useState("");
@@ -74,13 +75,11 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
             <div className="control-group">
               <SlidersHorizontal size={16} aria-hidden="true" />
               <label htmlFor="image-workflow">Image task</label>
-              <select id="image-workflow" value={imageWorkflow} onChange={event => setInterpretation(current => ({ ...current, imageWorkflow: event.target.value as ImageWorkflow }))}>
-                {imageWorkflows.map(workflow => <option key={workflow.id} value={workflow.id}>{workflow.name}</option>)}
-              </select>
+              <Dropdown id="image-workflow" label="Image task" value={imageWorkflow} onChange={value => setInterpretation(current => ({ ...current, imageWorkflow: value as ImageWorkflow }))} options={imageWorkflows.map(workflow => ({ value: workflow.id, label: workflow.name }))} />
             </div>
           ) : <>
-            <div className="control-group"><SlidersHorizontal size={16} aria-hidden="true" /><label htmlFor="priority">Prioritize</label><select id="priority" value={priority} onChange={event => setPriority(event.target.value as Priority)}><option value="value">Good value</option><option value="quality">Thoroughness</option><option value="speed">A quick starting point</option></select></div>
-            <div className="control-group"><label htmlFor="complexity">Task scope</label><select id="complexity" value={interpretation.complexity} onChange={event => setInterpretation(current => ({ ...current, complexity: event.target.value as "routine" | "complex" }))}><option value="routine">Well-defined</option><option value="complex">Complex / uncertain</option></select></div>
+            <div className="control-group"><SlidersHorizontal size={16} aria-hidden="true" /><label htmlFor="priority">Prioritize</label><Dropdown id="priority" label="Prioritize" value={priority} onChange={value => setPriority(value as Priority)} options={[{ value: "value", label: "Good value" }, { value: "quality", label: "Thoroughness" }, { value: "speed", label: "A quick starting point" }]} /></div>
+            <div className="control-group"><label htmlFor="complexity">Task scope</label><Dropdown id="complexity" label="Task scope" value={interpretation.complexity} onChange={value => setInterpretation(current => ({ ...current, complexity: value as "routine" | "complex" }))} options={[{ value: "routine", label: "Well-defined" }, { value: "complex", label: "Complex / uncertain" }]} /></div>
           </>}
           <label className="toggle-label"><input type="checkbox" checked={localOnly} onChange={event => setLocalOnly(event.target.checked)} /><span className="toggle-track" aria-hidden="true" />Local models only</label>
         </div>

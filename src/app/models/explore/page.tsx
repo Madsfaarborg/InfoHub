@@ -1,3 +1,4 @@
+import { Dropdown } from "@/components/dropdown";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Search } from "lucide-react";
@@ -58,10 +59,7 @@ export default async function ExploreModels({ searchParams }: { searchParams: Pr
           </div>
           <form action={directoryUrl} method="get" className="directory-filters">
             <label>Model or creator<input name="q" type="search" defaultValue={query} maxLength={120} placeholder="Search models" /></label>
-            <label>Benchmark category<select name="feed" defaultValue={feed ?? ""}>
-              <option value="">All categories</option>
-              {aaFeedIds.map(id => <option value={id} key={id}>{aaFeeds[id].label}</option>)}
-            </select></label>
+            <div className="directory-filter"><label htmlFor="directory-feed">Benchmark category</label><Dropdown id="directory-feed" name="feed" label="Benchmark category" defaultValue={feed ?? ""} options={[{ value: "", label: "All categories" }, ...aaFeedIds.map(id => ({ value: id, label: aaFeeds[id].label }))]} /></div>
             <button type="submit" className="button button-dark"><Search size={16} aria-hidden="true" />Search</button>
           </form>
           {rows.length ? (
