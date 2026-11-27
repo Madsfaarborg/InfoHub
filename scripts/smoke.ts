@@ -83,8 +83,11 @@ async function smoke() {
         assert.match(html.match(/<a [^>]*href="\/frontier-personalities"[^>]*>/)?.[0] ?? "", /aria-current="page"/);
         assert(html.includes("<h1>Frontier Personalities</h1>"));
         const profiles = [...html.matchAll(/<article[^>]*>(.*?)<\/article>/gs)].map(match => match[1]);
-        assert.equal(profiles.length, 6);
         const expected = frontierPersonalities.flatMap(group => group.profiles);
+        assert.equal(profiles.length, expected.length);
+        for (const name of ["Gemini 4 Carbon", "Gemini 4 Neon", "Gemini 4 Hydrogen"]) {
+          assert(expected.some(profile => profile.name === name), `Missing Gemini profile: ${name}`);
+        }
         for (const [index, profile] of expected.entries()) {
           assert(profiles[index].includes(`<h3>${escapeHtml(profile.name)}</h3>`));
           for (const { url } of [...profile.style.sources, ...profile.tradeoff.sources]) {
