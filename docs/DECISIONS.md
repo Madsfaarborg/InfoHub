@@ -28,3 +28,8 @@
 - Show a curated coding starting effort separately from benchmark results. Use independent, named evaluations for coding, agentic work, instruction following, and the intelligence index; preserve their original units, tested effort, source, and missing values instead of producing a composite score.
 
 - Refresh Frontier Personalities as reviewed editorial content. Verify the exact versions against provider catalogs and attach sources to each observation. Keep community anecdotes scoped to the reported task and setup.
+
+
+## 27 November 2026
+
+- Use short, interruptible motion to clarify navigation and changing results. Keep state and keyboard interaction immediate, respect reduced-motion preferences, and preserve native disclosures. CSS and browser animation APIs cover the shared controls; React view transitions enhance supported route and model-identity changes without an added animation dependency. See `MOTION_PLAN.md` for the audit, research and optional follow-up experiments.

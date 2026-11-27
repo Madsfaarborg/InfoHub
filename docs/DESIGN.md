@@ -110,3 +110,8 @@ For charts, selected data gets the accent; the rest stays neutral. Use labels an
 The explicit product brief takes precedence over generalized skill examples: keep the generous whitespace, short functional hero, and compact top navigation. Restrained solid surfaces suit this tool better than glass across the whole interface. Keep the selected direction stable while applying small refinements.
 
 Upstream source versions and attribution are recorded in the repository's third-party notices. Optional skills referenced by upstream documents are not all installed; fetch and read a relevant one only when an implementation task needs it.
+
+
+## Motion
+
+Use motion to clarify a change of context or acknowledge a control. Keep everyday feedback short (120–200 ms), reserve longer transitions for occasional composition changes, and preserve keyboard immediacy and the user's reduced-motion preference. Do not animate model scores, prices or evidence as if the data itself were changing. The full page-by-page research and implementation plan is in `MOTION_PLAN.md`.
