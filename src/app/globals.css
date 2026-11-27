@@ -663,3 +663,57 @@ table td a { white-space: nowrap; font-size: 12px; }
 @media (forced-colors: active) {
   .dropdown-option.is-active { outline: 2px solid Highlight; outline-offset: -2px; }
 }
+
+
+/* Motion is feedback for real changes; content remains available without it. */
+:root { --motion-ease: cubic-bezier(.22, 1, .36, 1); --motion-fast: 120ms; --motion-control: 160ms; --motion-enter: 200ms; --motion-compose: 260ms; }
+button, .button { transition: transform var(--motion-fast) var(--motion-ease), color var(--motion-fast), background-color var(--motion-fast), border-color var(--motion-fast); }
+.task-chip, .filter-tabs button, .dropdown-trigger { transition: color var(--motion-control), background-color var(--motion-control), border-color var(--motion-control), transform var(--motion-fast); }
+.toggle-track { transition: background-color var(--motion-control); }
+.toggle-track::before { transition: transform var(--motion-control) var(--motion-ease); }
+.dropdown-trigger svg, .model-evidence summary > svg { transition: transform var(--motion-control) var(--motion-ease); }
+.dropdown-trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+.dropdown-menu { transform-origin: top left; }
+.dropdown-menu[data-side="top"] { top: auto; bottom: calc(100% + 6px); transform-origin: bottom left; }
+.dropdown-menu[data-closing="true"], .main-nav[data-closing="true"] { pointer-events: none; }
+.model-evidence[open] > div, .news-body details[open] > div { animation: motion-reveal var(--motion-control) var(--motion-ease) both; }
+.copy-icon { position: relative; display: inline-grid; width: 15px; height: 15px; }
+.copy-icon svg { grid-area: 1 / 1; transition: opacity var(--motion-fast), transform var(--motion-control) var(--motion-ease); }
+.copy-icon svg:last-child { opacity: 0; transform: scale(.8); }
+.copy-icon[data-copied="true"] svg:first-child { opacity: 0; transform: scale(.8); }
+.copy-icon[data-copied="true"] svg:last-child { opacity: 1; transform: scale(1); }
+.main-nav { position: relative; }
+.main-nav a[aria-current="page"]::after { display: none; }
+.nav-marker { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); bottom: 4px; left: 0; transform: translateX(var(--marker-x, 0)); opacity: 0; transition: transform var(--motion-enter) var(--motion-ease), opacity var(--motion-fast); }
+.main-nav[data-active="true"] .nav-marker { opacity: 1; }
+.compare-switch { position: relative; isolation: isolate; }
+.compare-switch::before { content: ""; position: absolute; z-index: -1; inset: 4px auto 4px 4px; width: calc((100% - 12px) / 2); background: var(--surface); border-radius: 7px; box-shadow: 0 1px 3px #2021240c; transition: transform 180ms var(--motion-ease); }
+.compare-switch[data-mode="quality"]::before { transform: translateX(calc(100% + 4px)); }
+.compare-switch button { flex: 1; position: relative; }
+.compare-switch button.active { background: transparent; box-shadow: none; }
+.bar-fill { width: 100%; transform-origin: left center; transition: transform var(--motion-enter) var(--motion-ease), background-color var(--motion-control); }
+.bar-fill[data-unavailable="true"] { transition: none; }
+.bar-row { animation: motion-reveal var(--motion-enter) var(--motion-ease) both; }
+@keyframes motion-reveal { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes page-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes page-exit { from { opacity: 1; } to { opacity: 0; } }
+::view-transition { pointer-events: none; }
+::view-transition-new(.page-enter) { animation: page-enter var(--motion-enter) var(--motion-ease) both; }
+::view-transition-old(.page-exit) { animation: page-exit var(--motion-fast) ease-out both; }
+::view-transition-group(.model-identity) { animation-duration: var(--motion-compose); animation-timing-function: var(--motion-ease); }
+@media (hover: hover) and (pointer: fine) {
+  .model-card { transition: border-color var(--motion-control), box-shadow var(--motion-control); }
+  .model-card:hover, .model-card:focus-within { border-color: #c6c7c2; box-shadow: 0 6px 18px #2021240a; }
+  .text-button svg, .header-about svg, .model-table-open svg, a[target="_blank"] svg { transition: transform var(--motion-control) var(--motion-ease); }
+  .text-button:hover svg, .model-table-row:hover .model-table-open svg { transform: translateX(2px); }
+  a[target="_blank"]:hover svg, .header-about:hover svg { transform: translate(2px, -2px); }
+}
+@media (max-width: 700px) { .nav-marker { display: none; } .main-nav { transform-origin: top center; } }
+html[data-input="keyboard"] *, html[data-input="keyboard"] *::before, html[data-input="keyboard"] *::after { transition-duration: 0s !important; animation-duration: 0s !important; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation-duration: 0s !important; animation-delay: 0s !important; }
+}
+.compare-switch button { flex: 1 1 0; }
+::view-transition-new(.page-change) { animation: page-enter var(--motion-enter) var(--motion-ease) both; }
+::view-transition-old(.page-change) { animation: page-exit var(--motion-fast) ease-out both; }
+html[data-input="keyboard"]::view-transition-group(*), html[data-input="keyboard"]::view-transition-old(*), html[data-input="keyboard"]::view-transition-new(*) { animation-duration: 0s !important; animation-delay: 0s !important; }

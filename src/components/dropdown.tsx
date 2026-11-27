@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useId, useRef, useState } from "react";
+import { usePresence } from "./motion";
 import { Check, ChevronDown } from "lucide-react";
 
 type Option = { value: string; label: string };
@@ -25,6 +26,41 @@ export function Dropdown({ id, name, label, options, value, defaultValue, onChan
   const selectedIndex = Math.max(0, options.findIndex(option => option.value === selectedValue));
   const [active, setActive] = useState(selectedIndex);
   const [open, setOpen] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!open) return;
+    const place = () => {
+      const button = trigger.current;
+      const menu = root.current?.querySelector<HTMLElement>(".dropdown-menu");
+      if (!button || !menu) return;
+      const rect = button.getBoundingClientRect();
+      const viewport = window.visualViewport;
+      const height = viewport?.height ?? window.innerHeight;
+      const width = viewport?.width ?? window.innerWidth;
+      const top = viewport?.offsetTop ?? 0;
+      const left = viewport?.offsetLeft ?? 0;
+      const below = height + top - rect.bottom - 14;
+      const above = rect.top - top - 14;
+      const upwards = below < Math.min(menu.scrollHeight, 320) && above > below;
+      menu.dataset.side = upwards ? "top" : "bottom";
+      menu.style.maxHeight = Math.max(40, Math.min(320, upwards ? above : below)) + "px";
+      menu.style.maxWidth = Math.max(0, width - 24) + "px";
+      menu.style.minWidth = Math.min(rect.width, width - 24) + "px";
+      menu.style.left = "0px";
+      const bounds = menu.getBoundingClientRect();
+      menu.style.left = Math.min(0, width + left - 12 - bounds.right) + Math.max(0, left + 12 - bounds.left) + "px";
+    };
+    place();
+    window.addEventListener("resize", place);
+    window.addEventListener("scroll", place, true);
+    window.visualViewport?.addEventListener("resize", place);
+    return () => {
+      window.removeEventListener("resize", place);
+      window.removeEventListener("scroll", place, true);
+      window.visualViewport?.removeEventListener("resize", place);
+    };
+  }, [open, options]);
+  const panel = usePresence<HTMLDivElement>(open);
 
   useEffect(() => {
     if (!open) return;
@@ -87,7 +123,7 @@ export function Dropdown({ id, name, label, options, value, defaultValue, onChan
       onKeyDown={onKeyDown} onClick={() => { setActive(selectedIndex); setOpen(current => !current); }}>
       <span>{options[selectedIndex]?.label ?? ""}</span><ChevronDown size={16} aria-hidden="true" />
     </button>
-    {open ? <div id={listId} role="listbox" aria-label={label} className="dropdown-menu">
+    {panel.present ? <div ref={panel.ref} id={listId} role="listbox" aria-label={label} aria-hidden={!open} inert={!open} data-closing={!open} className="dropdown-menu">
       {options.map((option, index) => <div key={option.value} id={listId + "-" + index}
         role="option" aria-selected={option.value === selectedValue}
         className={"dropdown-option" + (active === index ? " is-active" : "")}
@@ -97,3 +133,4 @@ export function Dropdown({ id, name, label, options, value, defaultValue, onChan
     </div> : null}
   </div>;
 }
+

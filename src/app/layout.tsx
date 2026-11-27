@@ -1,3 +1,5 @@
+import { ViewTransition } from "react";
+import { MotionPreferences } from "@/components/motion";
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteHeader } from "@/components/site-header";
@@ -11,5 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body><a className="skip-link" href="#main-content">Skip to content</a><SiteHeader /><main id="main-content">{children}</main><SiteFooter /><Analytics /></body></html>;
+  return <html lang="en"><body><a className="skip-link" href="#main-content">Skip to content</a><MotionPreferences /><SiteHeader /><ViewTransition default="none" update="page-change" enter="page-enter" exit="page-exit"><main id="main-content">{children}</main></ViewTransition><SiteFooter /><Analytics /></body></html>;
 }
+
