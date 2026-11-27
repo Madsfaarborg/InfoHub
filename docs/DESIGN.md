@@ -115,3 +115,11 @@ Upstream source versions and attribution are recorded in the repository's third-
 ## Motion
 
 Use motion to clarify a change of context or acknowledge a control. Keep everyday feedback short (120–200 ms), reserve longer transitions for occasional composition changes, and preserve keyboard immediacy and the user's reduced-motion preference. Do not animate model scores, prices or evidence as if the data itself were changing. The full page-by-page research and implementation plan is in `MOTION_PLAN.md`.
+
+## Visual redesign — November 2026
+
+The home page uses a dark, split task composer with a real, labelled example recommendation. Results switch to a compact working layout, with an expandable refinement panel and setup actions next to the selected model. The selected recommendation uses a dark surface while the wider guide retains porcelain, graphite and vermilion.
+
+Model discovery uses a metric selector and expandable rows on narrow screens, preserving each available benchmark and a link to the full model profile. The comparison controls use an expandable model picker. Personality profiles expose provider jump links and a methodology disclosure. The first filtered news item receives a larger editorial heading.
+
+Maintain visible source and effort labels, retain keyboard and reduced-motion behavior, and verify contrast and full flows at desktop and mobile sizes before release.

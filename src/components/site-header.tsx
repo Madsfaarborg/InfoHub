@@ -62,6 +62,7 @@ export function SiteHeader() {
       <nav ref={panel.ref} id="main-navigation" className={panel.present ? "main-nav is-open" : "main-nav"} aria-hidden={mobile && !open ? true : undefined} inert={mobile && !open} data-closing={mobile && !open} aria-label="Main navigation" onBlur={event => { if (mobile && !event.currentTarget.contains(event.relatedTarget as Node) && event.relatedTarget !== button.current) setOpen(false); }}>
         <span className="nav-marker" aria-hidden="true" />
         {links.map(link => <Link key={link.href} href={link.href} onClick={() => setOpen(false)} aria-current={pathname.startsWith(link.href) ? "page" : undefined}>{link.label}</Link>)}
+        <Link className="mobile-about" href="/about" onClick={() => setOpen(false)} aria-current={pathname === "/about" ? "page" : undefined}>How we choose</Link>
       </nav>
       <Link className="header-about" href="/about">How we choose <ArrowUpRight size={14} aria-hidden="true" /></Link>
       <button ref={button} aria-controls="main-navigation" className="menu-toggle icon-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-label={open ? "Close navigation" : "Open navigation"}>{open ? <X size={22} /> : <Menu size={22} />}</button>

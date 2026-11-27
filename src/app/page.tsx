@@ -8,7 +8,7 @@ import { sortNews } from "@/lib/categories";
 export const dynamic = "force-dynamic";
 export default async function HomePage() {
   const { bundle, warning } = await readCatalog();
-  return <>{warning ? <p className="catalog-warning" role="status">{warning}</p> : null}<TaskFinder models={bundle.models} />
+  return <>{warning ? <p className="catalog-warning" role="status">{warning}</p> : null}<TaskFinder models={bundle.models} home />
     {bundle.models.some(model => model.reportedBenchmarks) ? (
       <section className="content-width" aria-label="Model benchmarks">
         <Link className="text-button" href="/compare#reported-benchmarks">Compare provider benchmark scores <ArrowRight size={16} aria-hidden="true" /></Link>

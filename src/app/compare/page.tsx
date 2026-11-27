@@ -11,8 +11,7 @@ export default async function ComparePage() {
     <div className="content-width page-content">
       {warning ? <p className="catalog-warning" role="status">{warning}</p> : null}
       <header className="page-heading">
-        <span className="eyebrow"><span className="accent-line" />Put the tradeoffs in perspective</span>
-        <h1>A clearer view<br />of what you’re paying for.</h1>
+        <h1>Compare models</h1>
         <p>Explore the cost of a task and the evidence behind model performance.</p>
         {bundle.models.some(model => model.reportedBenchmarks) ? <a className="text-button" href="#reported-benchmarks">Jump to provider benchmarks</a> : null}
       </header>

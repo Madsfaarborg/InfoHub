@@ -51,6 +51,7 @@ function LanguageModelPage({ family, warning }: { family: ModelFamily; warning: 
         </div>
       </header>
 
+      <nav className="detail-index" aria-label="Model sections"><a href="#effort-title">Settings</a><a href="#personality-title">Behavior</a>{profile ? <a href="#benchmark-strip-title">Benchmarks</a> : null}<a href="#model-sources">Sources</a></nav>
       {profile ? <BenchmarkStrip family={family} /> : null}
 
       <div className="model-family-layout">
@@ -240,7 +241,7 @@ function ImageModelPage({ model, warning }: { model: ModelVariant; warning: stri
 
 function SourcesSection({ sources }: { sources: EvidenceSource[] }) {
   return (
-    <section className="sources-section">
+    <section id="model-sources" className="sources-section">
       <div>
         <h2>Sources and scope</h2>
         <p>Provider facts, independent results, and editorial guidance stay visibly separate so a benchmark does not masquerade as a recommendation.</p>
