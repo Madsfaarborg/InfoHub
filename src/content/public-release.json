@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
-  "revision": "2026-11-26T06-04-32-707Z-77114c60",
-  "generatedAt": "2026-11-26T06:04:32.708Z",
+  "revision": "2026-11-27T06-03-34-403Z-a5a86be4",
+  "generatedAt": "2026-11-27T06:03:34.404Z",
   "models": [
     {
       "observations": [
@@ -2876,37 +2876,6 @@
       "supersedesEventKey": null
     },
     {
-      "eventKey": "alibaba.model-studio.decision-model.2026-11-25",
-      "title": "Alibaba adds decision-model for structured routing and scoring",
-      "summary": "Alibaba Cloud Model Studio added decision-model on November 25. It accepts text and images for classification, binary decisions and scoring, returning decision results with probabilities and confidence scores. Documentation lists a 268,288-token context window and Singapore input pricing of $0.042 per million tokens. It has a dedicated Decision Model API.",
-      "whyItMatters": "Operations teams can evaluate a specialized API for ticket classification and agent routing.",
-      "suggestedAction": "Test routing accuracy and confidence calibration on representative public or approved sample tickets, and verify the dedicated API contract before integration.",
-      "tags": [
-        "models-and-pricing",
-        "business-productivity"
-      ],
-      "urgency": "routine",
-      "confidence": "confirmed",
-      "recommendationImpact": "review",
-      "primarySource": {
-        "url": "https://www.alibabacloud.com/help/en/model-studio/decision-model-stable",
-        "publisher": "Alibaba Cloud",
-        "publishedDate": "2026-11-25",
-        "eventDate": "2026-11-25",
-        "retrievedAt": "2026-11-26T06:03:30+00:00"
-      },
-      "additionalSources": [
-        {
-          "url": "https://www.alibabacloud.com/help/en/model-studio/decision-model-api",
-          "publisher": "Alibaba Cloud",
-          "publishedDate": null,
-          "eventDate": null,
-          "retrievedAt": "2026-11-26T06:03:30+00:00"
-        }
-      ],
-      "supersedesEventKey": null
-    },
-    {
       "eventKey": "alibaba.qwen4-max-preview.retired-standard-routing.2026-11-25",
       "title": "Qwen4-Max-Preview retires and routes to Qwen4-Max",
       "summary": "Alibaba’s Model Studio release log now states that Qwen4-Max-Preview retired on November 25, 2026. Requests using the original preview model ID automatically route to Qwen4-Max and are billed at its standard rate. The preview’s limited-time discount has ended. This changes the backend and billing of callers that retain the preview identifier.",
@@ -2955,6 +2924,75 @@
           "publishedDate": null,
           "eventDate": "2026-11-25",
           "retrievedAt": "2026-11-26T06:03:30+00:00"
+        }
+      ],
+      "supersedesEventKey": null
+    },
+    {
+      "eventKey": "alibaba.model-studio.decision-model.2026-11-25",
+      "title": "Alibaba expands decision-model to Frankfurt, Beijing and Tokyo",
+      "summary": "Alibaba’s November 26 release log extends decision-model to Frankfurt, Beijing and Tokyo, following its November 25 Singapore launch. The API handles classification, binary decisions and scoring using text and images. The model page lists input pricing of $0.042 per million tokens in each of those regions and a 268,288-token context window.",
+      "whyItMatters": "Teams evaluating ticket classification or agent routing now have an additional European hosting region to assess.",
+      "suggestedAction": "Check regional endpoint availability and data-handling terms, then evaluate routing accuracy and confidence calibration on representative approved tickets.",
+      "tags": [
+        "models-and-pricing",
+        "business-productivity"
+      ],
+      "urgency": "routine",
+      "confidence": "confirmed",
+      "recommendationImpact": "review",
+      "primarySource": {
+        "url": "https://www.alibabacloud.com/help/en/model-studio/decision-model-stable",
+        "publisher": "Alibaba Cloud",
+        "publishedDate": null,
+        "eventDate": "2026-11-26",
+        "retrievedAt": "2026-11-27T06:02:50+00:00"
+      },
+      "additionalSources": [
+        {
+          "url": "https://www.alibabacloud.com/help/en/model-studio/newly-released-models",
+          "publisher": "Alibaba Cloud",
+          "publishedDate": null,
+          "eventDate": "2026-11-26",
+          "retrievedAt": "2026-11-27T06:02:50+00:00"
+        }
+      ],
+      "supersedesEventKey": null
+    },
+    {
+      "eventKey": "google.managed-airflow.agentic-upgrade-check.2026-11-26",
+      "title": "Google adds an agentic upgrade check to Managed Airflow",
+      "summary": "Google’s November 26 release notes introduce an agentic upgrade check for Managed Airflow. After selecting a target version in the Google Cloud console, operators can ask Managed Airflow Agent to inspect environment configuration, DAG source and supporting files. The check produces a compatibility assessment and validation steps through static inspection.",
+      "whyItMatters": "Cloud operations teams can use the assessment to plan DAG changes before an environment upgrade.",
+      "suggestedAction": "Confirm the required agent permissions, select a target environment version and run Upgrade check, then validate its recommendations in a test environment.",
+      "tags": [
+        "microsoft-and-cloud",
+        "coding-tools"
+      ],
+      "urgency": "routine",
+      "confidence": "confirmed",
+      "recommendationImpact": "none",
+      "primarySource": {
+        "url": "https://docs.cloud.google.com/composer/docs/release-notes",
+        "publisher": "Google Cloud",
+        "publishedDate": "2026-11-26",
+        "eventDate": "2026-11-26",
+        "retrievedAt": "2026-11-27T06:02:50+00:00"
+      },
+      "additionalSources": [
+        {
+          "url": "https://docs.cloud.google.com/composer/docs/composer-3/agentic-capabilities-overview",
+          "publisher": "Google Cloud",
+          "publishedDate": null,
+          "eventDate": null,
+          "retrievedAt": "2026-11-27T06:02:50+00:00"
+        },
+        {
+          "url": "https://docs.cloud.google.com/composer/docs/composer-3/upgrade-environments",
+          "publisher": "Google Cloud",
+          "publishedDate": null,
+          "eventDate": null,
+          "retrievedAt": "2026-11-27T06:02:50+00:00"
         }
       ],
       "supersedesEventKey": null
