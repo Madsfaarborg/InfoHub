@@ -47,19 +47,31 @@ export async function readArtificialAnalysis() {
   }
 }
 
+function addFrontierModels(bundle: PublishedBundle): PublishedBundle {
+  if (!publicRelease) return bundle;
+  const existingIds = new Set(bundle.models.map(model => model.id));
+  const additions = catalogSchema.parse(publicRelease).models.filter(model => model.id.startsWith("gemini-4-") && !existingIds.has(model.id));
+  const models = [...bundle.models, ...additions].map(model => {
+    if (model.modelId !== "gemini-4-carbon" || Date.now() < Date.parse("2026-12-01T00:00:00Z")) return model;
+    if (model.price.verifiedAt > "2026-11-27") return model;
+    return { ...model, price: { ...model.price, input: 4, cachedInput: 0.2, output: 20, note: "Standard Gemini Developer API rates effective December 1, 2026. Output includes thinking tokens." } };
+  });
+  return { ...bundle, models };
+}
+
 // React cache deduplicates only within a request. Every new request reads the
 // published snapshot, so atomic content updates do not require an app rebuild.
 export const readCatalog = cache(async (): Promise<CatalogResult> => {
   const directory = process.env.INFOHUB_DATA_DIR || path.join(process.cwd(), "data", "published");
   try {
     const raw = await readPublishedFile(path.join(directory, "current.json"));
-    return { bundle: catalogSchema.parse(raw), origin: "published", warning: null };
+    return { bundle: addFrontierModels(catalogSchema.parse(raw)), origin: "published", warning: null };
   } catch (error) {
     const missing = (error as NodeJS.ErrnoException).code === "ENOENT";
     // Malformed operational content must not become a blank application.
     if (!missing) console.error("InfoHub could not load its published catalog; serving the bundled public catalog.");
     return {
-      bundle: publicRelease === null ? starterBundle() : catalogSchema.parse(publicRelease),
+      bundle: addFrontierModels(publicRelease === null ? starterBundle() : catalogSchema.parse(publicRelease)),
       origin: publicRelease === null ? "starter" : "published",
       warning: missing ? null : "The team catalog is temporarily unavailable. Showing the public guide.",
     };

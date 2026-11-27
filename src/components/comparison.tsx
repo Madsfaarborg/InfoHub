@@ -8,6 +8,7 @@ import { estimateCost, formatUsd, priceIsStale } from "@/lib/cost";
 import { displayDate } from "@/lib/categories";
 import { Reveal } from "./motion";
 import { Dropdown } from "./dropdown";
+import { BenchmarkChart } from "./benchmark-chart";
 
 export function Comparison({ models, benchmarks }: { models: ModelVariant[]; benchmarks: BenchmarkPoint[] }) {
   const options = models.filter(model => !model.image && model.deployment === "hosted" && model.availability === "available");
@@ -36,7 +37,7 @@ export function Comparison({ models, benchmarks }: { models: ModelVariant[]; ben
   }
   return <>
     <div className="compare-switch" data-mode={mode} aria-label="Comparison type"><button className={mode === "cost" ? "active" : ""} aria-pressed={mode === "cost"} onClick={() => setMode("cost")}>Cost calculator</button><button className={mode === "quality" ? "active" : ""} aria-pressed={mode === "quality"} onClick={() => setMode("quality")}>Cost vs. quality</button></div>
-    <Reveal change={mode + suite}>{mode === "cost" ? <>
+    <Reveal change={mode}>{mode === "cost" ? <>
       <div className="comparison-layout">
         <aside className="comparison-settings"><h2>Your sample task</h2><p>Same token budget. Different price tags.</p>
           <label htmlFor="input-tokens">Input tokens <span>Your prompt and context</span></label><input id="input-tokens" type="number" min="0" max="100000" step="100" value={inputTokens} onChange={event => setInputTokens(Number(event.target.value))} />
@@ -56,9 +57,9 @@ export function Comparison({ models, benchmarks }: { models: ModelVariant[]; ben
       <section className="comparison-table-section"><div className="section-heading"><div><h2>The rates behind the estimate</h2><p>USD per million tokens. Standard API rates, within the documented pricing tier.</p></div></div><div className="table-scroll"><table><caption className="sr-only">Provider rates used in the cost calculator</caption><thead><tr><th scope="col">Model</th><th scope="col">Input</th><th scope="col">Cached input</th><th scope="col">Output</th><th scope="col">Source</th></tr></thead><tbody>{selectedModels.map(model => <tr key={model.id}><th scope="row"><Link href={"/models/" + model.id}>{model.name}</Link><small>{model.provider}</small></th><td>{model.price.input === null ? "Unknown" : formatUsd(model.price.input)}</td><td>{model.price.cachedInput === null ? "Unknown" : formatUsd(model.price.cachedInput)}</td><td>{model.price.output === null ? "Unknown" : formatUsd(model.price.output)}</td><td><a href={model.price.sourceUrl} target="_blank" rel="noreferrer">Provider <ArrowUpRight size={13} /></a></td></tr>)}</tbody></table></div>
         <div className="pricing-notes">{selectedModels.map(model => <p key={model.id}><strong>{model.name} · {model.setting.label}</strong> {model.price.note}</p>)}</div>
       </section>
-    </> : <section className="quality-section">
+    </> : <><BenchmarkChart models={models} inputTokens={inputTokens} outputTokens={outputTokens} cachedTokens={cachedTokens} validInputs={validInputs} editWorkload={() => { setMode("cost"); setTimeout(() => document.getElementById("input-tokens")?.focus(), 0); }} />{suites.length ? <details><summary>Measured benchmark costs</summary><section className="quality-section">
       {suites.length ? <><div className="suite-label"><label htmlFor="benchmark-suite">Benchmark and version</label><Dropdown id="benchmark-suite" label="Benchmark and version" value={suite} onChange={setSuite} options={suites.map(name => ({ value: name, label: name }))} /></div><BenchmarkPlot points={plot} models={models} /><div className="table-scroll"><table><caption>Comparable results from the selected benchmark</caption><thead><tr><th>Model and setting</th><th>Score</th><th>USD / task</th><th>Sample</th><th>Source</th></tr></thead><tbody>{plot.map(point => { const model = models.find(model => model.id === point.variantId); return <tr key={point.id}><th scope="row">{model?.name} · {model?.setting.label}</th><td>{point.score} {point.unit}</td><td>{formatUsd(point.costUsd)}</td><td>{point.sampleSize}</td><td><a href={point.sourceUrl} target="_blank" rel="noreferrer">{displayDate(point.testedAt)} <ArrowUpRight size={12} /></a></td></tr>; })}</tbody></table></div></> : <div className="quality-explainer"><span className="eyebrow">Evidence before a leaderboard</span><h2>A score needs context.<br />So does a price.</h2><p>A cost-versus-quality plot needs a measured cost and score from the same evaluation. The cost calculator estimates cost for your chosen token budget.</p><div className="quality-requirements"><div><span>01</span><strong>The same task</strong><p>A named benchmark, version, and measured outcome.</p></div><div><span>02</span><strong>The exact setup</strong><p>Model, provider, thinking settings, and run conditions.</p></div><div><span>03</span><strong>The complete cost</strong><p>Billable reasoning, retries, and the price at test time.</p></div></div><a className="button button-dark" href="https://artificialanalysis.ai" target="_blank" rel="noreferrer">Explore Artificial Analysis <ArrowUpRight size={16} /></a></div>}
-    </section>}</Reveal>
+    </section></details> : null}</>}</Reveal>
     <div className="comparison-bottom"><div><h3>Just need a good starting point?</h3><p>Tell us the task. We’ll keep the choices manageable.</p></div><Link className="text-button" href="/tasks">Find a model <ArrowRight size={17} /></Link></div>
   </>;
 }

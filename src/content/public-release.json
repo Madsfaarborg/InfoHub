@@ -2762,6 +2762,231 @@
         }
       ],
       "reviewedAt": "2026-11-25"
+    },
+    {
+      "id": "gemini-4-carbon",
+      "name": "Gemini 4 Carbon",
+      "developer": "Google",
+      "provider": "Google",
+      "modelId": "gemini-4-carbon",
+      "tier": "balanced",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "High",
+        "parameters": {
+          "thinking_level": "high"
+        },
+        "note": "High thinking level."
+      },
+      "description": "Google Gemini language model.",
+      "toolUrl": "https://ai.google.dev/gemini-api/docs/models",
+      "price": {
+        "input": 2,
+        "cachedInput": 0.1,
+        "output": 10,
+        "currency": "USD",
+        "verifiedAt": "2026-11-27",
+        "sourceUrl": "https://aistudio.google.com/docs/pricing",
+        "note": "Standard Gemini Developer API rates. Carbon introductory rates expire November 30, 2026."
+      },
+      "guidance": {},
+      "sources": [
+        {
+          "label": "Google pricing",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-gemini-4-argon",
+          "kind": "benchmark",
+          "checkedAt": "2026-11-27"
+        }
+      ],
+      "reviewedAt": "2026-11-27",
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-carbon-vs-gemini-4-argon",
+        "checkedAt": "2026-11-27",
+        "metrics": {
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 40.6,
+            "unit": "%",
+            "sourceUrl": "https://benchaudit.org/benchmarks/frontiercode-aa-2-0/"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 77.8,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/evaluations/automationbench-aa"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 28.4,
+            "unit": "%",
+            "sourceUrl": "https://www.benchleader.com/benchmarks/aa_gdp_pdf"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 60,
+            "unit": "index"
+          }
+        }
+      }
+    },
+    {
+      "id": "gemini-4-neon",
+      "name": "Gemini 4 Neon",
+      "developer": "Google",
+      "provider": "Google",
+      "modelId": "gemini-4-neon",
+      "tier": "balanced",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "High",
+        "parameters": {
+          "thinking_level": "high"
+        },
+        "note": "High thinking level."
+      },
+      "description": "Google Gemini language model.",
+      "toolUrl": "https://ai.google.dev/gemini-api/docs/models",
+      "price": {
+        "input": 3,
+        "cachedInput": 0.15,
+        "output": 15,
+        "currency": "USD",
+        "verifiedAt": "2026-11-27",
+        "sourceUrl": "https://aistudio.google.com/docs/pricing",
+        "note": "Standard Gemini Developer API rates. Output includes thinking tokens."
+      },
+      "guidance": {},
+      "sources": [
+        {
+          "label": "Google pricing",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen",
+          "kind": "benchmark",
+          "checkedAt": "2026-11-27"
+        }
+      ],
+      "reviewedAt": "2026-11-27",
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen",
+        "checkedAt": "2026-11-27",
+        "metrics": {
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 43.3,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 79.2,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 33.4,
+            "unit": "%",
+            "sourceUrl": "https://www.benchleader.com/benchmarks/aa_gdp_pdf"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 60,
+            "unit": "index"
+          }
+        }
+      }
+    },
+    {
+      "id": "gemini-4-hydrogen",
+      "name": "Gemini 4 Hydrogen",
+      "developer": "Google",
+      "provider": "Google",
+      "modelId": "gemini-4-hydrogen",
+      "tier": "balanced",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "High",
+        "parameters": {
+          "thinking_level": "high"
+        },
+        "note": "High thinking level."
+      },
+      "description": "Google Gemini language model.",
+      "toolUrl": "https://ai.google.dev/gemini-api/docs/models",
+      "price": {
+        "input": 1.5,
+        "cachedInput": 0.075,
+        "output": 7.5,
+        "currency": "USD",
+        "verifiedAt": "2026-11-27",
+        "sourceUrl": "https://aistudio.google.com/docs/pricing",
+        "note": "Standard Gemini Developer API rates. Output includes thinking tokens."
+      },
+      "guidance": {},
+      "sources": [
+        {
+          "label": "Google pricing",
+          "url": "https://aistudio.google.com/docs/pricing",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Artificial Analysis",
+          "url": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen",
+          "kind": "benchmark",
+          "checkedAt": "2026-11-27"
+        }
+      ],
+      "reviewedAt": "2026-11-27",
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis",
+        "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen",
+        "checkedAt": "2026-11-27",
+        "metrics": {
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 36.3,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 74.4,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 30,
+            "unit": "%",
+            "sourceUrl": "https://www.benchleader.com/benchmarks/aa_gdp_pdf"
+          },
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 51,
+            "unit": "index"
+          }
+        }
+      }
     }
   ],
   "benchmarks": [],
