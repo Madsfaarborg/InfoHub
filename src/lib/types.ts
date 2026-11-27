@@ -41,6 +41,7 @@ export interface ModelBenchmarkProfile {
   checkedAt: string;
   metrics: Partial<Record<BenchmarkMetricId, {
     benchmark: string;
+    sourceUrl?: string;
     score: number;
     unit: "%" | "index";
   }>>;
