@@ -1,3 +1,4 @@
+import { ViewTransition } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowUpRight, Info } from "lucide-react";
@@ -42,7 +43,7 @@ function LanguageModelPage({ family, warning }: { family: ModelFamily; warning: 
       <Link className="back-link" href="/models"><ArrowLeft size={16} aria-hidden="true" />All models</Link>
       <header className="page-heading model-family-heading">
         <span className="eyebrow">{family.developer} · {family.provider}</span>
-        <h1>{family.name}</h1>
+        <ViewTransition name={"model-" + family.id} default="none" share="model-identity"><h1>{family.name}</h1></ViewTransition>
         <p>{family.description}</p>
         <div className="detail-heading-actions">
           <span className="setting-pill">{family.variants.length} {family.variants.length === 1 ? "configuration" : "configurations"}</span>
@@ -201,7 +202,7 @@ function ImageModelPage({ model, warning }: { model: ModelVariant; warning: stri
       <Link className="back-link" href="/models"><ArrowLeft size={16} aria-hidden="true" />All models</Link>
       <header className="page-heading">
         <span className="eyebrow">{model.provider} · {tierLabels[model.tier]}</span>
-        <h1>{model.name}</h1>
+        <ViewTransition name={"model-" + model.id} default="none" share="model-identity"><h1>{model.name}</h1></ViewTransition>
         <p>{model.description}</p>
         <div className="detail-heading-actions">
           <span className="setting-pill">{model.setting.label}</span>
@@ -267,3 +268,4 @@ function UseCase({ name, href, guidance }: { name: string; href: string; guidanc
     </article>
   );
 }
+

@@ -8,6 +8,7 @@ import { guidanceFor, interpretImageWorkflow, interpretTask, recommend } from "@
 import type { CategoryId, ImageWorkflow, ModelVariant, Priority, TaskInterpretation } from "@/lib/types";
 import { CategoryIcon } from "./category-icon";
 import { ModelCard } from "./model-card";
+import { useFirstResult, useReveal } from "./motion";
 import { Dropdown } from "./dropdown";
 
 const priorityLabels: Record<Priority, string> = {
@@ -40,7 +41,11 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
   const isImage = category === "images";
   const results = category ? recommend(models, category, { priority, localOnly, complexity: interpretation.complexity, imageWorkflow }) : [];
   const localSetups = category ? models.filter(model => model.deployment === "local" && model.availability === "setup-required" && guidanceFor(model, category, imageWorkflow)) : [];
+  const showResults = submitted || !!initialCategory;
+  const { hero, capture } = useFirstResult(showResults);
+  const resultMotion = useReveal<HTMLElement>([showResults, category, priority, localOnly, interpretation.complexity, imageWorkflow]);
   function choose(id: CategoryId) {
+    capture();
     setCategory(id);
     setSubmitted(true);
     setInterpretation(current => ({
@@ -51,6 +56,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
   function submit(event: React.FormEvent) {
     event.preventDefault();
     if (!query.trim()) return;
+    capture();
     const next = interpretTask(query);
     setInterpretation(next);
     setCategory(next.category);
@@ -58,9 +64,8 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
     setPriority(next.priority ?? (interpretation.priority ? "value" : priority));
     setSubmitted(true);
   }
-  const showResults = submitted || !!initialCategory;
   return <>
-    <section className={showResults ? "hero hero-compact" : "hero"} aria-labelledby="hero-title">
+    <section ref={hero} className={showResults ? "hero hero-compact" : "hero"} aria-labelledby="hero-title">
       <h1 id="hero-title">Choose the right model<br /> for the job</h1>
       <p className="hero-description">Find AI tools for images, campaigns, slides, spreadsheets, and technical work. See which settings to start with and what they cost.</p>
       <form className="search-form" onSubmit={submit} role="search">
@@ -73,7 +78,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
       <p className="search-help"><LockKeyhole size={12} aria-hidden="true" />Your task stays in this browser</p>
       <div className="task-shortcuts" aria-label="Choose a task">{categories.map(item => <button key={item.id} onClick={() => choose(item.id)} aria-pressed={category === item.id} className={category === item.id ? "task-chip selected" : "task-chip"}><CategoryIcon category={item.id} size={16} />{item.name}</button>)}</div>
     </section>
-    {showResults ? <section className="results-section content-width" aria-labelledby="results-heading">
+    {showResults ? <section ref={resultMotion} className="results-section content-width" aria-labelledby="results-heading">
       <div className="section-heading"><div><h2 id="results-heading">{selected ? selected.name : interpretation.alternatives.length ? "Which part should the model help with?" : "Choose a task category"}</h2><p>{selected ? selected.description : interpretation.alternatives.length ? "Choose the main goal to see model recommendations." : "Pick the category that best describes your task."}</p></div><span className="small muted" aria-live="polite">{selected ? results.length + (results.length === 1 ? " suggestion" : " suggestions") : ""}</span></div>
       {category ? <>
         <div className="result-controls" aria-label="Adjust task interpretation" role="group">
@@ -122,3 +127,4 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
     </section> : null}
   </>;
 }
+

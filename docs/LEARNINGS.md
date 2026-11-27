@@ -32,3 +32,9 @@
 
 - Public comparison pages can provide effort-specific results for a compact catalog profile, but the effort and benchmark version are part of the result. Grouping model families is a presentation choice only; it must not collapse or average configuration-level evidence.
 - “Adaptive thinking” in a setting label describes the reasoning mechanism, not an effort named “Thinking.” Derive the coding default from the configured effort prefix and keep unsupported or uncurated defaults visibly missing.
+
+
+## 27 November 2026
+
+- A closing animated menu must immediately leave the accessibility and pointer interaction paths, even while its visual exit is finishing. The dropdown measures available viewport space on opening and responds to scrolling and resizing.
+- For local validation in the restricted environment, the pinned analytics 2.0.1 package was unavailable in the package cache; the cached 1.6.1 package was used only in the isolated local install. The remote CI must validate the pinned dependency.

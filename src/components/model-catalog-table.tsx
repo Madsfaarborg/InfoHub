@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { ViewTransition, useMemo, useState } from "react";
 import { ArrowDown, ArrowRight, ArrowUp, Search } from "lucide-react";
 import type { BenchmarkMetricId, ModelBenchmarkProfile } from "@/lib/types";
+import { useReveal } from "./motion";
 import { Dropdown } from "./dropdown";
 
 export interface ModelCatalogRow {
@@ -30,6 +31,7 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
   const [provider, setProvider] = useState("all");
   const [coverage, setCoverage] = useState("all");
   const [sort, setSort] = useState<{ key: SortKey; direction: "asc" | "desc" }>({ key: "intelligence", direction: "desc" });
+  const tableMotion = useReveal<HTMLDivElement>([provider, coverage, sort]);
   const providers = useMemo(() => [...new Set(rows.map(row => row.developer))].sort((a, b) => a.localeCompare(b)), [rows]);
 
   const visibleRows = useMemo(() => {
@@ -69,7 +71,7 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
         <Dropdown label="Filter by coverage" value={coverage} onChange={setCoverage} options={[{ value: "all", label: "All coverage" }, { value: "benchmarked", label: "Benchmarked models" }, { value: "coding", label: "Coding models" }]} />
       </div>
       {visibleRows.length ? (
-        <div className="model-table-scroll">
+        <div ref={tableMotion} className="model-table-scroll">
           <table className="model-catalog-table">
             <caption className="sr-only">Language models with coding defaults and independent benchmark results</caption>
             <thead>
@@ -84,10 +86,10 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
             </thead>
             <tbody>
               {visibleRows.map(row => (
-                <tr key={row.id}>
+                <tr className="model-table-row" key={row.id}>
                   <th scope="row">
                     <Link className="model-table-model" href={`/models/${row.id}`}>
-                      <strong>{row.name}</strong>
+                      <ViewTransition name={"model-" + row.id} default="none" share="model-identity"><strong>{row.name}</strong></ViewTransition>
                       <span>{row.developer} · {row.variants.length} {row.variants.length === 1 ? "configuration" : "configurations"}</span>
                     </Link>
                   </th>
@@ -156,3 +158,4 @@ function compareRows(first: ModelCatalogRow, second: ModelCatalogRow, key: SortK
   if (secondValue === undefined) return -1;
   return multiplier * (firstValue - secondValue) || first.name.localeCompare(second.name, "en", { numeric: true });
 }
+
