@@ -30,6 +30,7 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
   const [query, setQuery] = useState("");
   const [provider, setProvider] = useState("all");
   const [coverage, setCoverage] = useState("all");
+  const [mobileMetric, setMobileMetric] = useState<BenchmarkMetricId>("intelligence");
   const [sort, setSort] = useState<{ key: SortKey; direction: "asc" | "desc" }>({ key: "intelligence", direction: "desc" });
   const tableMotion = useReveal<HTMLDivElement>([provider, coverage, sort]);
   const providers = useMemo(() => [...new Set(rows.map(row => row.developer))].sort((a, b) => a.localeCompare(b)), [rows]);
@@ -70,8 +71,11 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
         <Dropdown label="Filter by developer" value={provider} onChange={setProvider} options={[{ value: "all", label: "All developers" }, ...providers.map(item => ({ value: item, label: item }))]} />
         <Dropdown label="Filter by coverage" value={coverage} onChange={setCoverage} options={[{ value: "all", label: "All coverage" }, { value: "benchmarked", label: "Benchmarked models" }, { value: "coding", label: "Coding models" }]} />
       </div>
+      <div className="mobile-metric-select"><Dropdown label="Benchmark metric" value={mobileMetric} onChange={value => setMobileMetric(value as BenchmarkMetricId)} options={benchmarkColumns.map(column => ({ value: column.key, label: `${column.label} · ${column.benchmark}` }))} /></div>
       {visibleRows.length ? (
-        <div ref={tableMotion} className="model-table-scroll">
+        <div ref={tableMotion}>
+        <div className="mobile-model-list">{visibleRows.map(row => { const metric = row.benchmarkProfile?.metrics[mobileMetric]; return <details key={row.id} className="mobile-model-row"><summary><span><strong>{row.name}</strong><small>{row.developer} · {row.benchmarkProfile?.effort ?? "Unavailable"}</small></span><span className="mobile-score">{metric ? `${metric.score.toLocaleString("en", { maximumFractionDigits: 1 })}${metric.unit === "%" ? "%" : ""}` : "—"}</span></summary><div className="mobile-model-metrics">{benchmarkColumns.map(column => { const value = row.benchmarkProfile?.metrics[column.key]; return <p key={column.key}><span>{column.label} · {column.benchmark}</span><strong>{value ? `${value.score.toLocaleString("en", { maximumFractionDigits: 1 })}${value.unit === "%" ? "%" : ""}` : "Not reported"}</strong></p>; })}<Link className="text-button" href={`/models/${row.id}`}>View model <ArrowRight size={16} aria-hidden="true" /></Link></div></details>; })}</div>
+        <div className="model-table-scroll">
           <table className="model-catalog-table">
             <caption className="sr-only">Language models with coding defaults and independent benchmark results</caption>
             <thead>
@@ -103,7 +107,7 @@ export function ModelCatalogTable({ rows }: { rows: ModelCatalogRow[] }) {
               ))}
             </tbody>
           </table>
-        </div>
+        </div></div>
       ) : <p className="model-table-empty">No models match these filters.</p>}
       <p className="results-footnote model-table-note">
         Coding, agentic, and instruction-following columns use separate evaluations; they are not blended into a made-up score. A dash means no comparable result is currently published in InfoHub.

@@ -28,10 +28,10 @@ export default async function ModelsPage() {
     <div className="content-width page-content model-directory">
       {warning ? <p className="catalog-warning" role="status">{warning}</p> : null}
       <header className="page-heading model-catalog-intro">
-        <span className="eyebrow"><span className="accent-line" />Model catalog</span>
-        <h1>Compare the model, then choose the effort</h1>
+        <h1>Explore models</h1>
         <p>Start with one row per model family. Open a model to see how it behaves, which reasoning levels are available, and when the extra effort is worth it.</p>
         <div className="page-heading-links">
+          <a className="text-button" href="#image-models">Image models <ArrowRight size={16} aria-hidden="true" /></a>
           <Link className="text-button" href="/models/explore">Browse the wider model directory <ArrowRight size={16} aria-hidden="true" /></Link>
           <Link className="text-button" href="/compare">Compare cost and measured quality <ArrowRight size={16} aria-hidden="true" /></Link>
         </div>
@@ -45,7 +45,7 @@ export default async function ModelsPage() {
 function ModelDirectorySection({ title, models, now }: { title: string; models: ModelVariant[]; now: Date }) {
   if (!models.length) return null;
   return (
-    <section className="directory-section image-directory" aria-label={title}>
+    <section id="image-models" className="directory-section image-directory" aria-label={title}>
       <div className="section-heading">
         <div>
           <h2>{title}</h2>
