@@ -865,3 +865,4 @@ html[data-input="keyboard"]::view-transition-group(*), html[data-input="keyboard
   .benchmark-model-list { grid-template-columns: 1fr; }
   .benchmark-card-footer { padding-inline: 20px; }
 }
+.benchmark-point-label { fill: #34393e; font: 600 11px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; paint-order: stroke; stroke: white; stroke-width: 4px; stroke-linejoin: round; }
