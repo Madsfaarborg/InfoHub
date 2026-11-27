@@ -7,6 +7,7 @@
   --line: #dededb;
   --soft: #eeefec;
   --accent: #d93920;
+  --accent-on-dark: #ffb5a5;
   --accent-soft: #fff2ed;
   --radius: 16px;
 }
@@ -730,7 +731,7 @@ html[data-input="keyboard"]::view-transition-group(*), html[data-input="keyboard
 .model-card.recommended { background: #222322; color: #fff; border-color: #222322; }
 .model-card.recommended .provider-name, .model-card.recommended .model-setting, .model-card.recommended .card-tier-description, .model-card.recommended .example, .model-card.recommended .step-up, .model-card.recommended .card-price span { color: #e4e2dd; }
 .model-card.recommended a, .model-card.recommended .text-button { color: #fff; }
-.model-card.recommended .recommended-label { color: #ffb5a5; }
+.model-card.recommended .recommended-label { color: var(--accent-on-dark); }
 @media (max-width: 700px) {
   .hero-compact { padding: 18px 20px 14px; }
   .hero-compact h1 { font-size: 24px; margin: 0; }
@@ -751,10 +752,22 @@ html[data-input="keyboard"]::view-transition-group(*), html[data-input="keyboard
 .hero-home h1 { font-family: Georgia, serif; font-weight: 400; letter-spacing: -.035em; }
 .hero-home .hero-description { margin: 20px 0 0; color: #e4e2dd; }
 .hero-home .search-form { margin: 32px 0 0; }
+.hero-home .search-form:has(input:focus-visible) { outline: 2px solid var(--accent-on-dark); outline-offset: 4px; }
 .hero-home .search-help { color: #e4e2dd; justify-content: flex-start; }
 .hero-home .task-shortcuts { grid-column: 1 / -1; margin: 0; justify-content: flex-start; }
 .hero-home .task-chip { color: #f6f3ef; border-color: #666762; }
-.hero-home .task-chip:hover, .hero-home .task-chip.selected { background: #f7f7f5; color: #202124; }
+.hero-home .task-chip.selected { background: #f7f7f5; color: #202124; }
+.hero-home .task-chip:focus-visible, .model-card.recommended :focus-visible { outline-color: var(--accent-on-dark); }
+@media (hover: hover) and (pointer: fine) {
+  .hero-home .task-chip:not(.selected):hover {
+    background: transparent;
+    border-color: var(--accent-on-dark);
+    color: var(--accent-on-dark);
+  }
+  .model-card.recommended a:hover,
+  .model-card.recommended .text-button:hover,
+  .model-card.recommended summary:hover { color: var(--accent-on-dark); }
+}
 .hero-example { align-self: center; padding: 30px; background: #f7f7f5; color: #202124; border-radius: 14px; }
 .hero-example h2 { font-size: 25px; margin: 8px 0 22px; }
 .hero-example .example-label, .example-recommendation span { color: #595b60; font-size: 13px; }
@@ -792,7 +805,7 @@ html[data-input="keyboard"]::view-transition-group(*), html[data-input="keyboard
 .model-card.recommended .card-tier-label, .model-card.recommended .model-fit strong { color: #fff; }
 .model-card.recommended .provider-mark { color: #222322; }
 .model-card.recommended .example > span, .model-card.recommended .example p, .model-card.recommended .model-evidence > div { color: #e4e2dd; }
-.model-card.recommended .copy-error { color: #ffb5a5; }
+.model-card.recommended .copy-error { color: var(--accent-on-dark); }
 .detail-index { display: flex; gap: 8px; flex-wrap: wrap; margin: -8px 0 32px; }
 .detail-index a { padding: 10px 16px; background: #eeebe5; border-radius: 8px; font-weight: 600; font-size: 14px; }
 #model-sources, #effort-title, #personality-title, #benchmark-strip-title { scroll-margin-top: 24px; }
