@@ -2762,6 +2762,404 @@
         }
       ],
       "reviewedAt": "2026-11-25"
+    },
+    {
+      "id": "gemini-4-hydrogen-high",
+      "name": "Gemini 4 Hydrogen",
+      "developer": "Google",
+      "provider": "Gemini API",
+      "modelId": "gemini-4-hydrogen",
+      "tier": "everyday",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "High",
+        "parameters": {
+          "generation_config.thinking_level": "high"
+        },
+        "note": "Google Interactions API thinking level. Task fit is editorial; actual token use and availability vary."
+      },
+      "description": "Google Gemini 4 Hydrogen for multimodal input and text output. Review output and data-handling requirements before use.",
+      "toolUrl": "https://aistudio.google.com/prompts/new_chat?model=gemini-4-hydrogen",
+      "price": {
+        "input": 1.5,
+        "output": 7.5,
+        "cachedInput": 0.075,
+        "currency": "USD",
+        "verifiedAt": "2026-11-27",
+        "sourceUrl": "https://aistudio.google.com/docs/pricing#gemini-4-hydrogen",
+        "note": "Standard paid Gemini API USD per million text tokens; output includes thinking tokens. Grounding and other charges excluded. Free tier is subject to limits and separate data-use terms."
+      },
+      "limits": {
+        "contextTokens": 1048576,
+        "maxOutputTokens": 65536
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Editorial starting point: Implementing and reviewing a defined software change.",
+          "example": "Implement a small feature from a written specification and run its tests.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "debugging": {
+          "bestFor": "Editorial starting point: Investigating a reproducible software failure.",
+          "example": "Trace a failing test and propose a fix with verification steps.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "analysis": {
+          "bestFor": "Editorial starting point: Analyzing supplied data and checking assumptions.",
+          "example": "Summarize a supplied operational dataset and flag missing information.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "research": {
+          "bestFor": "Editorial starting point: Comparing supplied sources and identifying trade-offs.",
+          "example": "Compare the constraints in two supplied vendor documents.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "writing": {
+          "bestFor": "Editorial starting point: Drafting and revising content from supplied facts.",
+          "example": "Turn approved incident notes into a customer update.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        }
+      },
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "analysis",
+            "research",
+            "writing"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Google describes Hydrogen as a multimodal model for software and knowledge work.",
+          "scope": "Provider model documentation; not an independent evaluation.",
+          "label": "Google model documentation",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-hydrogen",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "tasks": [
+            "analysis",
+            "writing"
+          ],
+          "kind": "Practitioner report",
+          "summary": "A hands-on review found accurate transcription and adherence to a requested format in a short test.",
+          "scope": "Short, task-specific trial; it does not establish general reliability.",
+          "label": "Practitioner report",
+          "url": "https://www.sme-insights.co.uk/gemini-4-hydrogen-hands-on-review/",
+          "checkedAt": "2026-11-27"
+        }
+      ],
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis Intelligence Index v5.0.2",
+        "sourceUrl": "https://artificialanalysis.ai/models/gemini-4-hydrogen",
+        "checkedAt": "2026-11-27",
+        "metrics": {
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 51,
+            "unit": "index"
+          }
+        }
+      },
+      "sources": [
+        {
+          "label": "Google model documentation",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-hydrogen",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Google thinking levels",
+          "url": "https://aistudio.google.com/docs/thinking",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Google pricing",
+          "url": "https://aistudio.google.com/docs/pricing#gemini-4-hydrogen",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Artificial Analysis model results",
+          "url": "https://artificialanalysis.ai/models/gemini-4-hydrogen",
+          "kind": "benchmark",
+          "checkedAt": "2026-11-27"
+        }
+      ],
+      "reviewedAt": "2026-11-27"
+    },
+    {
+      "id": "gemini-4-neon-high",
+      "name": "Gemini 4 Neon",
+      "developer": "Google",
+      "provider": "Gemini API",
+      "modelId": "gemini-4-neon",
+      "tier": "balanced",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "High",
+        "parameters": {
+          "generation_config.thinking_level": "high"
+        },
+        "note": "Google Interactions API thinking level. Task fit is editorial; actual token use and availability vary."
+      },
+      "description": "Google Gemini 4 Neon for multimodal input and text output. Review output and data-handling requirements before use.",
+      "toolUrl": "https://aistudio.google.com/prompts/new_chat?model=gemini-4-neon",
+      "price": {
+        "input": 3,
+        "output": 15,
+        "cachedInput": 0.15,
+        "currency": "USD",
+        "verifiedAt": "2026-11-27",
+        "sourceUrl": "https://aistudio.google.com/docs/pricing#gemini-4-neon",
+        "note": "Standard paid Gemini API USD per million text tokens; output includes thinking tokens. Grounding and other charges excluded. "
+      },
+      "limits": {
+        "contextTokens": 1048576,
+        "maxOutputTokens": 65536
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Editorial starting point: Implementing and reviewing a defined software change.",
+          "example": "Implement a small feature from a written specification and run its tests.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "debugging": {
+          "bestFor": "Editorial starting point: Investigating a reproducible software failure.",
+          "example": "Trace a failing test and propose a fix with verification steps.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "analysis": {
+          "bestFor": "Editorial starting point: Analyzing supplied data and checking assumptions.",
+          "example": "Summarize a supplied operational dataset and flag missing information.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "research": {
+          "bestFor": "Editorial starting point: Comparing supplied sources and identifying trade-offs.",
+          "example": "Compare the constraints in two supplied vendor documents.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "writing": {
+          "bestFor": "Editorial starting point: Drafting and revising content from supplied facts.",
+          "example": "Turn approved incident notes into a customer update.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        }
+      },
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "analysis",
+            "research",
+            "writing"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Google describes Neon as a multimodal model for software and knowledge work.",
+          "scope": "Provider model documentation; not an independent evaluation.",
+          "label": "Google model documentation",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-neon",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "tasks": [
+            "coding"
+          ],
+          "kind": "Practitioner report",
+          "summary": "A practitioner reported that Neon identified real issues in a code-review trial, while also approving changes with serious issues.",
+          "scope": "One practitioner review of an Azure and .NET project, not a general ranking.",
+          "label": "Practitioner report",
+          "url": "https://huuhka.net/testing-gemini-4-neon-as-a-code-reviewer/",
+          "checkedAt": "2026-11-27"
+        }
+      ],
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis Intelligence Index v5.0.2",
+        "sourceUrl": "https://artificialanalysis.ai/models/gemini-4-neon",
+        "checkedAt": "2026-11-27",
+        "metrics": {
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 60,
+            "unit": "index"
+          }
+        }
+      },
+      "sources": [
+        {
+          "label": "Google model documentation",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-neon",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Google thinking levels",
+          "url": "https://aistudio.google.com/docs/thinking",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Google pricing",
+          "url": "https://aistudio.google.com/docs/pricing#gemini-4-neon",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Artificial Analysis model results",
+          "url": "https://artificialanalysis.ai/models/gemini-4-neon",
+          "kind": "benchmark",
+          "checkedAt": "2026-11-27"
+        }
+      ],
+      "reviewedAt": "2026-11-27"
+    },
+    {
+      "id": "gemini-4-carbon-high",
+      "name": "Gemini 4 Carbon",
+      "developer": "Google",
+      "provider": "Gemini API",
+      "modelId": "gemini-4-carbon",
+      "tier": "deep",
+      "deployment": "hosted",
+      "availability": "available",
+      "setting": {
+        "label": "High",
+        "parameters": {
+          "generation_config.thinking_level": "high"
+        },
+        "note": "Google Interactions API thinking level. Task fit is editorial; actual token use and availability vary."
+      },
+      "description": "Google Gemini 4 Carbon for multimodal input and text output. Review output and data-handling requirements before use.",
+      "toolUrl": "https://aistudio.google.com/prompts/new_chat?model=gemini-4-carbon",
+      "price": {
+        "input": 2,
+        "output": 10,
+        "cachedInput": 0.1,
+        "currency": "USD",
+        "verifiedAt": "2026-11-27",
+        "sourceUrl": "https://aistudio.google.com/docs/pricing#gemini-4-carbon",
+        "note": "Standard paid Gemini API USD per million text tokens; output includes thinking tokens. Grounding and other charges excluded. Introductory rates apply through November 30, 2026; from December 1 input/output/cache rates rise to $4/$20/$0.20 per million. Recheck before estimating.",
+        "validUntil": "2026-12-01T00:00:00Z"
+      },
+      "limits": {
+        "contextTokens": 1048576,
+        "maxOutputTokens": 65536
+      },
+      "guidance": {
+        "coding": {
+          "bestFor": "Editorial starting point: Implementing and reviewing a defined software change.",
+          "example": "Implement a small feature from a written specification and run its tests.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "debugging": {
+          "bestFor": "Editorial starting point: Investigating a reproducible software failure.",
+          "example": "Trace a failing test and propose a fix with verification steps.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "analysis": {
+          "bestFor": "Editorial starting point: Analyzing supplied data and checking assumptions.",
+          "example": "Summarize a supplied operational dataset and flag missing information.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "research": {
+          "bestFor": "Editorial starting point: Comparing supplied sources and identifying trade-offs.",
+          "example": "Compare the constraints in two supplied vendor documents.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        },
+        "writing": {
+          "bestFor": "Editorial starting point: Drafting and revising content from supplied facts.",
+          "example": "Turn approved incident notes into a customer update.",
+          "limitation": "Verify outputs, sources, and technical claims; provider access does not imply company approval.",
+          "stepUp": "Try a more capable configuration or seek a second review when the task is complex."
+        }
+      },
+      "observations": [
+        {
+          "tasks": [
+            "coding",
+            "debugging",
+            "analysis",
+            "research",
+            "writing"
+          ],
+          "kind": "Provider guidance",
+          "summary": "Google describes Carbon as a multimodal model for software and knowledge work.",
+          "scope": "Provider model documentation; not an independent evaluation.",
+          "label": "Google model documentation",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-carbon",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "tasks": [
+            "coding"
+          ],
+          "kind": "Practitioner report",
+          "summary": "A developer reported completing a four-phase Go and HTMX pipeline trial with few changes after an audit.",
+          "scope": "A single practitioner report, not independently replicated.",
+          "label": "Practitioner report",
+          "url": "https://www.reddit.com/r/google_antigravity/comments/1xszqoj/my_preliminary_results_on_carbon/",
+          "checkedAt": "2026-11-27"
+        }
+      ],
+      "benchmarkProfile": {
+        "effort": "High",
+        "sourceLabel": "Artificial Analysis Intelligence Index v5.0.2",
+        "sourceUrl": "https://artificialanalysis.ai/models/gemini-4-carbon",
+        "checkedAt": "2026-11-27",
+        "metrics": {
+          "intelligence": {
+            "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
+            "score": 60,
+            "unit": "index"
+          }
+        }
+      },
+      "sources": [
+        {
+          "label": "Google model documentation",
+          "url": "https://aistudio.google.com/docs/models/gemini-4-carbon",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Google thinking levels",
+          "url": "https://aistudio.google.com/docs/thinking",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Google pricing",
+          "url": "https://aistudio.google.com/docs/pricing#gemini-4-carbon",
+          "kind": "provider",
+          "checkedAt": "2026-11-27"
+        },
+        {
+          "label": "Artificial Analysis model results",
+          "url": "https://artificialanalysis.ai/models/gemini-4-carbon",
+          "kind": "benchmark",
+          "checkedAt": "2026-11-27"
+        }
+      ],
+      "reviewedAt": "2026-11-27"
     }
   ],
   "benchmarks": [],

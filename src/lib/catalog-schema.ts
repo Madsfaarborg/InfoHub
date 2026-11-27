@@ -42,7 +42,7 @@ export const modelVariantSchema = z.strictObject({
   availability: z.enum(["available", "setup-required", "unavailable"]),
   setting: z.strictObject({ label: text, parameters: z.record(text, z.union([z.string(), z.number().finite(), z.boolean()])), note: z.string() }),
   description: text, toolUrl: url.nullable(),
-  price: z.strictObject({ input: money.nullable(), output: money.nullable(), cachedInput: money.nullable(), currency: z.literal("USD"), verifiedAt: date, sourceUrl: url, note: z.string() }),
+  price: z.strictObject({ input: money.nullable(), output: money.nullable(), cachedInput: money.nullable(), currency: z.literal("USD"), verifiedAt: date, validUntil: date.optional(), sourceUrl: url, note: z.string() }),
   limits: z.strictObject({ contextTokens: z.number().int().positive(), maxOutputTokens: z.number().int().positive() }).optional(),
   reportedBenchmarks: z.strictObject({
     sourceLabel: text, sourceUrl: url, publishedAt: date,

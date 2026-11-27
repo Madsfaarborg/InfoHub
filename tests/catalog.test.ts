@@ -96,3 +96,20 @@ test("rejects nonfinite settings, scores and invalid sample sizes", () => {
   const scoreBundle = fixture(); scoreBundle.benchmarks[0].score = NaN;
   assert.equal(catalogSchema.safeParse(scoreBundle).success, false);
 });
+
+test("Gemini models appear in the starter and released catalogs with high-effort evidence", async () => {
+  const { starterBundle, addStarterGuidance } = await import("../src/lib/starter");
+  const release = (await import("../src/content/public-release.json")).default;
+  const { groupModelFamilies } = await import("../src/lib/model-families");
+  for (const bundle of [starterBundle(), catalogSchema.parse(release)]) {
+    const families = groupModelFamilies(bundle.models);
+    for (const name of ["Hydrogen", "Neon", "Carbon"]) {
+      const family = families.find(item => item.name === `Gemini 4 ${name}`);
+      assert.ok(family, `${name} is missing`);
+      assert.equal(family.benchmarkProfile?.effort, "High");
+      assert.ok(family.variants[0].guidance.coding);
+    }
+  }
+  const upgraded = addStarterGuidance(starterBundle().models);
+  assert.equal(upgraded.filter(model => model.id === "gemini-4-neon-high").length, 1);
+});
