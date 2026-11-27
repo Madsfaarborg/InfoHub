@@ -39,3 +39,10 @@ test("formats useful small costs without calling them zero", () => {
   assert.equal(formatUsd(0.000001), "<$0.0001");
   assert.equal(formatUsd(NaN), "Unknown");
 });
+
+test("an expired promotional rate cannot produce a cost estimate", () => {
+  const promo = { ...model, price: { ...model.price, validUntil: "2026-12-01T00:00:00Z" } };
+  assert.equal(estimateCost(promo, usage, new Date("2026-11-30T23:59:59Z")), 2.2);
+  assert.equal(estimateCost(promo, usage, new Date("2026-12-01T00:00:00Z")), null);
+  assert.equal(priceIsStale(promo, new Date("2026-12-01T00:00:00Z")), true);
+});

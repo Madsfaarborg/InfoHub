@@ -67,6 +67,7 @@ export interface ModelVariant {
     cachedInput: number | null;
     currency: "USD";
     verifiedAt: string;
+    validUntil?: string;
     sourceUrl: string;
     note: string;
   };

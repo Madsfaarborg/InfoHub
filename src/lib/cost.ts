@@ -1,7 +1,8 @@
 import type { ModelVariant } from "./types";
 
-export function estimateCost(model: ModelVariant, usage: { inputTokens: number; outputTokens: number; cachedTokens: number }): number | null {
+export function estimateCost(model: ModelVariant, usage: { inputTokens: number; outputTokens: number; cachedTokens: number }, now: Date = new Date()): number | null {
   if (model.image) return null;
+  if (model.price.validUntil && (!Number.isFinite(now.getTime()) || now.getTime() >= Date.parse(model.price.validUntil))) return null;
   const { inputTokens, outputTokens, cachedTokens } = usage;
   if (![inputTokens, outputTokens, cachedTokens].every((value) => Number.isSafeInteger(value) && value >= 0) || cachedTokens > inputTokens) return null;
   const rates = [[inputTokens - cachedTokens, model.price.input], [cachedTokens, model.price.cachedInput], [outputTokens, model.price.output]] as const;
@@ -15,6 +16,7 @@ export function estimateCost(model: ModelVariant, usage: { inputTokens: number; 
 }
 
 export function priceIsStale(model: ModelVariant, now: Date = new Date()): boolean {
+  if (model.price.validUntil && (!Number.isFinite(now.getTime()) || now.getTime() >= Date.parse(model.price.validUntil))) return true;
   const timestamp = model.price.verifiedAt;
   if (!/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?(?:Z|[+-]\d{2}:\d{2}))?$/.test(timestamp)) return true;
   if (timestamp.includes("T") && (Number(timestamp.slice(11, 13)) > 23 || Number(timestamp.slice(14, 16)) > 59 || Number(timestamp.slice(17, 19)) > 59)) return true;

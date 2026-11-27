@@ -9,6 +9,7 @@ import base from "../content/starter.json";
 import images from "../content/image-starter.json";
 import business from "../content/business-guidance.json";
 import claude from "../content/claude-models.json";
+import gemini from "../content/gemini-models.json";
 import { catalogSchema, modelVariantSchema } from "./catalog-schema";
 import type { ModelVariant, PublishedBundle } from "./types";
 
@@ -17,15 +18,18 @@ const starterImages: ModelVariant[] = modelVariantSchema.array().parse(images);
 const earlier = modelVariantSchema.array().parse([...earlierGpt, ...earlierClaude]);
 const observations: Record<string, unknown> = { ...gptNotes, ...otherNotes, ...imageNotes };
 const starterClaude: ModelVariant[] = modelVariantSchema.array().parse(claude);
+const starterGemini: ModelVariant[] = modelVariantSchema.array().parse(gemini);
 
 export function addStarterGuidance(models: ModelVariant[]): ModelVariant[] {
   const ids = new Set(models.map(model => model.id));
+  const modelIds = new Set(models.map(model => model.modelId));
   const combined = [
     ...models.map(model => {
       const extra = businessGuidance[model.id];
       return extra ? { ...model, guidance: { ...extra, ...model.guidance } } : model;
     }),
     ...starterClaude.filter(model => !ids.has(model.id)),
+    ...starterGemini.filter(model => !ids.has(model.id) && !modelIds.has(model.modelId)),
     ...earlier.filter(model => !ids.has(model.id)),
     ...starterImages.filter(model => !ids.has(model.id)),
   ];

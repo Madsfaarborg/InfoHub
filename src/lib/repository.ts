@@ -50,9 +50,11 @@ export async function readArtificialAnalysis() {
 function addFrontierModels(bundle: PublishedBundle): PublishedBundle {
   if (!publicRelease) return bundle;
   const existingIds = new Set(bundle.models.map(model => model.id));
-  const additions = catalogSchema.parse(publicRelease).models.filter(model => model.id.startsWith("gemini-4-") && !existingIds.has(model.id));
+  const existingModelIds = new Set(bundle.models.map(model => model.modelId));
+  const additions = catalogSchema.parse(publicRelease).models.filter(model => model.id.startsWith("gemini-4-") && !existingIds.has(model.id) && !existingModelIds.has(model.modelId));
   const models = [...bundle.models, ...additions].map(model => {
     if (model.modelId !== "gemini-4-carbon" || Date.now() < Date.parse("2026-12-01T00:00:00Z")) return model;
+    if (model.price.validUntil) return model;
     if (model.price.verifiedAt > "2026-11-27") return model;
     return { ...model, price: { ...model.price, input: 4, cachedInput: 0.2, output: 20, note: "Standard Gemini Developer API rates effective December 1, 2026. Output includes thinking tokens." } };
   });
