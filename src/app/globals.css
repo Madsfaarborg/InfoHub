@@ -814,3 +814,54 @@ html[data-input="keyboard"]::view-transition-group(*), html[data-input="keyboard
 .news-page .news-row:first-child { padding-block: 30px 36px; }
 .news-page .news-body > p { max-width: 72ch; }
 @media (max-width: 700px) { .main-nav .mobile-about { display: block; } }
+
+/* Benchmark comparison */
+.benchmark-controls { display: flex; align-items: end; gap: 32px; flex-wrap: wrap; }
+.benchmark-controls .suite-label { flex: 1 1 320px; margin-bottom: 0; }
+.benchmark-workload { display: grid; gap: 2px; min-width: 220px; font-size: 13px; line-height: 1.5; }
+.benchmark-workload > span { color: var(--muted); }
+.benchmark-workload strong { font-weight: 600; }
+.benchmark-workload button { justify-self: start; font-size: 12px; }
+.benchmark-context { color: var(--secondary); font-size: 13px; margin: 18px 0 20px; }
+.benchmark-card { overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); margin-bottom: 32px; }
+.benchmark-card-header { padding: 26px 28px 18px; display: flex; justify-content: space-between; align-items: start; gap: 20px; }
+.benchmark-card-header h3 { margin: 0; font-size: 18px; letter-spacing: -.02em; }
+.benchmark-card-header p { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+.benchmark-provider-legend { display: flex; flex-wrap: wrap; gap: 14px; color: var(--secondary); font-size: 12px; }
+.benchmark-provider-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.benchmark-provider-legend i { width: 9px; height: 9px; border-radius: 50%; }
+.benchmark-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; border-top: 1px solid #ededea; }
+.benchmark-plot { min-width: 0; padding: 22px 18px 20px 24px; }
+.benchmark-axis-title, .benchmark-x-title { font-size: 12px; font-weight: 600; color: #545960; }
+.benchmark-axis-title { margin-left: 4px; }
+.benchmark-chart-area { width: 100%; height: 340px; }
+.benchmark-x-title { text-align: center; margin: 12px 0 0 30px; }
+.benchmark-x-title span { color: var(--muted); font-weight: 400; }
+.benchmark-models { border-left: 1px solid #ededea; padding: 20px 14px; min-width: 0; }
+.benchmark-models-heading { display: flex; justify-content: space-between; align-items: center; padding: 0 8px 12px; font-size: 12px; }
+.benchmark-models-heading span { color: var(--muted); }
+.benchmark-model-list { max-height: 360px; overflow-y: auto; }
+.benchmark-model-row { border: 0; border-radius: 8px; background: transparent; color: var(--ink); width: 100%; display: flex; align-items: center; gap: 10px; padding: 8px; text-align: left; cursor: pointer; }
+.benchmark-model-row:hover, .benchmark-model-row[aria-pressed="true"] { background: #f3f3f0; }
+.benchmark-model-row:focus-visible { outline: 2px solid #202124; outline-offset: -2px; }
+.benchmark-number { width: 22px; height: 22px; display: grid; place-items: center; flex: none; border-radius: 50%; color: white; font-size: 10px; font-weight: 700; }
+.benchmark-model-name { flex: 1; min-width: 0; font-size: 12px; font-weight: 600; line-height: 1.35; }
+.benchmark-model-name small { display: block; margin-top: 2px; color: var(--muted); font-size: 11px; font-weight: 400; }
+.benchmark-model-row > strong { font-size: 12px; font-variant-numeric: tabular-nums; }
+.benchmark-tooltip { display: grid; gap: 2px; padding: 11px 14px; border: 1px solid #dededb; border-radius: 9px; background: white; box-shadow: 0 8px 28px #2021241a; font-size: 12px; color: var(--secondary); }
+.benchmark-tooltip strong { color: var(--ink); font-size: 13px; }
+.benchmark-card-footer { min-height: 49px; display: flex; align-items: center; flex-wrap: wrap; gap: 6px 12px; border-top: 1px solid #ededea; padding: 12px 28px; color: var(--secondary); font-size: 12px; }
+.benchmark-card-footer strong { color: var(--ink); }
+@media (max-width: 800px) {
+  .benchmark-layout { grid-template-columns: 1fr; }
+  .benchmark-models { border-left: 0; border-top: 1px solid #ededea; }
+  .benchmark-model-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: none; }
+  .benchmark-chart-area { height: 300px; }
+}
+@media (max-width: 520px) {
+  .benchmark-card-header { flex-direction: column; padding: 20px; }
+  .benchmark-plot { padding: 20px 8px 18px 12px; }
+  .benchmark-chart-area { height: 260px; }
+  .benchmark-model-list { grid-template-columns: 1fr; }
+  .benchmark-card-footer { padding-inline: 20px; }
+}
