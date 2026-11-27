@@ -17,7 +17,7 @@ const priorityLabels: Record<Priority, string> = {
   speed: "A quick starting point",
 };
 
-export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]; initialCategory?: CategoryId }) {
+export function TaskFinder({ models, initialCategory, home = false }: { models: ModelVariant[]; initialCategory?: CategoryId; home?: boolean }) {
   const [query, setQuery] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [category, setCategory] = useState<CategoryId | null>(initialCategory || null);
@@ -42,6 +42,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
   const results = category ? recommend(models, category, { priority, localOnly, complexity: interpretation.complexity, imageWorkflow }) : [];
   const localSetups = category ? models.filter(model => model.deployment === "local" && model.availability === "setup-required" && guidanceFor(model, category, imageWorkflow)) : [];
   const showResults = submitted || !!initialCategory;
+  const example = recommend(models, "coding", { priority: "value", localOnly: false, complexity: "routine", imageWorkflow: "concepts" })[0];
   const { hero, capture } = useFirstResult(showResults);
   const resultMotion = useReveal<HTMLElement>([showResults, category, priority, localOnly, interpretation.complexity, imageWorkflow]);
   function choose(id: CategoryId) {
@@ -65,8 +66,9 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
     setSubmitted(true);
   }
   return <>
-    <section ref={hero} className={showResults ? "hero hero-compact" : "hero"} aria-labelledby="hero-title">
-      <h1 id="hero-title">Choose the right model<br /> for the job</h1>
+    <section ref={hero} className={showResults ? "hero hero-compact" : home ? "hero hero-home" : "hero"} aria-labelledby="hero-title">
+      <div className="hero-main">
+      <h1 id="hero-title">{showResults ? "Find a model" : <>Choose the right model<br /> for the job</>}</h1>
       <p className="hero-description">Find AI tools for images, campaigns, slides, spreadsheets, and technical work. See which settings to start with and what they cost.</p>
       <form className="search-form" onSubmit={submit} role="search">
         <Search size={21} strokeWidth={1.6} aria-hidden="true" />
@@ -76,12 +78,14 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
         <button type="submit" className="search-submit" aria-label="Find a model" disabled={!query.trim()}><ArrowRight size={20} aria-hidden="true" /></button>
       </form>
       <p className="search-help"><LockKeyhole size={12} aria-hidden="true" />Your task stays in this browser</p>
+      </div>
+      {home && !showResults && example ? <aside className="hero-example" aria-label="Example recommendation"><p className="example-label">Example task</p><h2>Write a small Python script</h2><div className="example-recommendation"><span>Suggested starting point · {example.model.setting.label}</span><strong>{example.model.name}</strong><p>{example.guidance.bestFor}</p><span>{example.model.provider}</span></div><button type="button" onClick={() => { setQuery("Write a small Python script"); choose("coding"); }}>Try this task <ArrowRight size={17} aria-hidden="true" /></button></aside> : null}
       <div className="task-shortcuts" aria-label="Choose a task">{categories.map(item => <button key={item.id} onClick={() => choose(item.id)} aria-pressed={category === item.id} className={category === item.id ? "task-chip selected" : "task-chip"}><CategoryIcon category={item.id} size={16} />{item.name}</button>)}</div>
     </section>
     {showResults ? <section ref={resultMotion} className="results-section content-width" aria-labelledby="results-heading">
       <div className="section-heading"><div><h2 id="results-heading">{selected ? selected.name : interpretation.alternatives.length ? "Which part should the model help with?" : "Choose a task category"}</h2><p>{selected ? selected.description : interpretation.alternatives.length ? "Choose the main goal to see model recommendations." : "Pick the category that best describes your task."}</p></div><span className="small muted" aria-live="polite">{selected ? results.length + (results.length === 1 ? " suggestion" : " suggestions") : ""}</span></div>
       {category ? <>
-        <div className="result-controls" aria-label="Adjust task interpretation" role="group">
+        <details className="refinement-panel"><summary>Refine your results{localOnly ? " · Local models only" : ""}</summary><div className="result-controls" aria-label="Adjust task interpretation" role="group">
           <div className="control-group">
             <label htmlFor="task-category">Task</label>
             <Dropdown id="task-category" label="Task" value={category}
@@ -106,7 +110,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
             <div className="control-group"><label htmlFor="complexity">Task scope</label><Dropdown id="complexity" label="Task scope" value={interpretation.complexity} onChange={value => setInterpretation(current => ({ ...current, complexity: value as "routine" | "complex" }))} options={[{ value: "routine", label: "Well-defined" }, { value: "complex", label: "Complex / uncertain" }]} /></div>
           </>}
           <label className="toggle-label"><input type="checkbox" checked={localOnly} onChange={event => setLocalOnly(event.target.checked)} /><span className="toggle-track" aria-hidden="true" />Local models only</label>
-        </div>
+        </div></details>
         {interpretation.alternatives.length ? <div className="interpretation-note">Another possible fit: {interpretation.alternatives.filter(id => id !== category).map(id => <button className="inline-button" key={id} onClick={() => choose(id)}>{categories.find(item => item.id === id)?.name}</button>)}</div> : null}
         {results.length ? <>
           <div className="model-grid">{results.map(result => <ModelCard

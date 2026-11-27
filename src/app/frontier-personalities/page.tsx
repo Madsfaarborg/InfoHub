@@ -15,13 +15,14 @@ export default function FrontierPersonalitiesPage() {
       <header className="page-heading">
         <h1>Frontier Personalities</h1>
         <p>How Claude, GPT and Gemini models approach a brief, take initiative, and respond when the work gets messy.</p>
-        <p className={styles.evidenceNote}>Cost categories are a guide to each provider’s lineup. Actual costs vary by task, reasoning effort, subscription, and API pricing. See <a href="https://platform.claude.com/docs/en/models/overview">Anthropic</a>, <a href="https://developers.openai.com/api/docs/pricing">OpenAI</a>, and <a href="https://ai.google.dev/gemini-api/docs/pricing">Google</a> pricing.</p>
+        <nav className={styles.providerNav} aria-label="Jump to provider">{frontierPersonalities.map(group => <a key={group.id} href={`#${group.id}-profiles`}>{group.name} <span aria-hidden="true">↓</span></a>)}</nav>
+        <details className={styles.methodology}><summary>About these profiles and costs</summary><p className={styles.evidenceNote}>Cost categories are a guide to each provider’s lineup. Actual costs vary by task, reasoning effort, subscription, and API pricing. See <a href="https://platform.claude.com/docs/en/models/overview">Anthropic</a>, <a href="https://developers.openai.com/api/docs/pricing">OpenAI</a>, and <a href="https://ai.google.dev/gemini-api/docs/pricing">Google</a> pricing.</p>
         <p className={styles.evidenceNote}>
           These profiles draw on hands-on reviews, community reports, and provider examples.
           Behavior varies with the task, app, and reasoning effort; community reports are individual experiences.
           Claude and GPT sources checked <time dateTime={personalityReviewDate}>{displayDate(personalityReviewDate)}</time>;{" "}
           Gemini sources checked <time dateTime={geminiPersonalityReviewDate}>{displayDate(geminiPersonalityReviewDate)}</time>.
-        </p>
+        </p></details>
       </header>
 
       {frontierPersonalities.map(group => (

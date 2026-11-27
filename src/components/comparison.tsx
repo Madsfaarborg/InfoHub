@@ -43,8 +43,8 @@ export function Comparison({ models, benchmarks }: { models: ModelVariant[]; ben
           <label htmlFor="output-tokens">Output tokens <span>All billable output, including reasoning</span></label><input id="output-tokens" type="number" min="0" max="64000" step="100" value={outputTokens} onChange={event => setOutputTokens(Number(event.target.value))} />
           <label htmlFor="cached-tokens">Cached input tokens <span>Included in your input total</span></label><input id="cached-tokens" type="number" min="0" max={inputTokens} step="100" value={cachedTokens} onChange={event => setCachedTokens(Number(event.target.value))} />
           {!validInputs ? <p className="field-error" role="status">Use whole, non-negative token counts. Cached input cannot exceed input. Maximum: 100,000 input and 64,000 output tokens.</p> : null}
-          <div className="settings-divider" /><h3>Models to compare</h3><p className="small">Choose up to four</p>
-          <div className="model-checkboxes">{options.map(model => <label key={model.id}><input type="checkbox" checked={selected.includes(model.id)} disabled={!selected.includes(model.id) && selected.length >= 4} onChange={() => toggle(model.id)} /><span>{model.name}<small>{model.setting.label} · {model.provider}</small></span></label>)}</div>
+          <div className="settings-divider" /><details className="model-picker"><summary>Models to compare · {selected.length} selected</summary><p className="small">Choose up to four</p>
+          <div className="model-checkboxes">{options.map(model => <label key={model.id}><input type="checkbox" checked={selected.includes(model.id)} disabled={!selected.includes(model.id) && selected.length >= 4} onChange={() => toggle(model.id)} /><span>{model.name}<small>{model.setting.label} · {model.provider}</small></span></label>)}</div></details>
         </aside>
         <section className="cost-chart" aria-labelledby="chart-title">
           <div className="chart-heading"><div><span className="eyebrow">A like-for-like token estimate</span><h2 id="chart-title">What would this task cost?</h2></div><span className="chart-unit">USD / task</span></div>

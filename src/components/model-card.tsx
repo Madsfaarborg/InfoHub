@@ -20,6 +20,12 @@ export function ModelCard({ result, deeperOption }: { result: Recommendation; de
     <div className="model-heading"><div className="provider-mark" aria-hidden="true">{model.developer.charAt(0)}</div><span className="provider-name">{model.provider}</span></div>
     <h3><Link href={"/models/" + model.id}>{model.name}</Link></h3>
     <p className="model-setting">{model.setting.label}<span>·</span>{model.deployment === "local" ? "Local" : model.image ? "Hosted" : "Hosted API"}</p>
+    <div className="card-actions">
+      {model.image ? model.toolUrl ? (
+        <a href={model.toolUrl} target="_blank" rel="noreferrer" className="text-button">Open tool <ArrowUpRight size={15} aria-hidden="true" /></a>
+      ) : null : <CopySettings model={model} />}
+      <Link href={"/models/" + model.id} className="text-button">{model.image ? "Setup & brief" : "Details"} <ArrowRight size={15} aria-hidden="true" /></Link>
+    </div>
     <p className="model-fit"><strong>{result.recommended ? "Why start here" : deeperOption ? "What extra reasoning helps with" : "Best fit"}</strong><br />{guidance.bestFor}</p>
     <div className="example"><span>For example</span><p>{guidance.example}</p></div>
     <p className="step-up"><ArrowUpRight size={16} aria-hidden="true" /><span>{guidance.stepUp}</span></p>
@@ -37,11 +43,5 @@ export function ModelCard({ result, deeperOption }: { result: Recommendation; de
       <strong>{model.image.outputUsd === null ? model.image.priceBasis : formatUsd(model.image.outputUsd) + " " + model.image.priceBasis}</strong>
       <span>{priceIsStale(model) ? "Pricing needs review · " : ""}{model.price.note}</span>
     </> : model.price.input !== null && model.price.output !== null ? <><strong>${model.price.input} in / ${model.price.output} out</strong><span>per 1M tokens{priceIsStale(model) ? " · price needs review" : ""}</span></> : <><strong>Infrastructure cost varies</strong><span>No measured local cost yet</span></>}</div>
-    <div className="card-actions">
-      {model.image ? model.toolUrl ? (
-        <a href={model.toolUrl} target="_blank" rel="noreferrer" className="text-button">Open tool <ArrowUpRight size={15} aria-hidden="true" /></a>
-      ) : null : <CopySettings model={model} />}
-      <Link href={"/models/" + model.id} className="text-button">{model.image ? "Setup & brief" : "Details"} <ArrowRight size={15} aria-hidden="true" /></Link>
-    </div>
   </article>;
 }
