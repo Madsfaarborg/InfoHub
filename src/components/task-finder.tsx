@@ -66,7 +66,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
   }
   return <>
     <section ref={hero} className={showResults ? "hero hero-compact" : "hero"} aria-labelledby="hero-title">
-      <h1 id="hero-title">Choose the right model<br /> for the job</h1>
+      <h1 id="hero-title">{showResults ? "Find a model" : <>Choose the right model<br /> for the job</>}</h1>
       <p className="hero-description">Find AI tools for images, campaigns, slides, spreadsheets, and technical work. See which settings to start with and what they cost.</p>
       <form className="search-form" onSubmit={submit} role="search">
         <Search size={21} strokeWidth={1.6} aria-hidden="true" />
@@ -81,7 +81,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
     {showResults ? <section ref={resultMotion} className="results-section content-width" aria-labelledby="results-heading">
       <div className="section-heading"><div><h2 id="results-heading">{selected ? selected.name : interpretation.alternatives.length ? "Which part should the model help with?" : "Choose a task category"}</h2><p>{selected ? selected.description : interpretation.alternatives.length ? "Choose the main goal to see model recommendations." : "Pick the category that best describes your task."}</p></div><span className="small muted" aria-live="polite">{selected ? results.length + (results.length === 1 ? " suggestion" : " suggestions") : ""}</span></div>
       {category ? <>
-        <div className="result-controls" aria-label="Adjust task interpretation" role="group">
+        <details className="refinement-panel"><summary>Refine your results</summary><div className="result-controls" aria-label="Adjust task interpretation" role="group">
           <div className="control-group">
             <label htmlFor="task-category">Task</label>
             <Dropdown id="task-category" label="Task" value={category}
@@ -106,7 +106,7 @@ export function TaskFinder({ models, initialCategory }: { models: ModelVariant[]
             <div className="control-group"><label htmlFor="complexity">Task scope</label><Dropdown id="complexity" label="Task scope" value={interpretation.complexity} onChange={value => setInterpretation(current => ({ ...current, complexity: value as "routine" | "complex" }))} options={[{ value: "routine", label: "Well-defined" }, { value: "complex", label: "Complex / uncertain" }]} /></div>
           </>}
           <label className="toggle-label"><input type="checkbox" checked={localOnly} onChange={event => setLocalOnly(event.target.checked)} /><span className="toggle-track" aria-hidden="true" />Local models only</label>
-        </div>
+        </div></details>
         {interpretation.alternatives.length ? <div className="interpretation-note">Another possible fit: {interpretation.alternatives.filter(id => id !== category).map(id => <button className="inline-button" key={id} onClick={() => choose(id)}>{categories.find(item => item.id === id)?.name}</button>)}</div> : null}
         {results.length ? <>
           <div className="model-grid">{results.map(result => <ModelCard
