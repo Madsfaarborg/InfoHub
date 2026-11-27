@@ -42,6 +42,13 @@
   font-size: 24px;
 }
 
+.pricingTier {
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
 .traits {
   margin-top: 4px;
   color: var(--secondary);

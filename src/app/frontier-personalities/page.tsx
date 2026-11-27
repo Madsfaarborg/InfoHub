@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
-import { frontierPersonalities, personalityReviewDate, type PersonalityObservation } from "@/content/frontier-personalities";
+import { frontierPersonalities, geminiPersonalityReviewDate, personalityReviewDate, type PersonalityObservation } from "@/content/frontier-personalities";
 import { displayDate } from "@/lib/categories";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Frontier Personalities",
-  description: "How the latest Claude and GPT models approach work, with firsthand tests and community reports.",
+  description: "How the latest Claude, GPT and Gemini models approach work, with firsthand tests and community reports.",
 };
 
 export default function FrontierPersonalitiesPage() {
@@ -14,11 +14,13 @@ export default function FrontierPersonalitiesPage() {
     <div className={`content-width page-content ${styles.page}`}>
       <header className="page-heading">
         <h1>Frontier Personalities</h1>
-        <p>How Claude and GPT models approach a brief, take initiative, and respond when the work gets messy.</p>
+        <p>How Claude, GPT and Gemini models approach a brief, take initiative, and respond when the work gets messy.</p>
+        <p className={styles.evidenceNote}>Cost categories are a guide to each provider’s lineup. Actual costs vary by task, reasoning effort, subscription, and API pricing. See <a href="https://platform.claude.com/docs/en/models/overview">Anthropic</a>, <a href="https://developers.openai.com/api/docs/pricing">OpenAI</a>, and <a href="https://ai.google.dev/gemini-api/docs/pricing">Google</a> pricing.</p>
         <p className={styles.evidenceNote}>
           These profiles draw on hands-on reviews, community reports, and provider examples.
-          Behavior varies with the task, app, and reasoning effort. Sources checked{" "}
-          <time dateTime={personalityReviewDate}>{displayDate(personalityReviewDate)}</time>.
+          Behavior varies with the task, app, and reasoning effort; community reports are individual experiences.
+          Claude and GPT sources checked <time dateTime={personalityReviewDate}>{displayDate(personalityReviewDate)}</time>;{" "}
+          Gemini sources checked <time dateTime={geminiPersonalityReviewDate}>{displayDate(geminiPersonalityReviewDate)}</time>.
         </p>
       </header>
 
@@ -30,6 +32,7 @@ export default function FrontierPersonalitiesPage() {
               <article key={profile.name} className={styles.card}>
                 <header>
                   <h3>{profile.name}</h3>
+                  <p className={styles.pricingTier}>{profile.pricingTier}</p>
                   <p className={styles.traits}>{profile.traits}</p>
                 </header>
                 <BehaviorNote title="How it works" observation={profile.style} />

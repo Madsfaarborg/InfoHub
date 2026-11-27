@@ -10,6 +10,7 @@ export type PersonalityObservation = {
 
 type Profile = {
   name: string;
+  pricingTier: "Mid cost" | "High cost" | "Very high cost";
   traits: string;
   style: PersonalityObservation;
   tradeoff: PersonalityObservation;
@@ -21,6 +22,7 @@ const gpt62Launch: Source = {
 };
 
 export const personalityReviewDate = "2026-11-25";
+export const geminiPersonalityReviewDate = "2026-11-27";
 
 export const frontierPersonalities: { id: string; name: string; profiles: Profile[] }[] = [
   {
@@ -29,6 +31,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
     profiles: [
       {
         name: "Claude Fable 5.2",
+        pricingTier: "Very high cost",
         traits: "Inventive, self-directed, ambitious",
         style: {
           text: "Give Fable an outcome and it can invent much of the route. Claire Vo’s tests went from a brand brief to an animated video and from a typewriter idea to an interactive writing room. Matt Shumer found a single Fable agent took more ownership of his game build than his initial multi-agent setup.",
@@ -47,6 +50,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "Claude Opus 5.5",
+        pricingTier: "High cost",
         traits: "Persistent, consultative, thorough",
         style: {
           text: "Opus can stay with a task for hours and still invite input on the decisions that need it. CodeRabbit describes an overnight coding run that made substantial progress. A Claude Code user found that it surfaced what was missing from an architecture decision and asked for the rationale behind an edit before writing the handoff.",
@@ -64,6 +68,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "Claude Sonnet 5.5",
+        pricingTier: "Mid cost",
         traits: "Iterative, responsive, comfortable with feedback",
         style: {
           text: "Sonnet fits work you can steer in short turns. Every’s team used it to brainstorm, try directions and polish results after feedback. In a Claude Code user’s 25-task comparison, Sonnet at high effort came close to Opus at medium after each implementation got one round of fixes.",
@@ -88,6 +93,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
     profiles: [
       {
         name: "GPT-6.2 Astra",
+        pricingTier: "Very high cost",
         traits: "Intensely focused, terse, sensitive to scope",
         style: {
           text: "Astra can lock onto one part of a problem. In Offloop’s testing it handled clearly specified coding tasks well, then sometimes stayed with one detail long enough to lose the thread of a bigger assignment. OpenAI’s launch examples show where that focus can pay off, including tracing figures through source documents and matching an existing slide template.",
@@ -107,6 +113,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "GPT-6.2 Sol",
+        pricingTier: "High cost",
         traits: "Quick to act, practical, occasionally inventive",
         style: {
           text: "Sol can get to a workable first pass quickly. Offloop’s tester found the usual coding answers familiar, with occasional solutions they hadn’t considered. A Codex user running several narrowly scoped sessions also reported fast completion and efficient token use.",
@@ -126,6 +133,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "GPT-6.1 Terra",
+        pricingTier: "Mid cost",
         traits: "Fast, direct, comfortable with visual input",
         style: {
           text: "Terra moves quickly when it has something concrete to inspect. Dustin’s AI Lab found its answers direct and saw it handle focused screen-reading tasks and small patches with tests. OpenAI’s launch demos show it applying that visual work to forms and technical drawings.",
@@ -140,6 +148,72 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
             { label: "Dustin’s AI Lab UI checks", url: "https://danyuchn.github.io/blog/posts/en/gpt-6-1-terra-review/" },
             { label: "Remy’s hands-on 3D tests", url: "https://goremy.ai/blog/articles/gpt-6-1-terra-hands-on-test-results" },
             { label: "r/OpenaiCodex Blender test", url: "https://www.reddit.com/r/OpenaiCodex/comments/1xgq7nk/gpt61_terra_3d_design_test/" },
+          ],
+        },
+      },
+    ],
+  },
+
+  {
+    id: "gemini",
+    name: "Gemini",
+    profiles: [
+      {
+        name: "Gemini 4 Carbon",
+        pricingTier: "Very high cost",
+        traits: "Methodical, independent, sometimes slow",
+        style: {
+          text: "Carbon can work through a substantial brief on its own. In one developer’s small Go and HTMX pipeline trial, four separately specified phases passed on the first run, with few changes in a subsequent Opus audit. Every’s live testers also valued Carbon as a different-thinking second opinion and praised its multimodal work.",
+          sources: [
+            { label: "r/google_antigravity pipeline trial", url: "https://www.reddit.com/r/google_antigravity/comments/1xszqoj/my_preliminary_results_on_carbon/" },
+            { label: "Every live test recap", url: "https://usefollowed.com/episodes/every-live-vibe-check-gemini-4-carbon" },
+          ],
+        },
+        tradeoff: {
+          text: "Depth can come at the expense of a finished answer. One developer reported that a large, high-effort API code review spent almost 45 minutes reasoning and returned no usable review. In Every’s live test, the team also found Carbon verbose and its default visual design cluttered.",
+          sources: [
+            { label: "r/GeminiFeedback API report", url: "https://www.reddit.com/r/GeminiFeedback/comments/1xtc2os/gemini_4_carbon_on_high_spent_45_minutes_and_262k/" },
+            { label: "Every live test recap", url: "https://usefollowed.com/episodes/every-live-vibe-check-gemini-4-carbon" },
+          ],
+        },
+      },
+      {
+        name: "Gemini 4 Neon",
+        pricingTier: "High cost",
+        traits: "Readable, analytical, attentive to detail",
+        style: {
+          text: "Neon can be an approachable collaborator that looks closely at the work. An Antigravity user described its responses as readable after two hours on a project. In an overnight Azure and .NET review, a developer found Neon caught real issues the other reviewer missed, including a sign-in failure and a sandbox bypass.",
+          sources: [
+            { label: "r/google_antigravity first impressions", url: "https://www.reddit.com/r/google_antigravity/comments/1xzx6cs/gemini_4_neon_is_actually_fucking_good/" },
+            { label: "Huuhka’s code-review trial", url: "https://huuhka.net/testing-gemini-4-neon-as-a-code-reviewer/" },
+          ],
+        },
+        tradeoff: {
+          text: "Its confidence and attention to detail still need checking. In that same review trial, Neon approved three changes with serious issues caught by Sol and took longer per review. In one Gemini app writing discussion, a user found Neon less nuanced than Argon; others in a separate thread preferred Neon for reviews but disagreed about its implementation quality.",
+          sources: [
+            { label: "Huuhka’s code-review trial", url: "https://huuhka.net/testing-gemini-4-neon-as-a-code-reviewer/" },
+            { label: "Google forum writing feedback", url: "https://discuss.ai.google.dev/t/missing-gemini-4-argon-in-the-gemini-app-please-dont-trade-depth-for-speed/202469" },
+            { label: "r/GeminiAI comparison", url: "https://www.reddit.com/r/GeminiAI/comments/1y58ag6/gemini_4_neon_vs_claude_opus_55_how_do_they/" },
+          ],
+        },
+      },
+      {
+        name: "Gemini 4 Hydrogen",
+        pricingTier: "Mid cost",
+        traits: "Quick, practical, responsive to a concrete brief",
+        style: {
+          text: "Hydrogen is built for quick execution, and early tests show it handling concrete briefs across formats. In a medium-thinking hands-on review it transcribed a short recording accurately and followed the requested format. In a developer’s Laravel feature trial, Hydrogen High matched 3.8 Flash High on the reported score in less time, though this was only one task.",
+          sources: [
+            { label: "SME-Insights hands-on tests", url: "https://www.sme-insights.co.uk/gemini-4-hydrogen-hands-on-review/" },
+            { label: "r/GeminiAI Laravel trial", url: "https://www.reddit.com/r/GeminiAI/comments/1xwd175/on_a_real_coding_task_hydrogen_matched_38_flash/" },
+            { label: "Google launch", url: "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/" },
+          ],
+        },
+        tradeoff: {
+          text: "Speed does not guarantee that every constraint survives. In the Laravel trial, the author reported a required-field mistake that remained at both high and extra effort. Creative-writing reactions also vary: one AI Studio user preferred its prose to 3.1 Pro but not Argon, while another disliked it for roleplay.",
+          sources: [
+            { label: "r/GeminiAI Laravel trial", url: "https://www.reddit.com/r/GeminiAI/comments/1xwd175/on_a_real_coding_task_hydrogen_matched_38_flash/" },
+            { label: "r/GoogleAIStudio writing discussion", url: "https://www.reddit.com/r/GoogleAIStudio/comments/1xunbph/how_good_is_gemini_4_hydrogen_for_creative/" },
           ],
         },
       },
