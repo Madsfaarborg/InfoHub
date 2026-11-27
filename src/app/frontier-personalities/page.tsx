@@ -15,6 +15,7 @@ export default function FrontierPersonalitiesPage() {
       <header className="page-heading">
         <h1>Frontier Personalities</h1>
         <p>How Claude, GPT and Gemini models approach a brief, take initiative, and respond when the work gets messy.</p>
+        <p className={styles.evidenceNote}>Pricing tiers compare standard API token rates across these nine models: lower cost up to $2 input per million tokens, mid cost $3–$4, and higher cost $8. Temporary promotions are excluded; actual spend depends on usage. See <a href="https://platform.claude.com/docs/en/models/overview">Anthropic</a>, <a href="https://developers.openai.com/api/docs/pricing">OpenAI</a>, and <a href="https://ai.google.dev/gemini-api/docs/pricing">Google</a> pricing.</p>
         <p className={styles.evidenceNote}>
           These profiles draw on hands-on reviews, community reports, and provider examples.
           Behavior varies with the task, app, and reasoning effort; community reports are individual experiences.
@@ -31,6 +32,7 @@ export default function FrontierPersonalitiesPage() {
               <article key={profile.name} className={styles.card}>
                 <header>
                   <h3>{profile.name}</h3>
+                  <p className={styles.pricingTier}>{profile.pricingTier}</p>
                   <p className={styles.traits}>{profile.traits}</p>
                 </header>
                 <BehaviorNote title="How it works" observation={profile.style} />

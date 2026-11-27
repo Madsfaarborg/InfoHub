@@ -10,6 +10,7 @@ export type PersonalityObservation = {
 
 type Profile = {
   name: string;
+  pricingTier: "Lower cost" | "Mid cost" | "Higher cost";
   traits: string;
   style: PersonalityObservation;
   tradeoff: PersonalityObservation;
@@ -30,6 +31,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
     profiles: [
       {
         name: "Claude Fable 5.2",
+        pricingTier: "Higher cost",
         traits: "Inventive, self-directed, ambitious",
         style: {
           text: "Give Fable an outcome and it can invent much of the route. Claire Vo’s tests went from a brand brief to an animated video and from a typewriter idea to an interactive writing room. Matt Shumer found a single Fable agent took more ownership of his game build than his initial multi-agent setup.",
@@ -48,6 +50,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "Claude Opus 5.5",
+        pricingTier: "Mid cost",
         traits: "Persistent, consultative, thorough",
         style: {
           text: "Opus can stay with a task for hours and still invite input on the decisions that need it. CodeRabbit describes an overnight coding run that made substantial progress. A Claude Code user found that it surfaced what was missing from an architecture decision and asked for the rationale behind an edit before writing the handoff.",
@@ -65,6 +68,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "Claude Sonnet 5.5",
+        pricingTier: "Lower cost",
         traits: "Iterative, responsive, comfortable with feedback",
         style: {
           text: "Sonnet fits work you can steer in short turns. Every’s team used it to brainstorm, try directions and polish results after feedback. In a Claude Code user’s 25-task comparison, Sonnet at high effort came close to Opus at medium after each implementation got one round of fixes.",
@@ -89,6 +93,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
     profiles: [
       {
         name: "GPT-6.2 Astra",
+        pricingTier: "Higher cost",
         traits: "Intensely focused, terse, sensitive to scope",
         style: {
           text: "Astra can lock onto one part of a problem. In Offloop’s testing it handled clearly specified coding tasks well, then sometimes stayed with one detail long enough to lose the thread of a bigger assignment. OpenAI’s launch examples show where that focus can pay off, including tracing figures through source documents and matching an existing slide template.",
@@ -108,6 +113,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "GPT-6.2 Sol",
+        pricingTier: "Lower cost",
         traits: "Quick to act, practical, occasionally inventive",
         style: {
           text: "Sol can get to a workable first pass quickly. Offloop’s tester found the usual coding answers familiar, with occasional solutions they hadn’t considered. A Codex user running several narrowly scoped sessions also reported fast completion and efficient token use.",
@@ -127,6 +133,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "GPT-6.1 Terra",
+        pricingTier: "Lower cost",
         traits: "Fast, direct, comfortable with visual input",
         style: {
           text: "Terra moves quickly when it has something concrete to inspect. Dustin’s AI Lab found its answers direct and saw it handle focused screen-reading tasks and small patches with tests. OpenAI’s launch demos show it applying that visual work to forms and technical drawings.",
@@ -153,6 +160,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
     profiles: [
       {
         name: "Gemini 4 Carbon",
+        pricingTier: "Mid cost",
         traits: "Methodical, independent, sometimes slow",
         style: {
           text: "Carbon can work through a substantial brief on its own. In one developer’s small Go and HTMX pipeline trial, four separately specified phases passed on the first run, with few changes in a subsequent Opus audit. Every’s live testers also valued Carbon as a different-thinking second opinion and praised its multimodal work.",
@@ -171,6 +179,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "Gemini 4 Neon",
+        pricingTier: "Mid cost",
         traits: "Readable, analytical, attentive to detail",
         style: {
           text: "Neon can be an approachable collaborator that looks closely at the work. An Antigravity user described its responses as readable after two hours on a project. In an overnight Azure and .NET review, a developer found Neon caught real issues the other reviewer missed, including a sign-in failure and a sandbox bypass.",
@@ -190,6 +199,7 @@ export const frontierPersonalities: { id: string; name: string; profiles: Profil
       },
       {
         name: "Gemini 4 Hydrogen",
+        pricingTier: "Lower cost",
         traits: "Quick, practical, responsive to a concrete brief",
         style: {
           text: "Hydrogen is built for quick execution, and early tests show it handling concrete briefs across formats. In a medium-thinking hands-on review it transcribed a short recording accurately and followed the requested format. In a developer’s Laravel feature trial, Hydrogen High matched 3.8 Flash High on the reported score in less time, though this was only one task.",
