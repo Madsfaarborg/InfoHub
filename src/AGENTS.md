@@ -19,7 +19,7 @@ Read ../docs/DECISIONS.md and ../docs/LEARNINGS.md before substantial work. Upda
 
 - Generous whitespace is a user requirement. Keep the main action obvious, explanation text short, and secondary information expandable.
 - Use the recorded porcelain/graphite/vermilion palette and system fonts.
-- Read the installed apple-design, emil-design-eng, and unslop skills when changing UI.
+- Read the installed apple-design, emil-design-eng, and unslop skills when changing UI. Also use design-taste-frontend or impeccable when relevant to the requested design work; preserve InfoHub's existing product identity and the user's instructions if an upstream default conflicts.
 - Prefer semantic HTML, visible focus, keyboard support, and reduced motion. Use plain CSS tokens; avoid a dependency for a simple control.
 
 ## Engineering
