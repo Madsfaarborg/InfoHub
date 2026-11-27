@@ -33,6 +33,7 @@ export const modelVariantSchema = z.strictObject({
     checkedAt: date,
     metrics: z.partialRecord(z.enum(benchmarkMetricIds), z.strictObject({
       benchmark: text,
+      sourceUrl: url.optional(),
       score: z.number().finite(),
       unit: z.enum(["%", "index"]),
     })).refine(metrics => Object.keys(metrics).length > 0, "Add at least one benchmark metric"),

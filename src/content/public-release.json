@@ -2861,6 +2861,24 @@
         "sourceUrl": "https://artificialanalysis.ai/models/gemini-4-hydrogen",
         "checkedAt": "2026-11-27",
         "metrics": {
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 36.3,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 74.4,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 30,
+            "unit": "%",
+            "sourceUrl": "https://www.benchleader.com/benchmarks/aa_gdp_pdf"
+          },
           "intelligence": {
             "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
             "score": 51,
@@ -2993,6 +3011,24 @@
         "sourceUrl": "https://artificialanalysis.ai/models/gemini-4-neon",
         "checkedAt": "2026-11-27",
         "metrics": {
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 43.3,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 79.2,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/models/comparisons/gemini-4-neon-vs-gemini-4-hydrogen"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 33.4,
+            "unit": "%",
+            "sourceUrl": "https://www.benchleader.com/benchmarks/aa_gdp_pdf"
+          },
           "intelligence": {
             "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
             "score": 60,
@@ -3126,6 +3162,24 @@
         "sourceUrl": "https://artificialanalysis.ai/models/gemini-4-carbon",
         "checkedAt": "2026-11-27",
         "metrics": {
+          "coding": {
+            "benchmark": "FrontierCode-AA 2.0",
+            "score": 40.6,
+            "unit": "%",
+            "sourceUrl": "https://benchaudit.org/benchmarks/frontiercode-aa-2-0/"
+          },
+          "agentic": {
+            "benchmark": "AutomationBench-AA",
+            "score": 77.8,
+            "unit": "%",
+            "sourceUrl": "https://artificialanalysis.ai/evaluations/automationbench-aa"
+          },
+          "instructionFollowing": {
+            "benchmark": "GDP.pdf",
+            "score": 28.4,
+            "unit": "%",
+            "sourceUrl": "https://www.benchleader.com/benchmarks/aa_gdp_pdf"
+          },
           "intelligence": {
             "benchmark": "Artificial Analysis Intelligence Index v5.0.2",
             "score": 60,

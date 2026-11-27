@@ -22,13 +22,14 @@ const starterGemini: ModelVariant[] = modelVariantSchema.array().parse(gemini);
 
 export function addStarterGuidance(models: ModelVariant[]): ModelVariant[] {
   const ids = new Set(models.map(model => model.id));
+  const modelIds = new Set(models.map(model => model.modelId));
   const combined = [
     ...models.map(model => {
       const extra = businessGuidance[model.id];
       return extra ? { ...model, guidance: { ...extra, ...model.guidance } } : model;
     }),
     ...starterClaude.filter(model => !ids.has(model.id)),
-    ...starterGemini.filter(model => !ids.has(model.id)),
+    ...starterGemini.filter(model => !ids.has(model.id) && !modelIds.has(model.modelId)),
     ...earlier.filter(model => !ids.has(model.id)),
     ...starterImages.filter(model => !ids.has(model.id)),
   ];
